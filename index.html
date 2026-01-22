@@ -13,33 +13,32 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-    /* Alt barın kısalmasını engelleyen ve rengini sabitleyen blok */
+    /* Sadece renk ve doku; boyuta asla dokunmuyoruz */
     #footer {
         background-color: #d4cbba !important; /* Kumlu bej */
-        background-image: none !important;    /* Üstteki gri gölgeyi siler */
-        width: 100% !important;               /* Kısalmayı engeller, tam ekran yapar */
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        height: 3.5em !important;             /* Barın standart yüksekliğini korur */
-        z-index: 10000 !important;            /* Her zaman en üstte durmasını sağlar */
+        background-image: none !important;    /* Üstteki o gri gölgeyi siler */
     }
 
-    /* Yazıların (Infinite Galleria, About vb.) bej üzerinde okunması için */
+    /* Panel açıldığında içindeki tüm yazıların okunması için */
+    #footer .inner, 
+    #footer .content, 
     #footer .copyright, 
-    #footer nav ul li a, 
+    #footer a, 
     #footer h2, 
-    #footer p {
+    #footer p,
+    #footer label,
+    #footer input,
+    #footer textarea {
         color: #222222 !important;
     }
 
-    /* Sosyal medya ikonları ve butonların rengi */
+    /* İkonların (Instagram, Mail vb.) siyah görünmesi */
     #footer .icons a:before, 
     #footer .info:before {
         color: #222222 !important;
     }
 
-    /* Logonun (SVG) bej üzerinde net görünmesi için parlaklık ayarı */
+    /* Logonun bej üzerinde netleşmesi için karartma */
     #footer img {
         filter: brightness(0.2) !important;
     }
@@ -187,6 +186,7 @@
 	</body>
 
 </html>
+
 
 
 
