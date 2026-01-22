@@ -13,34 +13,36 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-    /* 1. Barın Boyutunu ve Yerini Çiviliyoruz (Kısalmayı Engeller) */
-    #footer {
+    /* 1. Alttaki Sabit Barı (Header) ve Paneli (Footer) Boyuyoruz */
+    #header, #footer {
         background-color: #d4cbba !important; /* Kumlu bej */
-        background-image: none !important;    /* Eski griyi siler */
-        width: 100% !important;               /* Tam genişlik */
-        position: fixed !important;           /* Sayfaya sabitler */
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: auto !important;              /* Panel açıldığında büyümesine izin verir */
-        min-height: 3.5em !important;         /* Kapalıyken bar yüksekliğini korur */
+        background-image: none !important;    /* Varsa gri gradyanı siler */
+        color: #222222 !important;           /* Yazıları koyu yapar */
     }
 
-    /* 2. Barın Arka Planındaki Gizli Katmanları Temizliyoruz */
-    #footer:before, #footer:after, #footer .inner {
+    /* 2. Barın Kısalmasını Engellemek İçin Genişlik Ayarı */
+    #header {
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        position: fixed !important;
+    }
+
+    /* 3. Barın İçindeki Katmanları da Temizliyoruz */
+    #header:before, #header:after, #footer:before, #footer:after {
         background: #d4cbba !important;
         background-image: none !important;
         box-shadow: none !important;
     }
 
-    /* 3. Tüm Yazıları ve İkonları Koyu Gri/Siyah Yapıyoruz */
-    #footer *, #footer .copyright, #footer a, #footer h2, #footer p {
+    /* 4. Tüm Yazı, Link ve İkonların Rengini Sabitliyoruz */
+    #header *, #footer *, #footer .copyright, #footer a, #header a {
         color: #222222 !important;
-        border-color: #222222 !important; /* Varsa çizgiler de koyulaşsın */
+        border-color: #222222 !important;
     }
 
-    /* 4. Logoyu (SVG) Açık Zeminde Görünür Yapıyoruz */
-    #footer img {
+    /* 5. Logonun (SVG) Bej Üzerinde Belirginleşmesi */
+    #header img, #footer img {
         filter: brightness(0.2) !important;
     }
 </style>
@@ -187,6 +189,7 @@
 	</body>
 
 </html>
+
 
 
 
