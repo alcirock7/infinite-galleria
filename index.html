@@ -12,12 +12,22 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<style>
-    #header {
-        height: 90px; /* Şeridin yüksekliğini 100 piksele çıkarır */
+<style>
+    /* Alttaki logonun olduğu barı ve açılan paneli komple hedef alır */
+    #footer {
+        background-color: #d4cbba !important; /* Kumlu bej */
+        background-image: none !important;    /* Varsa üzerindeki gri gradyanı siler */
+        opacity: 1 !important;               /* Şeffaflığı kapatır, rengi netleştirir */
     }
-    #header h1, #header nav ul li a {
-        line-height: 90px; /* Yazıları ve butonu yeni yüksekliğe göre dikeyde ortalar */
+
+    /* Yazıların ve logonun etrafındaki metinlerin rengi */
+    #footer .copyright, #footer a, #footer h2, #footer p {
+        color: #222222 !important;
+    }
+
+    /* Logo (SVG) eğer çok sönük kalırsa parlaklığını ayarlar */
+    #footer img {
+        filter: brightness(0.2); /* Logoyu belirginleştirmek için karartır (zemin açık renk olduğu için) */
     }
 </style>
 	</head>
@@ -163,6 +173,7 @@
 	</body>
 
 </html>
+
 
 
 
