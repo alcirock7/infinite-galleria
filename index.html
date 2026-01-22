@@ -13,21 +13,35 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-    /* Alttaki logonun olduğu barı ve açılan paneli komple hedef alır */
+    /* Alt barın kısalmasını engelleyen ve rengini sabitleyen blok */
     #footer {
         background-color: #d4cbba !important; /* Kumlu bej */
-        background-image: none !important;    /* Varsa üzerindeki gri gradyanı siler */
-        opacity: 1 !important;               /* Şeffaflığı kapatır, rengi netleştirir */
+        background-image: none !important;    /* Üstteki gri gölgeyi siler */
+        width: 100% !important;               /* Kısalmayı engeller, tam ekran yapar */
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        height: 3.5em !important;             /* Barın standart yüksekliğini korur */
+        z-index: 10000 !important;            /* Her zaman en üstte durmasını sağlar */
     }
 
-    /* Yazıların ve logonun etrafındaki metinlerin rengi */
-    #footer .copyright, #footer a, #footer h2, #footer p {
+    /* Yazıların (Infinite Galleria, About vb.) bej üzerinde okunması için */
+    #footer .copyright, 
+    #footer nav ul li a, 
+    #footer h2, 
+    #footer p {
         color: #222222 !important;
     }
 
-    /* Logo (SVG) eğer çok sönük kalırsa parlaklığını ayarlar */
+    /* Sosyal medya ikonları ve butonların rengi */
+    #footer .icons a:before, 
+    #footer .info:before {
+        color: #222222 !important;
+    }
+
+    /* Logonun (SVG) bej üzerinde net görünmesi için parlaklık ayarı */
     #footer img {
-        filter: brightness(0.2); /* Logoyu belirginleştirmek için karartır (zemin açık renk olduğu için) */
+        filter: brightness(0.2) !important;
     }
 </style>
 	</head>
@@ -173,6 +187,7 @@
 	</body>
 
 </html>
+
 
 
 
