@@ -5,6 +5,7 @@
 	Multiverse by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
 */
 
 @-moz-keyframes spinner {
@@ -2048,3 +2049,19 @@ input, select, textarea {
 		#footer .copyright a {
 			color: inherit;
 		}
+
+/* --- Infinite Galleria Yeni Footer Tasarımı --- */
+#footer {
+    background-color: #d4cbba !important; /* Kumlu/Bej Renk */
+    color: #222222 !important;           /* Genel Yazı Rengi */
+}
+
+/* Alttaki tüm yazıların (linkler, başlıklar vb.) okunması için */
+#footer h2, #footer h3, #footer p, #footer a, #footer .copyright {
+    color: #222222 !important;
+}
+
+/* İkonların (Instagram, Mail) görünmesi için */
+#footer .icons a {
+    color: #222222 !important;
+}
