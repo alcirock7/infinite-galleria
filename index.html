@@ -79,6 +79,22 @@
             padding: 0 !important;
         }
     }
+	/* 8. İçeriğin Alt Bar Altında Kalmasını Engelleme */
+    #main {
+        padding-bottom: 100px !important; /* Alt bar için yer açar */
+    }
+
+    /* Mobilde bar daha kalın olabileceği için tamponu artırıyoruz */
+    @media screen and (max-width: 736px) {
+        #main {
+            padding-bottom: 150px !important; 
+        }
+        
+        /* Barın içindeki yazıların üst üste binmemesi için */
+        #header h1 {
+            font-size: 0.8em !important; /* Mobilde yazıyı biraz küçültür */
+        }
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -178,6 +194,7 @@
 
 	</body>
 </html>
+
 
 
 
