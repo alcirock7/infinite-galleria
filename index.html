@@ -44,6 +44,18 @@
     /* 5. Logonun (SVG) Bej Üzerinde Belirginleşmesi */
     #header img, #footer img {
         filter: brightness(0.2) !important;
+   /* --- ABOUT Butonu Düzeltmesi --- */
+    /* Butonun siyah arka planını kaldır ve şeffaf yap */
+    #footer a.button.alt, #header a.button.alt {
+        background-color: transparent !important;
+        box-shadow: inset 0 0 0 2px #222222 !important; /* İnce bir çerçeve ekler */
+        color: #222222 !important; /* Yazı rengini koyu yapar */
+    }
+
+    /* Mouse ile üzerine gelince (Hover) ne olacağı */
+    #footer a.button.alt:hover, #header a.button.alt:hover {
+        background-color: #222222 !important; /* Üzerine gelince içi dolsun mu? */
+        color: #d4cbba !important; /* Yazı rengi kumlu olsun */
     }
 </style>
 	</head>
@@ -189,6 +201,7 @@
 	</body>
 
 </html>
+
 
 
 
