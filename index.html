@@ -62,6 +62,23 @@
         background-color: #222222 !important;
         color: #d4cbba !important;
     }
+	/* 7. Mobil Uyumluluk: About Paneli Düzeltmesi */
+    @media screen and (max-width: 736px) {
+        #footer .inner.split {
+            display: block !important; /* Yan yana dizilimi iptal et, alt alta diz */
+        }
+        #footer .inner.split > div {
+            width: 100% !important; /* Her kutu ekranı kaplasın */
+            margin-bottom: 40px;    /* Aralarına boşluk bırak */
+        }
+        #footer {
+            padding: 40px 20px !important; /* Mobilde kenarlardan boşluk ver */
+            overflow-y: auto !important;   /* İçerik taşarsa kaydırılabilsin */
+        }
+        #footer .inner {
+            padding: 0 !important;
+        }
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -161,6 +178,7 @@
 
 	</body>
 </html>
+
 
 
 
