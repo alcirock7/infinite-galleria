@@ -236,27 +236,35 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
-	/* --- MODAL AÇILIŞ EFEKTİ (1 Saniye) --- */
+/* --- INFINITE GALLERIA PREMIUM TRANSITION (1s) --- */
 
-/* --- MODAL VE RESİM YUMUŞAK GEÇİŞ (Hard Reset) --- */
-@keyframes modalFadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+/* 1. Modal Arka Planı: Yumuşak Kararma */
+@keyframes modalOverlayIn {
+    0% { opacity: 0; backdrop-filter: blur(0px); }
+    100% { opacity: 1; backdrop-filter: blur(8px); } /* Lüks galeri havası için blur */
 }
 
+/* 2. Resim: Süzülerek ve Büyüyerek Belirme */
 @keyframes modalImgSwoosh {
-    0% { opacity: 0; transform: scale(0.95) translateY(10px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+    0% { 
+        opacity: 0; 
+        transform: scale(0.92) translateY(15px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
 }
 
-/* Tüm modal arka planının 1 saniyede yumuşakça gelmesi */
 .modal-wrapper {
-    animation: modalFadeIn 0.8s ease-in-out forwards;
+    /* 1 saniyelik yumuşak kararma */
+    animation: modalOverlayIn 0.6s ease-out forwards !important;
+    display: none; /* JS ile block olacak */
 }
 
-/* Modal içindeki resmin süzülerek gelmesi */
 #main-modal-img {
-    animation: modalImgSwoosh 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    /* 1 saniyelik elit resim açılışı */
+    animation: modalImgSwoosh 1s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     will-change: transform, opacity;
 }
 </style>
@@ -421,6 +429,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
