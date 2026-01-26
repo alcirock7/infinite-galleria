@@ -236,6 +236,28 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
+	/* --- MODAL AÇILIŞ EFEKTİ (1 Saniye) --- */
+
+/* 1. Animasyonun Tanımı: Hafif büyüyerek ve netleşerek belirme */
+@keyframes modalRevealEffect {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.96); /* %96 boyutta ve şeffaf başlar */
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1);    /* Tam boyuta ve netliğe ulaşır */
+    }
+}
+
+/* 2. Efekti Modalın İçindeki Resme Bağlama */
+#main-modal-img {
+    /* Efekt adı | Süre (1s) | Yumuşaklık eğrisi (cubic-bezier) | Son durumu koru (forwards) */
+    animation: modalRevealEffect 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    
+    /* Performans optimizasyonu (tarayıcıya ön bilgi verir) */
+    will-change: transform, opacity;
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -398,6 +420,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
