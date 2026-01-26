@@ -236,25 +236,30 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
-/* 1. Modal Kapsayıcısı: Tıklamayı engellememesi için pointer-events ekledik */
+/* --- INFINITE GALLERIA MODAL SİSTEMİ --- */
 .modal-wrapper {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
     background: rgba(18, 18, 18, 0.98); 
     z-index: 10000;
+    
+    /* BAŞLANGIÇTA GİZLİ VE GEÇİRGEN */
     opacity: 0; 
     visibility: hidden;
-    pointer-events: none; /* BU SATIR HAYATİ: Kapalıyken arkaya tıklanabilsin */
+    pointer-events: none; /* Arkadaki resimlere tıklanabilsin diye */
+    
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 }
 
-/* 2. Modal Aktifleştiğinde: Tıklamalar artık modala gelsin */
+/* MODAL AÇILDIĞINDA */
 .modal-wrapper.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; /* Açılınca tıklanabilir olur */
+    pointer-events: auto; /* Açılınca artık tıklanabilir */
 }
 
-/* 3. Resim: 1 Saniyelik Süzülme Efekti */
+/* RESMİN 1 SANİYELİK SÜZÜLME EFEKTİ */
 #main-modal-img {
     opacity: 0;
     transform: scale(0.95) translateY(20px);
@@ -382,27 +387,26 @@ article.thumb a:hover img {
 
 <script>
 function openSidebar(id) {
-    // 1. Verileri çek (Resim ve Metin)
-    const originalImg = document.querySelector('article.thumb img[alt="' + document.querySelector('[onclick="openSidebar(\'' + id + '\')"] img').alt + '"]').src;
+    // 1. Tıklanan resmin src'sini ve verisini al
+    const thumbImg = document.querySelector('[onclick="openSidebar(\'' + id + '\')"] img');
     const dataContent = document.getElementById(id + '-data').innerHTML;
 
     // 2. Modala yerleştir
-    document.getElementById('main-modal-img').src = originalImg;
+    document.getElementById('main-modal-img').src = thumbImg.src;
     document.getElementById('modal-info-content').innerHTML = dataContent;
 
-    // 3. Modalı aç ve 20ms sonra efekti başlat
-    const modal = document.getElementById('gallery-modal');
-    modal.classList.add('active'); // CSS'deki opacity ve visibility'yi tetikler
+    // 3. 'active' classını ekleyerek CSS efektini başlat
+    document.getElementById('gallery-modal').classList.add('active');
 
-    document.body.style.overflow = 'hidden'; // Sayfa kaymasını durdur
+    document.body.style.overflow = 'hidden'; // Sayfayı kilitle
 }
 
 function closeModal() {
-    const modal = document.getElementById('gallery-modal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Kaydırmayı aç
+    document.getElementById('gallery-modal').classList.remove('active');
+    document.body.style.overflow = 'auto'; // Sayfayı aç
 }
 </script>
+
 
 
 
