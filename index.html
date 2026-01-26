@@ -236,21 +236,22 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
+/* --- INFINITE GALLERIA PREMIUM MODAL --- */
 .modal-wrapper {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
     background: rgba(18, 18, 18, 0.98); 
     z-index: 10000;
+    display: none; /* Başlangıçta tamamen kapalı */
     opacity: 0; 
-    visibility: hidden;
-    pointer-events: none; /* KAPALIYKEN TIKLAMAYI ENGELLEMEZ */
-    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-    display: none; /* JS ile 'block' olacak */
+    transition: opacity 0.6s ease-in-out;
 }
 
+/* Modal Aktifleştiğinde Süzülerek Gelsin */
 .modal-wrapper.active {
+    display: block; /* JS ile yönetiliyor ama burada da durması güvenli */
     opacity: 1;
-    visibility: visible;
-    pointer-events: auto; /* AÇILINCA TIKLANABİLİR OLUR */
 }
 
 /* 1 SANİYELİK ELİT RESİM GEÇİŞİ */
@@ -380,39 +381,41 @@ article.thumb a:hover img {
 </div>
 
 <script>
-// TEK VE GERÇEK FONKSİYON: Her şeyi bu yönetir
+// TEK VE GERÇEK FONKSİYON: Karmaşayı bitiren mühendislik çözümü
 function openSidebar(id) {
-    // 1. Verileri topla
-    const article = document.querySelector(`[onclick="openSidebar('${id}')"]`);
-    const thumbImg = article.querySelector('img').src;
+    // 1. Tıklanan makale (article) üzerinden verileri topla
+    const article = document.querySelector(`article.thumb a[onclick*="${id}"]`);
+    if (!article) return; // Güvenlik kontrolü
+
+    const thumbImgSrc = article.querySelector('img').src;
     const dataContent = document.getElementById(id + '-data').innerHTML;
 
-    // 2. Modala verileri bas
-    document.getElementById('main-modal-img').src = thumbImg;
+    // 2. Modala (Açılır Pencereye) verileri enjekte et
+    document.getElementById('main-modal-img').src = thumbImgSrc;
     document.getElementById('modal-info-content').innerHTML = dataContent;
 
-    // 3. Modalı aç ve efekti tetikle
+    // 3. Modalı görünür yap ve efekti tetikle
     const modal = document.getElementById('gallery-modal');
-    modal.style.display = 'block'; // Önce görünür yap
+    modal.style.display = 'block'; // Önce temel görünürlük
     
-    // Küçük bir bekleme (20ms) efektin başlaması için şart!
+    // Tarayıcıya nefes aldır (20ms) ki 1 saniyelik geçiş efekti başlasın
     setTimeout(() => {
         modal.classList.add('active');
     }, 20);
 
-    document.body.style.overflow = 'hidden'; // Arka plan kaymasın
+    document.body.style.overflow = 'hidden'; // Arka plan kaymasını durdur
 }
 
 function closeModal() {
     const modal = document.getElementById('gallery-modal');
     modal.classList.remove('active');
     
-    // Efekt bittikten sonra (0.6sn) tamamen gizle
+    // Geçiş efekti (0.6s) bittikten sonra tamamen gizle
     setTimeout(() => {
         modal.style.display = 'none';
     }, 600);
     
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Kaydırmayı geri aç
 }
 </script>
 
