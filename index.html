@@ -8,66 +8,68 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* 1. Global Temizlik ve Renkler */
-			#header, #footer {
-				background-color: #d4cbba !important;
-				background-image: none !important;
-				color: #222222 !important;
+			/* 1. Logo ve Marka Fontu Koruması */
+			#header h1 strong {
+				color: #222 !important; /* Marka isminin rengi */
+				font-weight: 900;
 			}
-			#main:before { display: none !important; }
-			#main { padding: 0 !important; margin: 0 !important; }
+			#header img {
+				height: 50px !important; /* Logo boyutu */
+				width: auto;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
 
-			/* 2. Parsel Sistemi (Boşluksuz Dev Kareler) */
+			/* 2. Parsel Sistemi: Boşluksuz Dev Kareler */
 			#main {
-				display: flex;
-				flex-wrap: wrap;
-				padding-bottom: 4em !important; /* Alt bar için yer açar */
+				display: flex !important;
+				flex-wrap: wrap !important;
+				padding: 0 !important;
+				margin: 0 !important;
+				width: 100% !important;
 			}
+			#main:before { display: none !important; } /* Gri gölgeyi siler */
 
 			article.thumb {
-				width: 50%; /* Yan yana 2 dev kare parsel */
+				width: 50% !important; /* Yan yana 2 dev kare */
+				height: auto !important;
 				margin: 0 !important;
 				padding: 0 !important;
-				aspect-ratio: 1 / 1;
-				overflow: hidden;
+				aspect-ratio: 1 / 1 !important; /* Tam kare parsel */
 				position: relative;
+				border: none !important;
+			}
+
+			article.thumb a {
+				width: 100%; height: 100%; display: block;
 			}
 
 			article.thumb a img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover; /* Kare parseli tam doldurur */
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: cover !important; /* Parseli tam doldurur */
 				transition: transform 0.5s ease;
 			}
 
-			article.thumb a:hover img { transform: scale(1.05); }
-
-			/* Yeşil şeridi ve ana sayfa yazılarını siler */
+			/* Yeşil şeritleri ve ana sayfa yazılarını kökten temizle */
 			article.thumb:after { display: none !important; }
-			article.thumb h2, article.thumb p { display: none; }
+			article.thumb h2, article.thumb p { display: none !important; }
 
-			/* 3. Alt Bar (Footer) ve About Hizalama */
+			/* 3. Alt Bar (Footer) ve Hizalama */
 			#footer {
 				position: fixed;
 				bottom: 0; left: 0; width: 100%;
 				height: 4em;
+				background-color: #d4cbba !important;
 				display: flex;
 				align-items: center; 
 				justify-content: space-between;
 				padding: 0 2em !important;
 				z-index: 1000;
-				background: #d4cbba;
-			}
-
-			#footer .logo-text, #footer .about-link {
 				color: #222 !important;
-				font-size: 0.9em;
-				letter-spacing: 0.2em;
-				font-weight: bold;
-				text-decoration: none;
 			}
 
-			/* 4. Modal (Ayrık Görünüm: Resim Solda, Bilgi Sağda) */
+			/* 4. Modal (Gelişmiş Görünüm) */
 			.modal-wrapper {
 				position: fixed;
 				top: 0; left: 0; width: 100%; height: 100%;
@@ -75,41 +77,31 @@
 				z-index: 10000;
 				display: none;
 			}
-
 			.modal-flex-container { display: flex; width: 100%; height: 100%; }
+			.modal-image-view { flex: 7; display: flex; align-items: center; justify-content: center; padding: 40px; }
+			.modal-image-view img { max-width: 95%; max-height: 90vh; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+			.modal-details-bar { flex: 3; background: #e8e4da; padding: 60px 40px; color: #222; overflow-y: auto; }
+			.close-modal { position: fixed; top: 20px; right: 20px; font-size: 35px; color: #fff; cursor: pointer; z-index: 10001; }
 
-			.modal-image-view {
-				flex: 7; display: flex; align-items: center; justify-content: center; padding: 40px;
-			}
-
-			.modal-image-view img {
-				max-width: 95%; max-height: 90vh;
-				box-shadow: 0 0 50px rgba(0,0,0,0.5);
-			}
-
-			.modal-details-bar {
-				flex: 3; background: #e8e4da; padding: 60px 40px; color: #222;
-				overflow-y: auto; border-left: 1px solid #ddd;
-			}
-
-			.close-modal {
-				position: fixed; top: 20px; right: 20px; font-size: 35px;
-				color: #fff; cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5);
-				width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
-			}
-
-			/* 5. Mobil Uyumluluk */
+			/* Mobil Uyumluluk */
 			@media screen and (max-width: 736px) {
-				article.thumb { width: 100%; } /* Telefondan girince parseller tek tek gelir */
+				article.thumb { width: 100% !important; }
 				.modal-flex-container { flex-direction: column; }
 				.modal-details-bar { flex: none; height: 45%; width: 100%; }
-				#footer { padding: 0 1em !important; }
 			}
 		</style>
 	</head>
 	<body class="is-preload">
-
 		<div id="wrapper">
+			<header id="header">
+				<h1>
+					<a href="index.html">
+						<img src="images/file.svg" alt="Logo">
+						<strong>Infinite</strong> Galleria
+					</a>
+				</h1>
+			</header>
+
 			<div id="main">
 				<article class="thumb">
 					<a href="javascript:void(0);" onclick="openModal('art1')">
@@ -118,11 +110,10 @@
 					<div id="art1-data" style="display:none;">
 						<h3>The Obsidian Monolith</h3>
 						<p><strong>Collection:</strong> Series One</p>
-						<p><strong>Specs:</strong> 8K Exclusive Render</p>
-						<p><strong>Description:</strong> Infinite Galleria markasının ilk ve en prestijli eseri.</p>
+						<p><strong>Technical:</strong> 8K Exclusive</p>
+						<p>Infinite Galleria markasının ilk ve en prestijli eseri.</p>
 						<hr>
-						<a href="#" class="button primary fit">Buy Standard ($19)</a>
-						<a href="#" class="button fit">Buy Exclusive ($149)</a>
+						<a href="LEMON_STANDARD_LINK_1" class="button primary fit">Buy Standard ($19)</a>
 					</div>
 				</article>
 
@@ -133,30 +124,24 @@
 					<div id="art2-data" style="display:none;">
 						<h3>Ethereal Structuralism</h3>
 						<p><strong>Collection:</strong> Series One</p>
-						<p><strong>Specs:</strong> 8K Exclusive Render</p>
-						<p><strong>Description:</strong> Mühendislik detaylarının AI estetiğiyle buluştuğu nokta.</p>
+						<p><strong>Technical:</strong> 8K Exclusive</p>
 						<hr>
-						<a href="#" class="button primary fit">Buy Standard ($19)</a>
-						<a href="#" class="button fit">Buy Exclusive ($149)</a>
+						<a href="LEMON_STANDARD_LINK_2" class="button primary fit">Buy Standard ($19)</a>
 					</div>
 				</article>
 			</div>
 
 			<footer id="footer">
-				<div class="logo-text">INFINITE GALLERIA</div>
-				<a href="about.html" class="about-link">ABOUT ⓘ</a>
+				<div>© 2026 INFINITE GALLERIA</div>
+				<div style="font-weight: bold;">ABOUT ⓘ</div>
 			</footer>
 		</div>
 
 		<div id="gallery-modal" class="modal-wrapper">
 			<span class="close-modal" onclick="closeModal()">✕</span>
 			<div class="modal-flex-container">
-				<div class="modal-image-view">
-					<img id="main-modal-img" src="" alt="View">
-				</div>
-				<div class="modal-details-bar">
-					<div id="modal-info-content"></div>
-				</div>
+				<div class="modal-image-view"><img id="main-modal-img" src=""></div>
+				<div class="modal-details-bar"><div id="modal-info-content"></div></div>
 			</div>
 		</div>
 
@@ -164,19 +149,15 @@
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/main.js"></script>
-
 		<script>
 			function openModal(id) {
 				const originalImg = document.querySelector(`[onclick="openModal('${id}')"] img`).src;
 				const dataContent = document.getElementById(id + '-data').innerHTML;
-
 				document.getElementById('main-modal-img').src = originalImg;
 				document.getElementById('modal-info-content').innerHTML = dataContent;
-
 				document.getElementById('gallery-modal').style.display = 'block';
 				document.body.style.overflow = 'hidden';
 			}
-
 			function closeModal() {
 				document.getElementById('gallery-modal').style.display = 'none';
 				document.body.style.overflow = 'auto';
@@ -184,21 +165,3 @@
 		</script>
 	</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
