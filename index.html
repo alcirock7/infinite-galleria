@@ -163,20 +163,19 @@
     .modal-flex-container { flex-direction: column; }
     .modal-details-bar { flex: none; height: 40%; width: 100%; }
 }
-/* 1:1 Kare Parsel Garantisi */
 article.thumb {
-    width: 33.333% !important; /* 3'lü dizilimi korur */
-    aspect-ratio: 1 / 1 !important; /* BU SATIR SİHİRLİDİR: ÇERÇEVEYİ KARE YAPAR */
+    width: 33.333% !important; /* 3'lü dizilim için */
+    aspect-ratio: 1 / 1 !important; /* BU SATIR ŞART: Çerçeveyi kare yapar */
     margin: 0 !important;
     padding: 0 !important;
-    float: left; /* Yan yana durmalarını sağlar */
+    float: left; /* Parsellerin yan yana durmasını sağlar */
     overflow: hidden;
 }
 
 article.thumb a, article.thumb a img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* Resmin kareyi sünmeden tam doldurmasını sağlar */
+    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
     display: block;
 }
 .thumb a:hover img {
@@ -394,6 +393,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
