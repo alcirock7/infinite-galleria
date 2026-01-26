@@ -223,9 +223,25 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<div id="sidebar-panel">
+    <span class="close-btn" onclick="closeSidebar()">✕ CLOSE</span>
+    <div id="sidebar-content"></div>
+</div>
 
+<script>
+function openSidebar(id) {
+    const data = document.getElementById(id + '-data').innerHTML;
+    document.getElementById('sidebar-content').innerHTML = data;
+    document.getElementById('sidebar-panel').classList.add('active');
+}
+
+function closeSidebar() {
+    document.getElementById('sidebar-panel').classList.remove('active');
+}
+</script>
 	</body>
 </html>
+
 
 
 
