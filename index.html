@@ -163,6 +163,25 @@
     .modal-flex-container { flex-direction: column; }
     .modal-details-bar { flex: none; height: 40%; width: 100%; }
 }
+	/* Sildiğimiz 'image' class'ının yerini dolduran yeni stil */
+.thumb a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.thumb a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmin kutuyu tam doldurmasını sağlar */
+    transition: transform 0.3s ease;
+}
+
+.thumb a:hover img {
+    transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -220,23 +239,6 @@
     </div>
 </article>
 
-<article class="thumb">
-    <a href="javascript:void(0);" onclick="openSidebar('art2')" class="image">
-        <img src="images/art2.jpg" alt="Ethereal Structuralism" />
-    </a>
-    <h2>Ethereal Structuralism</h2>
-    <p>Series One</p>
-    
-    <div id="art2-data" style="display:none;">
-        <h3>Ethereal Structuralism</h3>
-        <p><strong>Collection:</strong> Series One</p>
-        <p><strong>Technical Specs:</strong> 3K Standard / 8K Exclusive</p>
-        <p><strong>Description:</strong> Deneme</p>
-        <hr>
-        <a href="LEMON_STANDARD_LINK_2" class="button primary fit">Buy Standard ($19)</a>
-        <a href="LEMON_EXCLUSIVE_LINK_2" class="button fit">Buy Exclusive ($149)</a>
-    </div>
-</article>
 						</div>
 
 				<footer id="footer" class="panel">
@@ -344,6 +346,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
