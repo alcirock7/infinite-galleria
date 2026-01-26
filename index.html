@@ -6,67 +6,53 @@
 		<link rel="icon" type="image/png" href="images/file.svg">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* 1. Kum Rengi ve Logo/Yazı Koruması */
+			/* 1. Kum Rengi Paneller ve Logo Ayarı */
 			#header, #footer {
-				background-color: #d4cbba !important; /* Kum rengi geri geldi */
+				background-color: #d4cbba !important;
 				background-image: none !important;
 				color: #222222 !important;
 			}
-
-			/* Infinite Galleria Yazısının Tam Görünmesi İçin */
 			#header h1 {
 				display: flex !important;
 				align-items: center;
-				white-space: nowrap !important; /* Yazının kırılmasını engeller */
-				overflow: visible !important;
+				white-space: nowrap !important;
 			}
+			#header h1 strong { color: #222 !important; font-weight: 900; }
+			#header img { height: 45px !important; margin-right: 15px; }
 
-			#header h1 strong {
-				color: #222 !important;
-				font-weight: 900;
-				margin-left: 5px;
-			}
-
-			#header img {
-				height: 45px !important;
-				width: auto;
-				margin-right: 10px;
-			}
-
-			/* 2. %33 Parsel Sistemi (3'lü Yan Yana) */
+			/* 2. %33 Parsel Sistemi (Boşluksuz 3'lü Kareler) */
 			#main {
 				display: flex !important;
 				flex-wrap: wrap !important;
 				padding: 0 !important;
 				margin: 0 !important;
+				padding-bottom: 5em !important; /* Alt bar için yer açar */
 			}
 			#main:before { display: none !important; }
 
 			article.thumb {
-				width: 33.333% !important; /* Tam %33.3 parsel */
+				width: 33.333% !important;
 				margin: 0 !important;
 				padding: 0 !important;
-				aspect-ratio: 1 / 1 !important; /* Tam kare */
+				aspect-ratio: 1 / 1 !important;
 				position: relative;
-				border: none !important;
 			}
-
 			article.thumb a img {
 				width: 100% !important;
 				height: 100% !important;
 				object-fit: cover !important;
 				transition: transform 0.5s ease;
 			}
+			article.thumb a:hover img { transform: scale(1.05); }
 
-			/* Gereksiz her şeyi temizle */
+			/* Gereksiz şeritleri ve yazıları sil */
 			article.thumb:after { display: none !important; }
 			article.thumb h2, article.thumb p { display: none !important; }
 
-			/* 3. Footer (Alt Bar) Hizalama */
+			/* 3. Alt Bar (Footer) ve Tıklanabilir About */
 			#footer {
-				position: fixed;
+				position: fixed !important;
 				bottom: 0; left: 0; width: 100%;
 				height: 4em;
 				display: flex;
@@ -74,9 +60,11 @@
 				justify-content: space-between;
 				padding: 0 2em !important;
 				z-index: 1000;
+				pointer-events: auto !important; /* Tıklanmayı aktif eder */
 			}
+			#footer a { color: #222 !important; font-weight: bold; text-decoration: none; cursor: pointer; }
 
-			/* 4. Modal Görünümü */
+			/* 4. Modal (Ayrık Görünüm) */
 			.modal-wrapper {
 				position: fixed;
 				top: 0; left: 0; width: 100%; height: 100%;
@@ -90,7 +78,6 @@
 			.modal-details-bar { flex: 3; background: #e8e4da; padding: 60px 40px; color: #222; overflow-y: auto; }
 			.close-modal { position: fixed; top: 20px; right: 20px; font-size: 35px; color: #fff; cursor: pointer; z-index: 10001; }
 
-			/* Mobil: Telefondan girince resimler tam ekran olsun */
 			@media screen and (max-width: 736px) {
 				article.thumb { width: 100% !important; }
 				.modal-flex-container { flex-direction: column; }
@@ -117,7 +104,7 @@
 					<div id="art1-data" style="display:none;">
 						<h3>The Obsidian Monolith</h3>
 						<p><strong>Collection:</strong> Series One</p>
-						<p><strong>Technical:</strong> 8K Exclusive</p>
+						<p><strong>Specs:</strong> 8K Exclusive Render</p>
 						<hr>
 						<a href="#" class="button primary fit">Buy Standard ($19)</a>
 					</div>
@@ -130,17 +117,16 @@
 					<div id="art2-data" style="display:none;">
 						<h3>Ethereal Structuralism</h3>
 						<p><strong>Collection:</strong> Series One</p>
-						<p><strong>Technical:</strong> 8K Exclusive</p>
+						<p><strong>Specs:</strong> 8K Exclusive Render</p>
 						<hr>
 						<a href="#" class="button primary fit">Buy Standard ($19)</a>
 					</div>
 				</article>
-				
-				</div>
+			</div>
 
 			<footer id="footer">
 				<div>© 2026 INFINITE GALLERIA</div>
-				<div style="font-weight: bold;">ABOUT ⓘ</div>
+				<a href="#about" onclick="alert('About Vizyonu Buraya Gelecek')" style="font-weight: bold;">ABOUT ⓘ</a>
 			</footer>
 		</div>
 
@@ -153,12 +139,12 @@
 		</div>
 
 		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/main.js"></script>
 		<script>
 			function openModal(id) {
-				const originalImg = document.querySelector(`[onclick*="('${id}')"] img`).src;
+				const imgElement = document.querySelector(`[onclick*="('${id}')"] img`);
+				if (!imgElement) return;
 				const dataContent = document.getElementById(id + '-data').innerHTML;
-				document.getElementById('main-modal-img').src = originalImg;
+				document.getElementById('main-modal-img').src = imgElement.src;
 				document.getElementById('modal-info-content').innerHTML = dataContent;
 				document.getElementById('gallery-modal').style.display = 'block';
 				document.body.style.overflow = 'hidden';
@@ -170,7 +156,3 @@
 		</script>
 	</body>
 </html>
-		</script>
-	</body>
-</html>
-
