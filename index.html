@@ -168,34 +168,29 @@
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+/* 1. Kare Formu ve Sayfa Yükleme Efekti */
 article.thumb {
-    width: 33.333% !important;
-    aspect-ratio: 1 / 1 !important; /* Kare formunu burada sabitliyoruz */
+    width: 33.333% !important; /* 3'lü dizilim */
+    aspect-ratio: 1 / 1 !important; /* HAYATİ KOD: Çerçeveyi kareye zorlar */
     margin: 0 !important;
     padding: 0 !important;
     float: left;
     overflow: hidden;
-    /* Yumuşak Geliş Efekti */
-    animation: galleriaFadeIn 1s ease-out forwards;
+    animation: galleriaFadeIn 1s ease-out forwards; /* Sayfa açılış efekti */
     opacity: 0; 
 }
 
-article.thumb a {
-    display: block;
-    width: 100%;
-    height: auto; /* Link kapsayıcısı da esnek olsun */
-}
-
+article.thumb a, 
 article.thumb a img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
     display: block !important;
-    /* Üzerine gelince büyüme efektinin hızı: 'Yağ gibi' geçiş */
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
-.thumb a:hover img {
-    transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
+
+article.thumb a:hover img {
+    transform: scale(1.05); /* Üzerine gelince büyüme */
 }
 /* 1. Okunabilirlik: Kum Rengi Üzerine Koyu Metin */
 .modal-details-bar {
@@ -409,6 +404,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
