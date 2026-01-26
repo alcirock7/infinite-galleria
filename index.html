@@ -218,6 +218,18 @@
     border-color: rgba(26, 26, 26, 0.2) !important;
 }
 .close-modal:hover { opacity: 1; }
+	/* Sadece çerçeveyi kare yapar */
+article.thumb {
+    aspect-ratio: 1 / 1 !important; 
+    overflow: hidden !important;
+}
+
+/* Resmi kare çerçevenin içine, sünmeden/bozulmadan yayar */
+article.thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -382,6 +394,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
