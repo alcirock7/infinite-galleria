@@ -164,15 +164,20 @@
     .modal-details-bar { flex: none; height: 40%; width: 100%; }
 }
 /* YENİ STRATEJİ: Çerçeve Resme Göre Aşağı Uzasın */
+@keyframes galleriaFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 article.thumb {
-    width: 33.333% !important; /* Genişlik sabit: 3'lü dizilim */
-    height: auto !important;   /* KİLİT NOKTA: Yükseklik serbest, resme göre uzayacak */
-    aspect-ratio: auto !important; /* Zorlama kare komutunu iptal ettik */
+    width: 33.333% !important;
+    aspect-ratio: 1 / 1 !important; /* Kare formunu burada sabitliyoruz */
     margin: 0 !important;
     padding: 0 !important;
-    float: left; /* Yan yana dizilim için */
-    border: none !important;
-    outline: none !important;
+    float: left;
+    overflow: hidden;
+    /* Yumuşak Geliş Efekti */
+    animation: galleriaFadeIn 1s ease-out forwards;
+    opacity: 0; 
 }
 
 article.thumb a {
@@ -402,6 +407,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
