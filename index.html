@@ -194,6 +194,34 @@ article.thumb a img {
 article.thumb a:hover img {
     transform: scale(1.05);
 }
+	/* --- MOBİL ONARIM PAKETİ --- */
+@media screen and (max-width: 980px) {
+    /* 1. Modal: Resim üstte, satın alma barı altta */
+    .modal-flex-container { 
+        flex-direction: column !important; /* Yan yana olan dünyayı alt alta çevirir */
+    }
+
+    .modal-image-view { 
+        flex: none !important; 
+        width: 100% !important; 
+        height: 55vh !important; /* Resim mobilde ekranın yarısından biraz fazlasını kaplasın */
+        padding: 15px !important;
+    }
+
+    .modal-details-bar { 
+        flex: none !important; 
+        width: 100% !important; 
+        height: auto !important; /* Detaylar ve butonlar resmin altına uzasın */
+        padding: 25px 20px !important;
+        border-left: none !important;
+        border-top: 1px solid rgba(0,0,0,0.1) !important;
+    }
+
+    /* 2. Ana Galeri: Kareler mobilde 3'lü değil, daha net görünmesi için 1'li olsun */
+    #main {
+        grid-template-columns: repeat(1, 1fr) !important; 
+    }
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -358,6 +386,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
