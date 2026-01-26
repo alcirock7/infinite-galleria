@@ -182,44 +182,40 @@
 .thumb a:hover img {
     transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
 }
-	/* 1. Modal Detay Barı Estetiği */
+/* 1. Okunabilirlik: Kum Rengi Üzerine Koyu Metin */
 .modal-details-bar {
-    background: #fdfbf7 !important; /* Daha açık ve ferah bir kum beji */
-    padding: 80px 50px !important;
-    font-family: 'Montserrat', sans-serif; /* Marka fontunu buraya da çekiyoruz */
+    background-color: #d4cbba !important; /* Senin o sevdiğin kum rengi */
+    color: #1a1a1a !important; /* Beyaz yerine çok koyu gri/siyah metin */
 }
 
-.modal-details-bar h3 {
-    font-size: 1.8em;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #222;
-    padding-bottom: 15px;
+.modal-details-bar h3, 
+.modal-details-bar p, 
+.modal-details-bar strong {
+    color: #1a1a1a !important; /* Tüm yazıları koyulaştırdık */
 }
 
-/* 2. LemonSqueezy Butonlarını 'Elit' Yapma */
+/* 2. Buton Revizesi: "Böbrek Butonu"ndan "Premium"a Geçiş */
 .modal-details-bar .button {
-    background: #222 !important;
-    color: #fff !important;
-    border-radius: 0 !important; /* Keskin, mimari hatlar */
-    height: 3.5em !important;
-    line-height: 3.5em !important;
-    letter-spacing: 3px;
-    font-weight: 900;
-    transition: all 0.4s ease;
+    background: transparent !important; /* İçini boşalttık, derinlik verdik */
+    color: #1a1a1a !important;      /* Metin koyu */
+    border: 1px solid #1a1a1a !important; /* İnce, mimari bir çerçeve */
+    border-radius: 0 !important;    /* Keskin hatlar (mimari disiplin) */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
 
+/* 3. Hover (Üzerine Gelince) Efekti */
 .modal-details-bar .button:hover {
-    background: #d4cbba !important;
-    color: #222 !important;
+    background: #1a1a1a !important; /* Üzerine gelince doluyor */
+    color: #d4cbba !important;      /* Metin kum rengine dönüyor */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* 3. Kapatma Butonu (X) Dokunuşu */
-.close-modal {
-    font-size: 40px !important;
-    opacity: 0.5;
-    transition: opacity 0.3s;
+/* 4. Ayırıcı Çizgi (HR) Rengi */
+.modal-details-bar hr {
+    border-color: rgba(26, 26, 26, 0.2) !important;
 }
 .close-modal:hover { opacity: 1; }
 </style>
@@ -403,6 +399,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
