@@ -170,20 +170,26 @@
 }
 /* 1. Kare Formu ve Sayfa Yükleme Efekti */
 article.thumb {
-/* Bu bloğu bul ve içini bu 4 satırla güncelle */
-article.thumb {
-    width: 33.333% !important; /* 3'lü parsel dizilimi */
-    aspect-ratio: 1 / 1 !important; /* KESİN KARE EMRİ */
+    width: 33.333% !important; /* 3'lü dizilim */
+    aspect-ratio: 1 / 1 !important; /* HAYATİ KOD: Çerçeveyi kareye zorlar */
     margin: 0 !important;
     padding: 0 !important;
+    float: left;
+    overflow: hidden;
+    animation: galleriaFadeIn 1s ease-out forwards; /* Sayfa açılış efekti */
+    animation: galleriaFadeIn 0.8s ease-out forwards; /* Sayfa açılış efekti */
+    opacity: 0; 
 }
 
-/* Resmin kareye tam oturması için bunu da güncelle */
+article.thumb a, 
 article.thumb a img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* Resmi sünmeden kareye yayar */
+    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
+    display: block !important;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
+
 article.thumb a:hover img {
     transform: scale(1.05); /* Üzerine gelince büyüme */
 }
@@ -291,7 +297,7 @@ article.thumb img {
     </a>
     <h2>Ethereal Structuralism</h2>
     <p>Series One</p>
-    
+
     <div id="art2-data" style="display:none;">
         <h3>Ethereal Structuralism</h3>
         <p><strong>Collection:</strong> Series One</p>
@@ -409,6 +415,37 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
