@@ -238,24 +238,25 @@ article.thumb a:hover img {
 }
 	/* --- MODAL AÇILIŞ EFEKTİ (1 Saniye) --- */
 
-/* 1. Animasyonun Tanımı: Hafif büyüyerek ve netleşerek belirme */
-@keyframes modalRevealEffect {
-    0% { 
-        opacity: 0; 
-        transform: scale(0.96); /* %96 boyutta ve şeffaf başlar */
-    }
-    100% { 
-        opacity: 1; 
-        transform: scale(1);    /* Tam boyuta ve netliğe ulaşır */
-    }
+/* --- MODAL VE RESİM YUMUŞAK GEÇİŞ (Hard Reset) --- */
+@keyframes modalFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
-/* 2. Efekti Modalın İçindeki Resme Bağlama */
+@keyframes modalImgSwoosh {
+    0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Tüm modal arka planının 1 saniyede yumuşakça gelmesi */
+.modal-wrapper {
+    animation: modalFadeIn 0.8s ease-in-out forwards;
+}
+
+/* Modal içindeki resmin süzülerek gelmesi */
 #main-modal-img {
-    /* Efekt adı | Süre (1s) | Yumuşaklık eğrisi (cubic-bezier) | Son durumu koru (forwards) */
-    animation: modalRevealEffect 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
-    
-    /* Performans optimizasyonu (tarayıcıya ön bilgi verir) */
+    animation: modalImgSwoosh 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
     will-change: transform, opacity;
 }
 </style>
@@ -420,6 +421,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
