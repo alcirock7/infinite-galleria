@@ -236,52 +236,67 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
-/* --- PREMIUM PAKET BUTONLARI --- */
-.modal-details-bar .button {
-    background: transparent !important;
-    color: #1a1a1a !important; /* Siyah yazı */
-    border: 1.5px solid #1a1a1a !important; /* Mimari netlik */
-    border-radius: 0 !important;
-    padding: 20px !important;
-    margin-bottom: 15px !important;
-    display: flex !important;
-    flex-direction: column;
-    text-align: left !important;
-    width: 100% !important;
-    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1) !important;
-}
-
-.modal-details-bar .button:hover {
-    background: #1a1a1a !important;
-    color: #d4cbba !important; /* Hover olunca kum rengine döner */
-    transform: translateY(-2px);
-}
-
-/* Buton içindeki fiyat ve başlık yerleşimi */
-.btn-header {
+	/* --- GETTY STYLE PACKAGE SELECTION --- */
+.package-list {
+    margin: 25px 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.package-item {
+    display: flex;
     align-items: center;
-    width: 100%;
-    margin-bottom: 5px;
+    padding: 15px;
+    border: 1px solid rgba(26, 26, 26, 0.3); /* İnce mimari sınır */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+    position: relative;
 }
 
-.btn-tier {
+.package-item:hover {
+    border-color: #1a1a1a;
+    background: rgba(26, 26, 26, 0.03);
+}
+
+/* Radio Button Özelleştirme */
+.package-item input[type="radio"] {
+    margin-right: 15px;
+    accent-color: #1a1a1a;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.package-info {
+    flex-grow: 1;
+}
+
+.package-title {
+    display: block;
     font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 1.1em;
-}
-
-.btn-price {
-    font-weight: 800;
-    font-size: 1.2em;
-}
-
-.btn-desc {
-    font-size: 0.75em;
-    opacity: 0.8;
+    font-size: 0.9em;
     letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.package-subtitle {
+    display: block;
+    font-size: 0.75em;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.package-price {
+    font-weight: 800;
+    font-size: 1.1em;
+    margin-left: 15px;
+}
+
+/* Seçili olan kutu için vurgu */
+.package-item.active {
+    border: 2px solid #1a1a1a !important;
+    background: rgba(26, 26, 26, 0.05);
 }
 </style>
 	</head>
@@ -310,28 +325,29 @@ article.thumb a:hover img {
     </a>
     <h2>The Obsidian Monolith</h2>
     <p>Series One</p>
-
-<div id="art1-data" style="display:none;">
+ <div id="art1-data" style="display:none;">
     <h3>The Obsidian Monolith</h3>
     <p><strong>Collection:</strong> Series One</p>
-    <hr>
+    
+    <div class="package-list">
+        <label class="package-item">
+            <input type="radio" name="license" checked>
+            <div class="package-info">
+                <span class="package-title">Standard Edition</span>
+                <span class="package-subtitle">3K Media / Personal Use Only</span>
+            </div>
+            <span class="package-price">$19</span>
+        </label>
 
-    <a href="LEMON_STANDARD_LINK" class="button">
-        <div class="btn-header">
-            <span class="btn-tier">Standard Edition</span>
-            <span class="btn-price">$19</span>
-        </div>
-        <span class="btn-desc">3K Standard Media / Personal Use Only</span>
-    </a>
-
-    <a href="LEMON_EXCLUSIVE_LINK" class="button">
-        <div class="btn-header">
-            <span class="btn-tier">Exclusive Tier</span>
-            <span class="btn-price">$149</span>
-        </div>
-        <span class="btn-desc">8K Ultra Media / Commercial License Included</span>
-    </a>
-</div>
+        <label class="package-item">
+            <input type="radio" name="license">
+            <div class="package-info">
+                <span class="package-title">Exclusive Tier</span>
+                <span class="package-subtitle">8K Media / Commercial License Included</span>
+            </div>
+            <span class="package-price">$149</span>
+        </label>
+    </div>
 
     <hr>
     <a href="#" class="button primary fit">ADD TO COLLECTION</a>
@@ -461,6 +477,8 @@ function closeModal() {
 }
 </script>
 	</body>
+
+
 
 
 
