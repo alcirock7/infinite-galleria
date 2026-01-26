@@ -163,92 +163,72 @@
     .modal-flex-container { flex-direction: column; }
     .modal-details-bar { flex: none; height: 40%; width: 100%; }
 }
-/* YENİ STRATEJİ: Çerçeve Resme Göre Aşağı Uzasın */
+/* 1. Kare Parsel ve Yumuşak Giriş Efekti */
 @keyframes galleriaFadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-/* 1. Kare Formu ve Sayfa Yükleme Efekti */
+
 article.thumb {
-    width: 33.333% !important; /* 3'lü dizilim */
-    aspect-ratio: 1 / 1 !important; /* HAYATİ KOD: Çerçeveyi kareye zorlar */
+    width: 33.333% !important;
+    aspect-ratio: 1 / 1 !important; /* KARE ÇERÇEVE EMRİ */
     margin: 0 !important;
     padding: 0 !important;
     float: left;
     overflow: hidden;
-    animation: galleriaFadeIn 1s ease-out forwards; /* Sayfa açılış efekti */
-    animation: galleriaFadeIn 0.8s ease-out forwards; /* Sayfa açılış efekti */
-    opacity: 0; 
+    animation: galleriaFadeIn 0.8s ease-out forwards;
+    opacity: 0;
 }
 
-article.thumb a, 
+article.thumb a,
 article.thumb a img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
+    object-fit: cover !important; /* RESMİ KAREYE SIĞDIRMA KOMUTU */
     display: block !important;
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
 
 article.thumb a:hover img {
-    transform: scale(1.05); /* Üzerine gelince büyüme */
+    transform: scale(1.05);
 }
-/* 1. Okunabilirlik: Kum Rengi Üzerine Koyu Metin */
+
+/* 2. Modal Detayları ve Buton Estetiği */
 .modal-details-bar {
-    background-color: #d4cbba !important; /* Senin o sevdiğin kum rengi */
-    color: #1a1a1a !important; /* Beyaz yerine çok koyu gri/siyah metin */
+    background-color: #d4cbba !important;
+    color: #1a1a1a !important;
+    padding: 60px 40px;
 }
 
-.modal-details-bar h3, 
-.modal-details-bar p, 
-.modal-details-bar strong {
-    color: #1a1a1a !important; /* Tüm yazıları koyulaştırdık */
+.modal-details-bar h3, .modal-details-bar p, .modal-details-bar strong {
+    color: #1a1a1a !important;
 }
 
-/* 2. Buton Revizesi: "Böbrek Butonu"ndan "Premium"a Geçiş */
 .modal-details-bar .button {
-    background: transparent !important; /* İçini boşalttık, derinlik verdik */
-    color: #1a1a1a !important;      /* Metin koyu */
-    border: 1px solid #1a1a1a !important; /* İnce, mimari bir çerçeve */
-    border-radius: 0 !important;    /* Keskin hatlar (mimari disiplin) */
+    background: transparent !important;
+    color: #1a1a1a !important;
+    border: 1px solid #1a1a1a !important;
+    border-radius: 0 !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
     transition: all 0.3s ease;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-/* 3. Hover (Üzerine Gelince) Efekti */
 .modal-details-bar .button:hover {
-    background: #1a1a1a !important; /* Üzerine gelince doluyor */
-    color: #d4cbba !important;      /* Metin kum rengine dönüyor */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #1a1a1a !important;
+    color: #d4cbba !important;
 }
 
-/* 4. Ayırıcı Çizgi (HR) Rengi */
-.modal-details-bar hr {
-    border-color: rgba(26, 26, 26, 0.2) !important;
-}
-.close-modal:hover { opacity: 1; }
-	/* Sadece çerçeveyi kare yapar */
-article.thumb {
-    aspect-ratio: 1 / 1 !important; 
-    overflow: hidden !important;
-}
-
-/* Resmi kare çerçevenin içine, sünmeden/bozulmadan yayar */
-article.thumb img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; 
-}
-	/* 2. Resme Basınca Açılan Modal Efekti */
 @keyframes modalRevealEffect {
-    0% { opacity: 0; transform: scale(0.96); } /* Küçük ve şeffaf başlar */
-    100% { opacity: 1; transform: scale(1); }    /* Tam boyuta ve netliğe ulaşır */
+    0% { opacity: 0; transform: scale(0.96); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 #main-modal-img {
-    /* Modal her açıldığında resim yumuşakça belirir */
     animation: modalRevealEffect 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 </style>
@@ -415,6 +395,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
