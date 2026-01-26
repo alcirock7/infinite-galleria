@@ -7,70 +7,219 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-<style>/* 1. Kum Rengi Paneller ve Logo Hizalaması */
-#header, #footer {
-    background-color: #d4cbba !important; /* Senin o elit kum rengin */
-    background-image: none !important;
-    color: #222222 !important;
+<style>
+    /* 1. Üstteki Gri Barı ve Gölgeyi Silen Jilet Kod */
+    #main:before {
+        display: none !important; /* Üstteki o gölge/çizgi katmanını siler */
+    }
+    #main {
+        padding-top: 0 !important; /* Boşluğu sıfırlar */
+    }
+    body.is-preload:before {
+        display: none !important; /* Sayfa yüklenirken çıkan gri katmanı siler */
+    }
+
+    /* 2. Alttaki Sabit Barı (Header) ve Paneli (Footer) Boyuyoruz */
+    #header, #footer {
+        background-color: #d4cbba !important; /* Kumlu bej */
+        background-image: none !important;    /* Varsa gri gradyanı siler */
+        color: #222222 !important;           /* Yazıları koyu yapar */
+    }
+
+    /* 3. Barın Yerleşimi ve Genişliği */
+    #header {
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        position: fixed !important;
+    }
+
+    /* 4. Barın İçindeki Katmanları Temizliyoruz */
+    #header:before, #header:after, #footer:before, #footer:after {
+        background: #d4cbba !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+    /* 5. Tüm Yazı, Link ve İkonların Rengini Sabitliyoruz */
+    #header *, #footer *, #footer .copyright, #footer a, #header a {
+        color: #222222 !important;
+        border-color: #222222 !important;
+    }
+
+    /* 6. Logo Ayarı ve Buton Düzeltmesi */
+    #header img, #footer img {
+        filter: brightness(0.2) !important;
+    }
+
+    #footer a.button.alt, #header a.button.alt {
+        background-color: transparent !important;
+        box-shadow: inset 0 0 0 2px #222222 !important;
+        color: #222222 !important;
+    }
+
+    #footer a.button.alt:hover, #header a.button.alt:hover {
+        background-color: #222222 !important;
+        color: #d4cbba !important;
+    }
+	/* 7. Mobil Uyumluluk: About Paneli Düzeltmesi */
+    @media screen and (max-width: 736px) {
+        #footer .inner.split {
+            display: block !important; /* Yan yana dizilimi iptal et, alt alta diz */
+        }
+        #footer .inner.split > div {
+            width: 100% !important; /* Her kutu ekranı kaplasın */
+            margin-bottom: 40px;    /* Aralarına boşluk bırak */
+        }
+        #footer {
+            padding: 40px 20px !important; /* Mobilde kenarlardan boşluk ver */
+            overflow-y: auto !important;   /* İçerik taşarsa kaydırılabilsin */
+        }
+        #footer .inner {
+            padding: 0 !important;
+        }
+    }
+	/* 8. İçeriğin Alt Bar Altında Kalmasını Engelleme */
+    #main {
+        padding-bottom: 100px !important; /* Alt bar için yer açar */
+    }
+
+    /* Mobilde bar daha kalın olabileceği için tamponu artırıyoruz */
+    @media screen and (max-width: 736px) {
+        #main {
+            padding-bottom: 150px !important; 
+        }
+
+        /* Barın içindeki yazıların üst üste binmemesi için */
+        #header h1 {
+            font-size: 0.8em !important; /* Mobilde yazıyı biraz küçültür */
+        }
+    }
+	/* Sidebar Paneli */
+#sidebar-panel {
+    position: fixed;
+    top: 0; right: -400px; /* Başta gizli */
+    width: 400px; height: 100%;
+    background: #e8e4da; /* Bej tonu */
+    z-index: 10000;
+    transition: 0.5s;
+    padding: 40px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    color: #222222;
+    overflow-y: auto;
 }
 
-#header h1 {
-    display: flex !important;
-    align-items: center;
-    white-space: nowrap !important; /* "Infinite" yazısını korur */
+#sidebar-panel.active { right: 0; } /* Açıldığında sağdan girer */
+
+.close-btn { cursor: pointer; font-weight: bold; margin-bottom: 20px; display: block; }
+	.modal-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(18, 18, 18, 0.98); /* Derin siyah/gri arka plan */
+    z-index: 10000;
 }
 
-/* 2. %33 Parsel Sistemi (Boşluksuz 1:1 Kareler) */
-#main {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    padding-bottom: 5em !important; /* Footer için tampon bölge */
-}
-
-#main:before { display: none !important; } /* Orijinal şablonun gölgesini siler */
-
-article.thumb {
-    width: 33.333% !important; /* Her satıra 3 resim */
-    margin: 0 !important;
-    padding: 0 !important;
-    aspect-ratio: 1 / 1 !important; /* Tam kare çerçeve */
-    position: relative;
-    overflow: hidden;
-    border: none !important;
-}
-
-article.thumb a img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; /* Resmi kırmadan kareye tam yayar */
-    transition: transform 0.5s ease;
-}
-
-/* 3. Footer ve About Tıklama Fix */
-#footer {
-    position: fixed !important;
-    bottom: 0; left: 0; width: 100%;
-    height: 4em;
+.modal-flex-container {
     display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    padding: 0 2em !important;
-    z-index: 1000;
+    width: 100%; height: 100%;
 }
 
-#footer a {
-    pointer-events: auto !important; /* Tıklanma engelini deler */
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    color: #222 !important;
+/* Resim Alanı - Sayfanın %70'ini kaplar */
+.modal-image-view {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
 
-/* 4. Gereksiz Şablon Artıklarını Temizle */
-article.thumb:after { display: none !important; }
-article.thumb h2, article.thumb p { display: none !important; }	</head>
+.modal-image-view img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* Detay Barı - Sayfanın %30'unu kaplar */
+.modal-details-bar {
+    flex: 3;
+    background: #e8e4da; /* Sitenin bej tonu */
+    padding: 60px 40px;
+    color: #222;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 32px; color: #fff;
+    cursor: pointer; z-index: 10001;
+}
+
+/* Mobil için alt alta getirir */
+@media screen and (max-width: 980px) {
+    .modal-flex-container { flex-direction: column; }
+    .modal-details-bar { flex: none; height: 40%; width: 100%; }
+}
+	/* Sildiğimiz 'image' class'ının yerini dolduran yeni stil */
+.thumb a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.thumb a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmin kutuyu tam doldurmasını sağlar */
+    transition: transform 0.3s ease;
+}
+
+.thumb a:hover img {
+    transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
+}
+/* 1. Okunabilirlik: Kum Rengi Üzerine Koyu Metin */
+.modal-details-bar {
+    background-color: #d4cbba !important; /* Senin o sevdiğin kum rengi */
+    color: #1a1a1a !important; /* Beyaz yerine çok koyu gri/siyah metin */
+}
+
+.modal-details-bar h3, 
+.modal-details-bar p, 
+.modal-details-bar strong {
+    color: #1a1a1a !important; /* Tüm yazıları koyulaştırdık */
+}
+
+/* 2. Buton Revizesi: "Böbrek Butonu"ndan "Premium"a Geçiş */
+.modal-details-bar .button {
+    background: transparent !important; /* İçini boşalttık, derinlik verdik */
+    color: #1a1a1a !important;      /* Metin koyu */
+    border: 1px solid #1a1a1a !important; /* İnce, mimari bir çerçeve */
+    border-radius: 0 !important;    /* Keskin hatlar (mimari disiplin) */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+/* 3. Hover (Üzerine Gelince) Efekti */
+.modal-details-bar .button:hover {
+    background: #1a1a1a !important; /* Üzerine gelince doluyor */
+    color: #d4cbba !important;      /* Metin kum rengine dönüyor */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 4. Ayırıcı Çizgi (HR) Rengi */
+.modal-details-bar hr {
+    border-color: rgba(26, 26, 26, 0.2) !important;
+}
+.close-modal:hover { opacity: 1; }
+</style>
+	</head>
 	<body class="is-preload">
 
 		<div id="wrapper">
@@ -233,6 +382,20 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
