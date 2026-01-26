@@ -240,6 +240,16 @@ article.thumb img {
     height: 100% !important;
     object-fit: cover !important; 
 }
+	/* 2. Resme Basınca Açılan Modal Efekti */
+@keyframes modalRevealEffect {
+    0% { opacity: 0; transform: scale(0.96); } /* Küçük ve şeffaf başlar */
+    100% { opacity: 1; transform: scale(1); }    /* Tam boyuta ve netliğe ulaşır */
+}
+
+#main-modal-img {
+    /* Modal her açıldığında resim yumuşakça belirir */
+    animation: modalRevealEffect 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -404,6 +414,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
