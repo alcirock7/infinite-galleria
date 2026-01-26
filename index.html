@@ -157,65 +157,42 @@
     font-size: 32px; color: #fff;
     cursor: pointer; z-index: 10001;
 }
-
-/* Mobil için alt alta getirir */
-@media screen and (max-width: 980px) {
-    .modal-flex-container { flex-direction: column; }
-    .modal-details-bar { flex: none; height: 40%; width: 100%; }
-}
-/* 1. Kare Parsel ve Yumuşak Giriş Efekti */
-@keyframes galleriaFadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* 1. KARE PARSEL SİSTEMİ (3'lü Yan Yana) */
-article.thumb {
-    width: 33.333% !important; 
-    aspect-ratio: 1 / 1 !important; /* ÇERÇEVEYİ KAREYE ZORLAR */
-    margin: 0 !important;
+/* 1. ANA IZGARA (MAIN) AYARI */
+#main {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* YAN YANA 3 PARSEL */
+    gap: 0 !important; /* Dikişsiz birleşim */
     padding: 0 !important;
-    float: left;
-    overflow: hidden;
+    margin: 0 !important;
+}
+
+/* 2. KARE ÇERÇEVE (ARTICLE) AYARI */
+article.thumb {
+    position: relative !important;
+    width: 100% !important;
+    /* Kare yapmak için yükseklik yerine genişliğe göre padding veriyoruz */
+    padding-bottom: 100% !important; 
+    height: 0 !important; 
+    overflow: hidden !important;
+    margin: 0 !important;
     animation: galleriaFadeIn 0.8s ease-out forwards;
     opacity: 0;
 }
 
-/* 2. RESMİ KAREYE SIĞDIRMA (SÜNNETMEDEN) */
+/* 3. RESMİ KARENİN İÇİNE MIKNATIS GİBİ YAPIŞTIRMA */
 article.thumb a,
 article.thumb a img {
+    position: absolute !important;
+    top: 0; left: 0;
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* RESMİ KUTUYA TAM SIĞDIRIR */
+    object-fit: cover !important; /* RESMİ KAREYE SIĞDIRIR */
     display: block !important;
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
 }
 
-/* 3. MODAL (AÇILIR PENCERE) VE BUTONLAR */
-.modal-details-bar {
-    background-color: #d4cbba !important;
-    color: #1a1a1a !important;
-    padding: 60px 40px;
-}
-.modal-details-bar .button {
-    background: transparent !important;
-    color: #1a1a1a !important;
-    border: 1px solid #1a1a1a !important;
-    display: block;
-    text-align: center;
-    margin-bottom: 10px;
-    border-radius: 0 !important;
-}
-.modal-details-bar .button:hover {
-    background: #1a1a1a !important;
-    color: #d4cbba !important;
-}
-@keyframes modalRevealEffect {
-    0% { opacity: 0; transform: scale(0.96); }
-    100% { opacity: 1; transform: scale(1); }
-}
-#main-modal-img {
-    animation: modalRevealEffect 0.9s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+article.thumb a:hover img {
+    transform: scale(1.05);
 }
 </style>
 	</head>
@@ -381,6 +358,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
