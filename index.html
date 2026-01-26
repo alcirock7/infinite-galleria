@@ -194,33 +194,47 @@ article.thumb a img {
 article.thumb a:hover img {
     transform: scale(1.05);
 }
-	/* --- MOBİL ONARIM PAKETİ --- */
+/* 1. Renk ve Okunabilirlik Restorasyonu */
+.modal-details-bar {
+    background-color: #d4cbba !important; /* Kum Rengi */
+    color: #1a1a1a !important;            /* Koyu Metin */
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-details-bar h3, .modal-details-bar p, .modal-details-bar strong {
+    color: #1a1a1a !important;
+}
+
+/* 2. MOBİL: Scroll (Kaydırma) ve Yerleşim Onarımı */
 @media screen and (max-width: 980px) {
-    /* 1. Modal: Resim üstte, satın alma barı altta */
+    /* Satın alma butonlarına ulaşmak için kaydırmayı açtık */
     .modal-flex-container { 
-        flex-direction: column !important; /* Yan yana olan dünyayı alt alta çevirir */
+        flex-direction: column !important; 
+        overflow-y: auto !important; /* SCROLL PROBLEMİNİ ÇÖZEN KRİTİK SATIR */
+        height: 100vh !important;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-image-view { 
         flex: none !important; 
         width: 100% !important; 
-        height: 55vh !important; /* Resim mobilde ekranın yarısından biraz fazlasını kaplasın */
-        padding: 15px !important;
+        height: auto !important; 
+        min-height: 50vh;
     }
 
     .modal-details-bar { 
         flex: none !important; 
         width: 100% !important; 
-        height: auto !important; /* Detaylar ve butonlar resmin altına uzasın */
-        padding: 25px 20px !important;
-        border-left: none !important;
-        border-top: 1px solid rgba(0,0,0,0.1) !important;
+        height: auto !important; 
+        padding: 40px 25px !important;
+        overflow-y: visible !important; 
     }
 
-    /* 2. Ana Galeri: Kareler mobilde 3'lü değil, daha net görünmesi için 1'li olsun */
+    /* #MAIN: Karelerin mobilde 1-column olmasını sağlar (Hayati dediğin yer) */
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
-    }
 }
 </style>
 	</head>
@@ -386,6 +400,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
