@@ -182,6 +182,46 @@
 .thumb a:hover img {
     transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
 }
+	/* 1. Modal Detay Barı Estetiği */
+.modal-details-bar {
+    background: #fdfbf7 !important; /* Daha açık ve ferah bir kum beji */
+    padding: 80px 50px !important;
+    font-family: 'Montserrat', sans-serif; /* Marka fontunu buraya da çekiyoruz */
+}
+
+.modal-details-bar h3 {
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #222;
+    padding-bottom: 15px;
+}
+
+/* 2. LemonSqueezy Butonlarını 'Elit' Yapma */
+.modal-details-bar .button {
+    background: #222 !important;
+    color: #fff !important;
+    border-radius: 0 !important; /* Keskin, mimari hatlar */
+    height: 3.5em !important;
+    line-height: 3.5em !important;
+    letter-spacing: 3px;
+    font-weight: 900;
+    transition: all 0.4s ease;
+}
+
+.modal-details-bar .button:hover {
+    background: #d4cbba !important;
+    color: #222 !important;
+}
+
+/* 3. Kapatma Butonu (X) Dokunuşu */
+.close-modal {
+    font-size: 40px !important;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+.close-modal:hover { opacity: 1; }
 </style>
 	</head>
 	<body class="is-preload">
@@ -363,6 +403,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
