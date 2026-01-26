@@ -236,30 +236,31 @@ article.thumb a:hover img {
     #main {
         grid-template-columns: repeat(1, 1fr) !important; 
 }
-/* --- PREMIUM MODAL GEÇİŞ SİSTEMİ (1s) --- */
+/* 1. Modal Kapsayıcısı: Tıklamayı engellememesi için pointer-events ekledik */
 .modal-wrapper {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(18, 18, 18, 0.98); 
     z-index: 10000;
-    opacity: 0; /* Başlangıçta şeffaf */
+    opacity: 0; 
     visibility: hidden;
+    pointer-events: none; /* BU SATIR HAYATİ: Kapalıyken arkaya tıklanabilsin */
     transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 }
 
-/* Modal Aktifleştiğinde Arka Planın Gelmesi */
+/* 2. Modal Aktifleştiğinde: Tıklamalar artık modala gelsin */
 .modal-wrapper.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto; /* Açılınca tıklanabilir olur */
 }
 
-/* Resmin 1 Saniyelik Süzülme Efekti */
+/* 3. Resim: 1 Saniyelik Süzülme Efekti */
 #main-modal-img {
     opacity: 0;
-    transform: scale(0.92) translateY(20px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* Premium süzülme eğrisi */
+    transform: scale(0.95) translateY(20px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Modal aktif olduğunda resim şaha kalkar */
 .modal-wrapper.active #main-modal-img {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -381,38 +382,26 @@ article.thumb a:hover img {
 
 <script>
 function openSidebar(id) {
-    const originalImg = document.querySelector(`[onclick="openSidebar('${id}')"] img`).src;
+    // 1. Verileri çek (Resim ve Metin)
+    const originalImg = document.querySelector('article.thumb img[alt="' + document.querySelector('[onclick="openSidebar(\'' + id + '\')"] img').alt + '"]').src;
     const dataContent = document.getElementById(id + '-data').innerHTML;
 
-    // 1. Verileri yerleştir
+    // 2. Modala yerleştir
     document.getElementById('main-modal-img').src = originalImg;
     document.getElementById('modal-info-content').innerHTML = dataContent;
 
-    // 2. Modalı görünür yap
+    // 3. Modalı aç ve 20ms sonra efekti başlat
     const modal = document.getElementById('gallery-modal');
-    modal.style.display = 'block';
+    modal.classList.add('active'); // CSS'deki opacity ve visibility'yi tetikler
 
-    // 3. JİLET DOKUNUŞ: 20ms sonra active classını ekle ki efekt başlasın
-    setTimeout(() => {
-        modal.classList.add('active');
-    }, 20);
-
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Sayfa kaymasını durdur
 }
 
 function closeModal() {
     const modal = document.getElementById('gallery-modal');
     modal.classList.remove('active');
-
-    // Animasyon bitince display:none yap (0.6 sn sonra)
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 600);
-    
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Kaydırmayı aç
 }
-
-// Sidebar fonksiyonlarını sildik çünkü modal üzerinden yürüyoruz kanka.
 </script>
 
 
