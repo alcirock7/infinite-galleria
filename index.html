@@ -112,6 +112,57 @@
 #sidebar-panel.active { right: 0; } /* Açıldığında sağdan girer */
 
 .close-btn { cursor: pointer; font-weight: bold; margin-bottom: 20px; display: block; }
+	.modal-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(18, 18, 18, 0.98); /* Derin siyah/gri arka plan */
+    z-index: 10000;
+}
+
+.modal-flex-container {
+    display: flex;
+    width: 100%; height: 100%;
+}
+
+/* Resim Alanı - Sayfanın %70'ini kaplar */
+.modal-image-view {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.modal-image-view img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* Detay Barı - Sayfanın %30'unu kaplar */
+.modal-details-bar {
+    flex: 3;
+    background: #e8e4da; /* Sitenin bej tonu */
+    padding: 60px 40px;
+    color: #222;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 32px; color: #fff;
+    cursor: pointer; z-index: 10001;
+}
+
+/* Mobil için alt alta getirir */
+@media screen and (max-width: 980px) {
+    .modal-flex-container { flex-direction: column; }
+    .modal-details-bar { flex: none; height: 40%; width: 100%; }
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -239,8 +290,43 @@ function closeSidebar() {
     document.getElementById('sidebar-panel').classList.remove('active');
 }
 </script>
+		<div id="gallery-modal" class="modal-wrapper" style="display:none;">
+    <span class="close-modal" onclick="closeModal()">✕</span>
+    <div class="modal-flex-container">
+        <div class="modal-image-view">
+            <img id="main-modal-img" src="" alt="Premium View">
+        </div>
+        <div class="modal-details-bar">
+            <div id="modal-info-content"></div>
+        </div>
+    </div>
+</div>
+		<script>
+function openSidebar(id) {
+    // 1. Tıkladığın resmin dosya yolunu bulur
+    const originalImg = document.querySelector(`[onclick="openSidebar('${id}')"] img`).src;
+    
+    // 2. 194. satırdaki gizli veri div'inin içindeki her şeyi (fiyat, link vb.) alır
+    const dataContent = document.getElementById(id + '-data').innerHTML;
+
+    // 3. Bu verileri modalın içine yerleştirir
+    document.getElementById('main-modal-img').src = originalImg;
+    document.getElementById('modal-info-content').innerHTML = dataContent;
+
+    // 4. Modalı görünür yapar ve arka planın kaymasını durdurur
+    document.getElementById('gallery-modal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    // Modalı kapatır ve kaydırmayı tekrar aktif eder
+    document.getElementById('gallery-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+</script>
 	</body>
 </html>
+
 
 
 
