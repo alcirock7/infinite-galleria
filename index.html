@@ -163,20 +163,29 @@
     .modal-flex-container { flex-direction: column; }
     .modal-details-bar { flex: none; height: 40%; width: 100%; }
 }
+/* YENİ STRATEJİ: Çerçeve Resme Göre Aşağı Uzasın */
 article.thumb {
-    width: 33.333% !important; /* 3'lü dizilim için */
-    aspect-ratio: 1 / 1 !important; /* BU SATIR ŞART: Çerçeveyi kare yapar */
+    width: 33.333% !important; /* Genişlik sabit: 3'lü dizilim */
+    height: auto !important;   /* KİLİT NOKTA: Yükseklik serbest, resme göre uzayacak */
+    aspect-ratio: auto !important; /* Zorlama kare komutunu iptal ettik */
     margin: 0 !important;
     padding: 0 !important;
-    float: left; /* Parsellerin yan yana durmasını sağlar */
-    overflow: hidden;
+    float: left; /* Yan yana dizilim için */
+    border: none !important;
+    outline: none !important;
 }
 
-article.thumb a, article.thumb a img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
+article.thumb a {
     display: block;
+    width: 100%;
+    height: auto; /* Link kapsayıcısı da esnek olsun */
+}
+
+article.thumb a img {
+    width: 100% !important;  /* Kutunun genişliğine tam otursun */
+    height: auto !important; /* Orijinal oranını koruyarak aşağı doğru uzasın */
+    display: block !important;
+    object-fit: unset !important; /* Resim kırpılmasın, olduğu gibi görünsün */
 }
 .thumb a:hover img {
     transform: scale(1.05); /* Üzerine gelince hafif büyüme efekti */
@@ -393,6 +402,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
