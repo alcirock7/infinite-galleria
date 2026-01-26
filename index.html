@@ -95,6 +95,23 @@
             font-size: 0.8em !important; /* Mobilde yazıyı biraz küçültür */
         }
     }
+	/* Sidebar Paneli */
+#sidebar-panel {
+    position: fixed;
+    top: 0; right: -400px; /* Başta gizli */
+    width: 400px; height: 100%;
+    background: #e8e4da; /* Bej tonu */
+    z-index: 10000;
+    transition: 0.5s;
+    padding: 40px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    color: #222222;
+    overflow-y: auto;
+}
+
+#sidebar-panel.active { right: 0; } /* Açıldığında sağdan girer */
+
+.close-btn { cursor: pointer; font-weight: bold; margin-bottom: 20px; display: block; }
 </style>
 	</head>
 	<body class="is-preload">
@@ -209,6 +226,7 @@
 
 	</body>
 </html>
+
 
 
 
