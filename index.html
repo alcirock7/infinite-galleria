@@ -170,25 +170,20 @@
 }
 /* 1. Kare Formu ve Sayfa Yükleme Efekti */
 article.thumb {
-    width: 33.333% !important; /* 3'lü dizilim */
-    aspect-ratio: 1 / 1 !important; /* HAYATİ KOD: Çerçeveyi kareye zorlar */
+/* Bu bloğu bul ve içini bu 4 satırla güncelle */
+article.thumb {
+    width: 33.333% !important; /* 3'lü parsel dizilimi */
+    aspect-ratio: 1 / 1 !important; /* KESİN KARE EMRİ */
     margin: 0 !important;
     padding: 0 !important;
-    float: left;
-    overflow: hidden;
-    animation: galleriaFadeIn 0.8s ease-out forwards; /* Sayfa açılış efekti */
-    opacity: 0; 
 }
 
-article.thumb a, 
+/* Resmin kareye tam oturması için bunu da güncelle */
 article.thumb a img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* Resmi kareye sünmeden yayar */
-    display: block !important;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
+    object-fit: cover !important; /* Resmi sünmeden kareye yayar */
 }
-
 article.thumb a:hover img {
     transform: scale(1.05); /* Üzerine gelince büyüme */
 }
@@ -414,6 +409,7 @@ function closeModal() {
 </script>
 	</body>
 </html>
+
 
 
 
