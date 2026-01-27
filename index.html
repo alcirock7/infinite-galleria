@@ -321,6 +321,108 @@ article.thumb a:hover img {
     border: 2px solid #1a1a1a !important;
     background: rgba(26, 26, 26, 0.05);
 }
+	/* --- GETTY TARZI SEÇİM KUTULARI --- */
+.package-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.package-option {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 1.5px solid #1a1a1a; /* Koyu çerçeve */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+}
+
+/* Radio butonu gizle, kendi stilimizi yapacağız */
+.package-option input[type="radio"] {
+    display: none;
+}
+
+/* Radio butonun yerini tutacak özel daire */
+.checkmark {
+    height: 22px;
+    width: 22px;
+    background-color: transparent;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 50%;
+    margin-right: 15px;
+    position: relative;
+    flex-shrink: 0; /* Dairenin daralmasını önler */
+}
+
+/* Seçili olduğunda dairenin içi */
+.package-option input[type="radio"]:checked ~ .checkmark::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1a1a1a; /* Seçili renk */
+}
+
+/* Seçili kutunun arka planı ve kenarlığı */
+.package-option:has(input[type="radio"]:checked) {
+    background: rgba(26, 26, 26, 0.05); /* Hafif koyu arka plan */
+    border-width: 2px;
+}
+
+.package-details {
+    flex-grow: 1;
+}
+
+.package-title {
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    font-size: 1em;
+}
+
+.package-desc {
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-top: 5px;
+    display: block;
+}
+
+.package-price {
+    font-weight: 800;
+    font-size: 1.2em;
+    margin-left: auto; /* Fiyatı en sağa iter */
+    padding-left: 15px;
+}
+
+/* GO TO CHECKOUT butonu için genel stil */
+.checkout-btn {
+    background: #1a1a1a !important;
+    color: #d4cbba !important;
+    width: 100%;
+    padding: 15px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.checkout-btn:hover {
+    background: #333 !important;
+    transform: translateY(-2px);
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -500,6 +602,7 @@ function closeModal() {
 }
 </script>
 	</body>
+
 
 
 
