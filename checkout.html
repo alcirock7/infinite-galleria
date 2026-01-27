@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Checkout - Infinite Galleria</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body { background: #d4cbba; color: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .checkout-box { background: #e8e4da; padding: 40px; border: 1.5px solid #1a1a1a; width: 400px; text-align: center; }
+        .button.primary { background: #1a1a1a !important; color: #d4cbba !important; width: 100%; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="checkout-box">
+        <h2>SECURE CHECKOUT</h2>
+        <div id="order-summary" style="margin: 20px 0; border: 1px solid #1a1a1a; padding: 15px;">
+            <p>Loading your selection...</p>
+        </div>
+        <form action="#">
+            <input type="email" placeholder="Your Email Address" style="width:100%; padding:10px; margin-bottom:10px;">
+            <button type="submit" class="button primary">PROCEED TO PAYMENT</button>
+        </form>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const art = params.get('art');
+        const tier = params.get('tier');
+        document.getElementById('order-summary').innerHTML = `Item: <strong>${art}</strong><br>Tier: <strong>${tier == 'std' ? 'Standard ($19)' : 'Exclusive ($149)'}</strong>`;
+    </script>
+</body>
+</html>
