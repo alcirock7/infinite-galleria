@@ -231,199 +231,159 @@ article.thumb a:hover img {
 .btn-price { font-weight: 800; font-size: 1.2em; display: block; margin-top: 5px; }
 .btn-desc { font-size: 0.7em; opacity: 0.8; letter-spacing: 1px; display: block; margin-top: 5px; }
 /* 2. MOBİL: Scroll (Kaydırma) ve Yerleşim Onarımı */
-@media screen and (max-width: 980px) {
-    /* Satın alma butonlarına ulaşmak için kaydırmayı açtık */
-    .modal-flex-container { 
-        flex-direction: column !important; 
-        overflow-y: auto !important; /* SCROLL PROBLEMİNİ ÇÖZEN KRİTİK SATIR */
-        height: 100vh !important;
-        -webkit-overflow-scrolling: touch;
+    @media screen and (max-width: 980px) {
+        .modal-flex-container { 
+            flex-direction: column !important; 
+            overflow-y: auto !important;
+            height: 100vh !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-image-view { 
+            flex: none !important; 
+            width: 100% !important; 
+            height: auto !important; 
+            min-height: 50vh;
+        }
+
+        .modal-details-bar { 
+            flex: none !important; 
+            width: 100% !important; 
+            height: auto !important; 
+            padding: 40px 25px !important;
+            overflow-y: visible !important; 
+        }
+
+        /* #MAIN: Karelerin mobilde 1-column olması */
+        #main {
+            grid-template-columns: repeat(1, 1fr) !important; 
+        }
+    } /* <--- İŞTE BU! Mobili kapatan kritik parantez burası. */
+
+
+    /* --- BURADAN AŞAĞISI ARTIK HEM MOBİL HEM PC İÇİN GEÇERLİDİR --- */
+
+    /* --- GETTY TARZI SEÇİM KUTULARI (Düzeltilmiş) --- */
+    .package-selector {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+        width: 100%; /* Kutuların tam genişlikte olmasını sağlar */
     }
 
-    .modal-image-view { 
-        flex: none !important; 
-        width: 100% !important; 
-        height: auto !important; 
-        min-height: 50vh;
+    /* Kapsayıcı Etiket (Label) - Tıklanabilir Alan */
+    .package-option {
+        display: flex !important; /* Görünürlüğü zorlar */
+        align-items: center;
+        padding: 20px;
+        border: 1.5px solid #1a1a1a;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        background: transparent;
+        text-decoration: none !important; /* Altı çizili link görünümünü engeller */
     }
 
-    .modal-details-bar { 
-        flex: none !important; 
-        width: 100% !important; 
-        height: auto !important; 
-        padding: 40px 25px !important;
-        overflow-y: visible !important; 
+    /* Orijinal Radio butonunu gizle */
+    .package-option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        display: none; 
     }
 
-    /* #MAIN: Karelerin mobilde 1-column olmasını sağlar (Hayati dediğin yer) */
-    #main {
-        grid-template-columns: repeat(1, 1fr) !important; 
+    /* Radio buton yerine geçecek yuvarlak daire */
+    .checkmark {
+        height: 22px;
+        width: 22px;
+        background-color: transparent;
+        border: 1.5px solid #1a1a1a;
+        border-radius: 50%;
+        margin-right: 15px;
+        position: relative;
+        flex-shrink: 0;
+        display: inline-block; /* Görünürlüğü garantiye alır */
     }
-}
-	/* --- GETTY STYLE PACKAGE SELECTION --- */
-.package-list {
-    margin: 25px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
-.package-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border: 1px solid rgba(26, 26, 26, 0.3); /* İnce mimari sınır */
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    position: relative;
-}
+    /* Seçili olduğunda dairenin içine nokta koy */
+    .package-option input[type="radio"]:checked ~ .checkmark::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #1a1a1a;
+    }
 
-.package-item:hover {
-    border-color: #1a1a1a;
-    background: rgba(26, 26, 26, 0.03);
-}
+    /* Seçili kutunun arka planını değiştir */
+    .package-option:has(input[type="radio"]:checked) {
+        background: rgba(26, 26, 26, 0.05);
+        border-width: 2px;
+        border-color: #000;
+    }
+    
+    /* Alternatif: :has desteklemeyen eski tarayıcılar için JS fall-back gerekebilir ama modernlerde çalışır */
 
-/* Radio Button Özelleştirme */
-.package-item input[type="radio"] {
-    margin-right: 15px;
-    accent-color: #1a1a1a;
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
+    .package-details {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
 
-.package-info {
-    flex-grow: 1;
-}
+    .package-title {
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 1em;
+        color: #1a1a1a;
+        display: block;
+    }
 
-.package-title {
-    display: block;
-    font-weight: 800;
-    font-size: 0.9em;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+    .package-desc {
+        font-size: 0.8em;
+        opacity: 0.8;
+        margin-top: 5px;
+        color: #1a1a1a;
+        display: block;
+    }
 
-.package-subtitle {
-    display: block;
-    font-size: 0.75em;
-    opacity: 0.7;
-    margin-top: 4px;
-}
+    .package-price {
+        font-weight: 800;
+        font-size: 1.2em;
+        margin-left: auto;
+        padding-left: 15px;
+        color: #1a1a1a;
+    }
 
-.package-price {
-    font-weight: 800;
-    font-size: 1.1em;
-    margin-left: 15px;
-}
+    /* --- CHECKOUT BUTONU --- */
+    .checkout-btn {
+        display: block !important; /* Butonu zorla gösterir */
+        background-color: #1a1a1a !important;
+        color: #d4cbba !important;
+        width: 100%;
+        padding: 18px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border: none !important;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        appearance: none; /* Tarayıcı varsayılan stilini siler */
+        -webkit-appearance: none;
+        font-family: inherit; /* Sitenin fontunu kullan */
+    }
 
-/* Seçili olan kutu için vurgu */
-.package-item.active {
-    border: 2px solid #1a1a1a !important;
-    background: rgba(26, 26, 26, 0.05);
-}
-	/* --- GETTY TARZI SEÇİM KUTULARI --- */
-.package-selector {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.package-option {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border: 1.5px solid #1a1a1a; /* Koyu çerçeve */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    background: transparent;
-}
-
-/* Radio butonu gizle, kendi stilimizi yapacağız */
-.package-option input[type="radio"] {
-    display: none;
-}
-
-/* Radio butonun yerini tutacak özel daire */
-.checkmark {
-    height: 22px;
-    width: 22px;
-    background-color: transparent;
-    border: 1.5px solid #1a1a1a;
-    border-radius: 50%;
-    margin-right: 15px;
-    position: relative;
-    flex-shrink: 0; /* Dairenin daralmasını önler */
-}
-
-/* Seçili olduğunda dairenin içi */
-.package-option input[type="radio"]:checked ~ .checkmark::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #1a1a1a; /* Seçili renk */
-}
-
-/* Seçili kutunun arka planı ve kenarlığı */
-.package-option:has(input[type="radio"]:checked) {
-    background: rgba(26, 26, 26, 0.05); /* Hafif koyu arka plan */
-    border-width: 2px;
-}
-
-.package-details {
-    flex-grow: 1;
-}
-
-.package-title {
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: block;
-    font-size: 1em;
-}
-
-.package-desc {
-    font-size: 0.8em;
-    opacity: 0.8;
-    margin-top: 5px;
-    display: block;
-}
-
-.package-price {
-    font-weight: 800;
-    font-size: 1.2em;
-    margin-left: auto; /* Fiyatı en sağa iter */
-    padding-left: 15px;
-}
-
-/* GO TO CHECKOUT butonu için genel stil */
-.checkout-btn {
-    background: #1a1a1a !important;
-    color: #d4cbba !important;
-    width: 100%;
-    padding: 15px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    display: block;
-    text-decoration: none;
-}
-
-.checkout-btn:hover {
-    background: #333 !important;
-    transform: translateY(-2px);
-}
+    .checkout-btn:hover {
+        background-color: #333 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -596,6 +556,7 @@ function closeModal() {
 }
 </script>
 	</body>
+
 
 
 
