@@ -29,7 +29,9 @@
             margin-bottom: 20px;
             letter-spacing: 2px;
             font-weight: 800;
+            text-transform: uppercase;
         }
+        
         /* Ürün Özeti Kartı */
         .order-summary {
             background: #d4cbba;
@@ -41,27 +43,33 @@
             align-items: center;
             gap: 15px;
         }
+        
+        /* Küçük resim ayarı */
         .order-summary img {
             width: 80px;
             height: 80px;
             object-fit: cover;
             border: 1px solid #1a1a1a;
+            display: none; /* JS ile resim gelince görünür olacak */
         }
+
         .product-info h4 {
             margin: 0;
             font-size: 1.1em;
             color: #1a1a1a;
+            font-weight: 800;
         }
         .product-info span {
             display: block;
             font-size: 0.9em;
             opacity: 0.8;
             margin-top: 5px;
+            font-family: monospace; /* Teknik görünüm için */
         }
         .price-tag {
             margin-top: 5px;
             font-weight: 800;
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #1a1a1a;
         }
 
@@ -76,51 +84,46 @@
             outline: none;
             font-weight: 600;
         }
-        input[type="email"]::placeholder {
-            color: #555;
-        }
         
         .button.primary { 
             background: #1a1a1a !important; 
             color: #d4cbba !important; 
             width: 100%; 
             border: none;
-            padding: 15px;
+            padding: 18px;
             font-weight: 800;
             letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-transform: uppercase;
         }
         .button.primary:hover {
             background: #333 !important;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
     <div class="checkout-box">
-        <h2>SECURE CHECKOUT</h2>
+        <h2>Secure Checkout</h2>
         
         <div id="order-card" class="order-summary">
             <p style="width:100%; text-align:center;">Loading details...</p>
         </div>
 
         <form action="#" method="POST">
-            <input type="hidden" id="selected-product" name="product">
-            <input type="hidden" id="selected-tier" name="tier">
-            
             <input type="email" placeholder="Your Email Address" required>
-            <button type="submit" class="button primary">PROCEED TO PAYMENT</button>
+            <button type="submit" class="button primary">Proceed to Payment</button>
         </form>
         
-        <p style="margin-top: 20px; font-size: 0.8em; opacity: 0.6;">
-            <i class="icon solid fa-lock"></i> SSL Encrypted Transaction
+        <p style="margin-top: 20px; font-size: 0.7em; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px;">
+            Engineered for Security
         </p>
     </div>
 
     <script>
-        // 1. Ürün Kataloğu (Veritabanı niyetine)
-        // Eğer yeni ürün eklersen buraya da eklemelisin!
+        // 1. Ürün Kataloğu (Resim ve isimleri buradan çekecek)
         const products = {
             'art1': {
                 title: "The Obsidian Monolith",
@@ -130,49 +133,44 @@
                 title: "Ethereal Structuralism",
                 image: "images/art2.jpg"
             }
-            // art3, art4 eklendikçe buraya yazılacak...
         };
 
-        // 2. URL Parametrelerini Çözümle
+        // 2. URL'deki parametreleri oku
         const params = new URLSearchParams(window.location.search);
-        const productId = params.get('product'); // URL'den ?product=... kısmını alır
-        const tierType = params.get('tier');     // URL'den ?tier=... kısmını alır
+        const productId = params.get('product'); // URL'de 'product=' arar
+        const tierType = params.get('tier');     // URL'de 'tier=' arar
 
-        // 3. Fiyat ve İsim Belirleme
+        // 3. Fiyat ve Paket İsmini Belirle
         let price = "$0";
-        let tierName = "Unknown Tier";
+        let tierName = "Unknown";
 
+        // BURASI DÜZELTİLDİ: Artık 'standard' kelimesini arıyor
         if (tierType === 'standard') {
             price = "$19";
-            tierName = "Standard Edition (Personal)";
+            tierName = "Standard Edition";
         } else if (tierType === 'exclusive') {
             price = "$149";
-            tierName = "Exclusive Tier (Commercial)";
+            tierName = "Exclusive Tier";
         }
 
-        // 4. HTML'i Doldur
+        // 4. HTML Kutusunu Doldur
         const container = document.getElementById('order-card');
 
-        // Eğer ürün listemizde varsa bilgilerini bas
         if (products[productId]) {
             const art = products[productId];
             
+            // Resmi ve yazıları basıyoruz
             container.innerHTML = `
-                <img src="${art.image}" alt="${art.title}">
+                <img src="${art.image}" alt="${art.title}" style="display:block;">
                 <div class="product-info">
                     <h4>${art.title}</h4>
                     <span>${tierName}</span>
                     <div class="price-tag">${price}</div>
                 </div>
             `;
-            
-            // Form gönderilirse hangi ürün olduğunu bilsin diye gizli inputları da doldur
-            document.getElementById('selected-product').value = productId;
-            document.getElementById('selected-tier').value = tierType;
-
         } else {
-            // Hatalı veya eksik link
-            container.innerHTML = `<p style="color:red; text-align:center;">Error: Product not found.</p>`;
+            // Eğer ürün bulunamazsa hata mesajı
+            container.innerHTML = `<p style="color:red; text-align:center;">Error: Product or package not found.</p>`;
         }
     </script>
 
