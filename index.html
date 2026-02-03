@@ -402,6 +402,32 @@ article.thumb a:hover img {
     background-color: #333 !important;
     transform: translateY(-2px);
 }
+		/* --- ADIM 2: TİPOGRAFİ (FONT) AYARLARI --- */
+
+    /* BAŞLIKLAR: Playfair Display (Vogue/Dergi Havası) */
+    h1, h2, h3, h4, strong, b, .package-title {
+        font-family: 'Playfair Display', serif !important;
+        letter-spacing: 1px !important; /* Harflerin arasını hafif açar, elit durur */
+    }
+
+    /* GÖVDE YAZILARI: Inter (Modern ve Okunaklı) */
+    body, p, li, span, a, button, input, .package-desc, .package-price {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 400 !important; /* İnce ve zarif */
+    }
+
+    /* Sol Üstteki Logo Yazısı (Infinite Galleria) */
+    #header h1, #header h1 a, #header h1 strong {
+        font-family: 'Playfair Display', serif !important;
+        font-weight: 700 !important; /* Kalın */
+        text-transform: none !important; /* İstersen harfleri tamamen büyük yapmayı kapatabilirsin */
+    }
+
+    /* Buton Yazıları */
+    .checkout-btn, button {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 800 !important; /* Buton yazısı tok dursun */
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -584,6 +610,7 @@ function goToCheckout(event, productId) {
 }
 </script>
 	</body>
+
 
 
 
