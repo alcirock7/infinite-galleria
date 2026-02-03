@@ -1,67 +1,196 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Licensing Terms - Infinite Galleria</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            body { background-color: #d4cbba !important; color: #222222 !important; padding: 50px; line-height: 1.6; font-family: sans-serif; }
-            
-            .container {
-                max-width: 800px;
-                margin: 0 auto;
-                background: #e8e4da; 
-                padding: 40px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            }
+<head>
+    <title>Licensing Agreement - Infinite Galleria</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. TEMEL AYARLAR */
+        body { 
+            background-color: #d4cbba !important; 
+            color: #1a1a1a !important; 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.7; 
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-            /* Başlıkları Mat Siyah Yapan Kısım */
-            h1, h2 {
-                color: #000000 !important; /* Tam mat siyah */
-                font-weight: 700;
-            }
+        /* 2. BELGE KUTUSU (RESMİ KAĞIT GÖRÜNÜMÜ) */
+        .legal-document {
+            background: #e8e4da;
+            max-width: 900px;
+            width: 100%;
+            padding: 80px 60px;
+            border: 1px solid #1a1a1a;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.05);
+            position: relative;
+        }
 
-            h1 { 
-                border-bottom: 2px solid #000000 !important; /* Alt çizgi de siyah */
-                padding-bottom: 10px; 
-            }
+        /* 3. TİPOGRAFİ */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #000;
+        }
 
-            h2 { margin-top: 30px; }
+        .doc-meta {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            margin-bottom: 60px;
+        }
 
-            .back-link { 
-                display: inline-block; 
-                margin-top: 40px; 
-                text-decoration: none; 
-                font-weight: bold; 
-                color: #222222; 
-                border: 1px solid #222222; 
-                padding: 10px 20px; 
-                border-radius: 4px; 
-            }
-            
-            .back-link:hover { background: #222222; color: #d4cbba; }
-        </style>
-	</head>
-	<body>
-		<div class="container">
-			<h1>Infinite Galleria - Digital Art License</h1>
-			<p>Last Updated: January 2026</p>
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 50px;
+            border-left: 4px solid #1a1a1a;
+            padding-left: 15px;
+            color: #000;
+        }
 
-			<h2>1. Grant of License</h2>
-			<p>By purchasing or downloading a high-resolution image from Infinite Galleria, you are granted a non-exclusive, worldwide, and perpetual license to use the work for personal or professional purposes.</p>
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1em;
+            text-transform: uppercase;
+            margin-top: 30px;
+        }
 
-			<h2>2. Restrictions</h2>
-			<p>You may not resell, redistribute, or sublicense the original digital file as a standalone product. You may not claim authorship of the work. Massive redistribution for the purpose of competing with this gallery is strictly prohibited.</p>
+        p { margin-bottom: 20px; text-align: justify; }
 
-			<h2>3. Usage</h2>
-			<p>This license covers usage in architectural presentations, marketing materials, social media, and both digital and physical printing for commercial or personal projects.</p>
+        /* 4. TIER (PAKET) KARŞILAŞTIRMA KUTULARI */
+        .license-tiers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
 
-			<h2>4. Ownership</h2>
-			<p>All intellectual property rights and copyrights remain the property of Infinite Galleria (Eymen Bulut ALCIKAYA). This license does not transfer ownership of the work.</p>
+        .tier-box {
+            border: 1px solid #1a1a1a;
+            padding: 30px;
+            background: #d4cbba;
+        }
 
-			<a href="index.html" class="back-link">← Back to Gallery</a>
-		</div>
-	</body>
+        .tier-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            margin-top: 0;
+            text-decoration: underline;
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; font-size: 0.95em; }
+
+        /* 5. ALT BİLGİ VE BUTON */
+        .footer-note {
+            margin-top: 60px;
+            font-size: 0.8em;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+            opacity: 0.7;
+        }
+
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 50px auto 0;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #1a1a1a;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #1a1a1a;
+            color: #d4cbba;
+        }
+
+        /* MOBİL UYUM */
+        @media screen and (max-width: 768px) {
+            .legal-document { padding: 40px 20px; }
+            .license-tiers { grid-template-columns: 1fr; }
+            h1 { font-size: 1.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="legal-document">
+        <h1>End User License Agreement</h1>
+        <div class="doc-meta">
+            Document Ref: IG-2026-V1 &bull; Effective Date: February 2026
+        </div>
+
+        <p>This End User License Agreement (the "Agreement") is a binding legal contract between you (the "Licensee") and <strong>Infinite Galleria</strong> (the "Licensor"), represented by Eymen Bulut ALCIKAYA. By downloading, purchasing, or using any digital assets from this platform, you agree to be bound by the terms herein.</p>
+
+        <h2>1. Grant of License</h2>
+        <p>Infinite Galleria grants the Licensee a perpetual, non-exclusive, non-transferable, and worldwide license to use the purchased digital assets. The scope of this usage rights depends strictly on the license tier purchased at checkout.</p>
+
+        <div class="license-tiers">
+            <div class="tier-box">
+                <h4>Option A: Standard License</h4>
+                <p><em>Ideal for personal use and mockups.</em></p>
+                <ul>
+                    <li><strong>Permitted:</strong> Personal portfolio use, student presentations, social media posts (non-sponsored), desktop wallpapers.</li>
+                    <li><strong>Prohibited:</strong> Any commercial use, client work, advertising, merchandise, or reselling.</li>
+                </ul>
+            </div>
+            <div class="tier-box">
+                <h4>Option B: Exclusive/Commercial License</h4>
+                <p><em>Required for professional and business use.</em></p>
+                <ul>
+                    <li><strong>Permitted:</strong> All Standard rights plus: Commercial client projects, marketing campaigns (digital & print), website assets, architectural visualizations for profit.</li>
+                    <li><strong>Included:</strong> High-resolution 8K files suitable for large format printing.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>2. General Restrictions</h2>
+        <p>Regardless of the license tier purchased, the following actions are strictly prohibited:</p>
+        <ul>
+            <li><strong>Resale:</strong> You may not resell, sublicense, or redistribute the source files as standalone stock assets (e.g., on Shutterstock, Adobe Stock, or NFT marketplaces).</li>
+            <li><strong>AI Training:</strong> You may not use the assets to train Artificial Intelligence (AI) or Machine Learning models.</li>
+            <li><strong>False Authorship:</strong> You may not claim to be the original creator of the work. Copyright remains with Infinite Galleria.</li>
+            <li><strong>Unlawful Use:</strong> You may not use the assets in content that is defamatory, pornographic, or illegal under applicable laws.</li>
+        </ul>
+
+        <h2>3. Intellectual Property</h2>
+        <p>All digital assets, including images, concepts, and metadata, remain the sole property of Infinite Galleria (Eymen Bulut ALCIKAYA). Buying a license grants you the "Right to Use," not the ownership of the copyright.</p>
+
+        <h2>4. Termination</h2>
+        <p>This license is effective until terminated. Infinite Galleria reserves the right to terminate this license immediately if you fail to comply with any term of this Agreement. Upon termination, you must destroy all copies of the assets in your possession.</p>
+
+        <div class="footer-note">
+            <p>For custom enterprise licensing or buyout inquiries, please contact: <strong>infinitegalleria.art@gmail.com</strong></p>
+        </div>
+
+        <a href="index.html" class="back-btn">Accept & Return</a>
+    </div>
+
+</body>
 </html>
