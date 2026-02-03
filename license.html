@@ -22,7 +22,7 @@
             justify-content: center;
         }
 
-        /* 2. BELGE KUTUSU (RESMİ KAĞIT GÖRÜNÜMÜ) */
+        /* 2. BELGE KUTUSU */
         .legal-document {
             background: #e8e4da;
             max-width: 900px;
@@ -67,17 +67,7 @@
             color: #000;
         }
 
-        h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 1em;
-            text-transform: uppercase;
-            margin-top: 30px;
-        }
-
-        p { margin-bottom: 20px; text-align: justify; }
-
-        /* 4. TIER (PAKET) KARŞILAŞTIRMA KUTULARI */
+        /* 4. TIER (PAKET) KUTULARI */
         .license-tiers {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -89,6 +79,8 @@
             border: 1px solid #1a1a1a;
             padding: 30px;
             background: #d4cbba;
+            display: flex;
+            flex-direction: column;
         }
 
         .tier-box h4 {
@@ -101,7 +93,16 @@
         ul { padding-left: 20px; }
         li { margin-bottom: 10px; font-size: 0.95em; }
 
-        /* 5. ALT BİLGİ VE BUTON */
+        /* Teknik özellikler için vurgu */
+        .tech-specs {
+            margin-top: auto; /* Kutunun en altına iter */
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* 5. BUTON */
         .footer-note {
             margin-top: 60px;
             font-size: 0.8em;
@@ -143,47 +144,52 @@
     <div class="legal-document">
         <h1>End User License Agreement</h1>
         <div class="doc-meta">
-            Document Ref: IG-2026-V1 &bull; Effective Date: February 2026
+            Document Ref: IG-2026-V2 &bull; Effective Date: February 2026
         </div>
 
-        <p>This End User License Agreement (the "Agreement") is a binding legal contract between you (the "Licensee") and <strong>Infinite Galleria</strong> (the "Licensor"), represented by Eymen Bulut ALCIKAYA. By downloading, purchasing, or using any digital assets from this platform, you agree to be bound by the terms herein.</p>
+        <p>This End User License Agreement (the "Agreement") is a binding legal contract between you (the "Licensee") and <strong>Infinite Galleria</strong> (the "Licensor"). By downloading or purchasing any digital assets, you agree to the terms below.</p>
 
-        <h2>1. Grant of License</h2>
-        <p>Infinite Galleria grants the Licensee a perpetual, non-exclusive, non-transferable, and worldwide license to use the purchased digital assets. The scope of this usage rights depends strictly on the license tier purchased at checkout.</p>
+        <h2>1. License Tiers & Deliverables</h2>
+        <p>The usage rights and file specifications depend strictly on the license tier purchased.</p>
 
         <div class="license-tiers">
             <div class="tier-box">
                 <h4>Option A: Standard License</h4>
                 <p><em>Ideal for personal use and mockups.</em></p>
                 <ul>
-                    <li><strong>Permitted:</strong> Personal portfolio use, student presentations, social media posts (non-sponsored), desktop wallpapers.</li>
-                    <li><strong>Prohibited:</strong> Any commercial use, client work, advertising, merchandise, or reselling.</li>
+                    <li><strong>Permitted:</strong> Personal portfolio use, student presentations, wallpapers, non-commercial social media.</li>
+                    <li><strong>Prohibited:</strong> Commercial projects, reselling, or client work.</li>
                 </ul>
+                <div class="tech-specs">
+                    &bull; File Format: Single JPG<br>
+                    &bull; Resolution: 3K (High Res)
+                </div>
             </div>
+
             <div class="tier-box">
-                <h4>Option B: Exclusive/Commercial License</h4>
-                <p><em>Required for professional and business use.</em></p>
+                <h4>Option B: Exclusive License</h4>
+                <p><em>Required for professional business use.</em></p>
                 <ul>
-                    <li><strong>Permitted:</strong> All Standard rights plus: Commercial client projects, marketing campaigns (digital & print), website assets, architectural visualizations for profit.</li>
-                    <li><strong>Included:</strong> High-resolution 8K files suitable for large format printing.</li>
+                    <li><strong>Permitted:</strong> All Standard rights plus: Commercial client projects, marketing, printing, and architectural visualizations.</li>
+                    <li><strong>Includes:</strong> Commercial Rights Transfer.</li>
                 </ul>
+                <div class="tech-specs">
+                    &bull; File Formats: Multi-Pack (TIFF, PNG, JPG)<br>
+                    &bull; Resolution: 8K (Ultra-High / Print Ready)
+                </div>
             </div>
         </div>
 
         <h2>2. General Restrictions</h2>
         <p>Regardless of the license tier purchased, the following actions are strictly prohibited:</p>
         <ul>
-            <li><strong>Resale:</strong> You may not resell, sublicense, or redistribute the source files as standalone stock assets (e.g., on Shutterstock, Adobe Stock, or NFT marketplaces).</li>
-            <li><strong>AI Training:</strong> You may not use the assets to train Artificial Intelligence (AI) or Machine Learning models.</li>
-            <li><strong>False Authorship:</strong> You may not claim to be the original creator of the work. Copyright remains with Infinite Galleria.</li>
-            <li><strong>Unlawful Use:</strong> You may not use the assets in content that is defamatory, pornographic, or illegal under applicable laws.</li>
+            <li><strong>Resale:</strong> You may not resell, sublicense, or redistribute the source files as standalone stock assets.</li>
+            <li><strong>AI Training:</strong> You may not use the assets to train Artificial Intelligence (AI) models.</li>
+            <li><strong>False Authorship:</strong> You may not claim to be the original creator of the work.</li>
         </ul>
 
         <h2>3. Intellectual Property</h2>
-        <p>All digital assets, including images, concepts, and metadata, remain the sole property of Infinite Galleria (Eymen Bulut ALCIKAYA). Buying a license grants you the "Right to Use," not the ownership of the copyright.</p>
-
-        <h2>4. Termination</h2>
-        <p>This license is effective until terminated. Infinite Galleria reserves the right to terminate this license immediately if you fail to comply with any term of this Agreement. Upon termination, you must destroy all copies of the assets in your possession.</p>
+        <p>All digital assets remain the sole property of Infinite Galleria (Eymen Bulut ALCIKAYA). Buying a license grants you the "Right to Use," not the ownership of the copyright.</p>
 
         <div class="footer-note">
             <p>For custom enterprise licensing or buyout inquiries, please contact: <strong>infinitegalleria.art@gmail.com</strong></p>
