@@ -560,14 +560,25 @@ function closeModal() {
     document.getElementById('gallery-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
-			function goToCheckout(event, productId) {
+/* index.html dosyasının en altındaki script kısmı */
+
+function goToCheckout(event, productId) {
+    // 1. Sayfanın yenilenmesini engelle
     event.preventDefault();
-    const form = document.getElementById(productId + '-form');
+
+    // 2. HATA DÜZELTME: ID ile aramak yerine, doğrudan OLAYI YARATAN formu alıyoruz.
+    // 'event.target' burada submit edilen formun kendisidir (Sidebar'daki form).
+    const form = event.target; 
+
+    // 3. Artık doğru formun içindeki seçimi okuyabiliriz
     const selectedTier = form.querySelector('input[name="tier"]:checked').value;
+
+    // 4. Kullanıcıyı yönlendir
     window.location.href = `checkout.html?product=${productId}&tier=${selectedTier}`;
 }
 </script>
 	</body>
+
 
 
 
