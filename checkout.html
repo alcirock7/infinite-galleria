@@ -6,27 +6,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        body { background: #d4cbba; color: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .checkout-box { background: #e8e4da; padding: 40px; border: 1.5px solid #1a1a1a; width: 400px; text-align: center; }
-        .button.primary { background: #1a1a1a !important; color: #d4cbba !important; width: 100%; margin-top: 20px; }
+        body { 
+            background: #d4cbba; 
+            color: #1a1a1a; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            margin: 0;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+        .checkout-box { 
+            background: #e8e4da; 
+            padding: 50px 40px; 
+            border: 2px solid #1a1a1a; 
+            width: 100%; 
+            max-width: 450px; 
+            text-align: center; 
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+        }
+        .checkout-box h2 {
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        /* Ürün Özeti Kartı */
+        .order-summary {
+            background: #d4cbba;
+            border: 1px solid #1a1a1a;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .order-summary img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #1a1a1a;
+        }
+        .product-info h4 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+        .product-info span {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        .price-tag {
+            margin-top: 5px;
+            font-weight: 800;
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+
+        /* Form Elemanları */
+        input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1.5px solid #1a1a1a;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            outline: none;
+            font-weight: 600;
+        }
+        input[type="email"]::placeholder {
+            color: #555;
+        }
+        
+        .button.primary { 
+            background: #1a1a1a !important; 
+            color: #d4cbba !important; 
+            width: 100%; 
+            border: none;
+            padding: 15px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button.primary:hover {
+            background: #333 !important;
+        }
     </style>
 </head>
 <body>
+
     <div class="checkout-box">
         <h2>SECURE CHECKOUT</h2>
-        <div id="order-summary" style="margin: 20px 0; border: 1px solid #1a1a1a; padding: 15px;">
-            <p>Loading your selection...</p>
+        
+        <div id="order-card" class="order-summary">
+            <p style="width:100%; text-align:center;">Loading details...</p>
         </div>
-        <form action="#">
-            <input type="email" placeholder="Your Email Address" style="width:100%; padding:10px; margin-bottom:10px;">
+
+        <form action="#" method="POST">
+            <input type="hidden" id="selected-product" name="product">
+            <input type="hidden" id="selected-tier" name="tier">
+            
+            <input type="email" placeholder="Your Email Address" required>
             <button type="submit" class="button primary">PROCEED TO PAYMENT</button>
         </form>
+        
+        <p style="margin-top: 20px; font-size: 0.8em; opacity: 0.6;">
+            <i class="icon solid fa-lock"></i> SSL Encrypted Transaction
+        </p>
     </div>
+
     <script>
+        // 1. Ürün Kataloğu (Veritabanı niyetine)
+        // Eğer yeni ürün eklersen buraya da eklemelisin!
+        const products = {
+            'art1': {
+                title: "The Obsidian Monolith",
+                image: "images/art1.jpg"
+            },
+            'art2': {
+                title: "Ethereal Structuralism",
+                image: "images/art2.jpg"
+            }
+            // art3, art4 eklendikçe buraya yazılacak...
+        };
+
+        // 2. URL Parametrelerini Çözümle
         const params = new URLSearchParams(window.location.search);
-        const art = params.get('art');
-        const tier = params.get('tier');
-        document.getElementById('order-summary').innerHTML = `Item: <strong>${art}</strong><br>Tier: <strong>${tier == 'std' ? 'Standard ($19)' : 'Exclusive ($149)'}</strong>`;
+        const productId = params.get('product'); // URL'den ?product=... kısmını alır
+        const tierType = params.get('tier');     // URL'den ?tier=... kısmını alır
+
+        // 3. Fiyat ve İsim Belirleme
+        let price = "$0";
+        let tierName = "Unknown Tier";
+
+        if (tierType === 'standard') {
+            price = "$19";
+            tierName = "Standard Edition (Personal)";
+        } else if (tierType === 'exclusive') {
+            price = "$149";
+            tierName = "Exclusive Tier (Commercial)";
+        }
+
+        // 4. HTML'i Doldur
+        const container = document.getElementById('order-card');
+
+        // Eğer ürün listemizde varsa bilgilerini bas
+        if (products[productId]) {
+            const art = products[productId];
+            
+            container.innerHTML = `
+                <img src="${art.image}" alt="${art.title}">
+                <div class="product-info">
+                    <h4>${art.title}</h4>
+                    <span>${tierName}</span>
+                    <div class="price-tag">${price}</div>
+                </div>
+            `;
+            
+            // Form gönderilirse hangi ürün olduğunu bilsin diye gizli inputları da doldur
+            document.getElementById('selected-product').value = productId;
+            document.getElementById('selected-tier').value = tierType;
+
+        } else {
+            // Hatalı veya eksik link
+            container.innerHTML = `<p style="color:red; text-align:center;">Error: Product not found.</p>`;
+        }
     </script>
+
 </body>
 </html>
