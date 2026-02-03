@@ -359,35 +359,39 @@ article.thumb a:hover img {
         color: #1a1a1a;
     }
 
-  /* --- CHECKOUT BUTONU (Düzeltilmiş Merkezleme) --- */
+/* --- CHECKOUT BUTONU (Garanti Hizalama Yöntemi) --- */
 .checkout-btn {
-    display: flex !important;            /* Kutuyu esnek yapar */
-    justify-content: center !important;  /* Yatayda ortalar */
-    align-items: center !important;      /* Dikeyde (yukarı-aşağı) tam ortalar */
+    /* 1. Şablonun tüm varsayılan ayarlarını eziyoruz */
+    display: block !important;
+    width: 100% !important;
+    border: none !important;
+    outline: none !important;
     
+    /* 2. EN KRİTİK KISIM: Yükseklik ve Hizalama */
+    height: auto !important;       /* Sabit yüksekliği iptal et, içeriğe göre uzasın */
+    line-height: 1.2 !important;   /* Satır boşluğunu normale çek (Yazıyı sıkılaştır) */
+    padding-top: 20px !important;  /* Üstten boşluk */
+    padding-bottom: 20px !important; /* Alttan boşluk (Eşit olduğu için yazı ortalanır) */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+    /* 3. Görünüm ve Renkler */
     background-color: #1a1a1a !important;
     color: #d4cbba !important;
-    width: 100%;
-    height: auto !important;             /* Yüksekliği içeriğe göre ayarlar */
-    min-height: 60px !important;         /* Butonun çok ince olmasını engeller */
-    padding: 0 !important;               /* İç boşluğu sıfırlar (flex halledecek) */
+    margin-top: 20px !important;   /* Üstteki kutularla arasına mesafe koy */
     
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: none !important;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    line-height: 1 !important;           /* Satır yüksekliği çakışmasını önler */
-    appearance: none;
-    -webkit-appearance: none;
+    /* 4. Font Ayarları */
+    font-weight: 800 !important;
+    font-size: 1.1em !important;   /* Yazı biraz daha okunaklı olsun */
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    text-align: center !important; /* Yazıyı yatayda ortala */
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
 }
 
 .checkout-btn:hover {
     background-color: #333 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 </style>
 	</head>
@@ -561,6 +565,7 @@ function closeModal() {
 }
 </script>
 	</body>
+
 
 
 
