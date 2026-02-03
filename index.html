@@ -359,39 +359,42 @@ article.thumb a:hover img {
         color: #1a1a1a;
     }
 
-/* --- CHECKOUT BUTONU (Garanti Hizalama Yöntemi) --- */
+/* --- CHECKOUT BUTONU (Kesin Çözüm - Flexbox Reset) --- */
 .checkout-btn {
-    /* 1. Şablonun tüm varsayılan ayarlarını eziyoruz */
-    display: block !important;
+    /* 1. KUTU MODELİ: Tüm iç boşlukları SIFIRLIYORUZ (Sorunun kaynağı burasıydı) */
+    padding: 0 !important;
+    
+    /* 2. BOYUTLANDIRMA: Yüksekliği elle sabitliyoruz */
     width: 100% !important;
+    height: 60px !important; /* Butonun kalınlığı burada belirlenir */
+    
+    /* 3. MERKEZLEME: Flexbox ile yazıyı tam ortaya çiviliyoruz */
+    display: flex !important;
+    justify-content: center !important; /* Yatayda ortala */
+    align-items: center !important;     /* Dikeyde ortala */
+    
+    /* 4. GÖRÜNÜM */
+    background-color: #1a1a1a !important;
+    color: #d4cbba !important;
+    margin-top: 20px !important;
     border: none !important;
     outline: none !important;
     
-    /* 2. EN KRİTİK KISIM: Yükseklik ve Hizalama */
-    height: auto !important;       /* Sabit yüksekliği iptal et, içeriğe göre uzasın */
-    line-height: 1.2 !important;   /* Satır boşluğunu normale çek (Yazıyı sıkılaştır) */
-    padding-top: 20px !important;  /* Üstten boşluk */
-    padding-bottom: 20px !important; /* Alttan boşluk (Eşit olduğu için yazı ortalanır) */
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    
-    /* 3. Görünüm ve Renkler */
-    background-color: #1a1a1a !important;
-    color: #d4cbba !important;
-    margin-top: 20px !important;   /* Üstteki kutularla arasına mesafe koy */
-    
-    /* 4. Font Ayarları */
+    /* 5. YAZI AYARLARI */
     font-weight: 800 !important;
-    font-size: 1.1em !important;   /* Yazı biraz daha okunaklı olsun */
-    letter-spacing: 3px !important;
+    font-size: 1.1em !important;
+    letter-spacing: 2px !important;
     text-transform: uppercase !important;
-    text-align: center !important; /* Yazıyı yatayda ortala */
+    text-decoration: none !important;
+    line-height: 1 !important; /* Satır aralığını sıfıra yakın tutuyoruz */
+    
     cursor: pointer !important;
-    transition: background-color 0.3s ease !important;
+    transition: all 0.3s ease !important;
 }
 
 .checkout-btn:hover {
     background-color: #333 !important;
+    transform: translateY(-2px);
 }
 </style>
 	</head>
@@ -565,6 +568,7 @@ function closeModal() {
 }
 </script>
 	</body>
+
 
 
 
