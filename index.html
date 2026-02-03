@@ -359,31 +359,36 @@ article.thumb a:hover img {
         color: #1a1a1a;
     }
 
-    /* --- CHECKOUT BUTONU --- */
-    .checkout-btn {
-        display: block !important; /* Butonu zorla gösterir */
-        background-color: #1a1a1a !important;
-        color: #d4cbba !important;
-        width: 100%;
-        padding: 18px;
-        font-weight: 800;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        border: none !important;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-align: center;
-        text-decoration: none;
-        appearance: none; /* Tarayıcı varsayılan stilini siler */
-        -webkit-appearance: none;
-        font-family: inherit; /* Sitenin fontunu kullan */
-    }
+  /* --- CHECKOUT BUTONU (Düzeltilmiş Merkezleme) --- */
+.checkout-btn {
+    display: flex !important;            /* Kutuyu esnek yapar */
+    justify-content: center !important;  /* Yatayda ortalar */
+    align-items: center !important;      /* Dikeyde (yukarı-aşağı) tam ortalar */
+    
+    background-color: #1a1a1a !important;
+    color: #d4cbba !important;
+    width: 100%;
+    height: auto !important;             /* Yüksekliği içeriğe göre ayarlar */
+    min-height: 60px !important;         /* Butonun çok ince olmasını engeller */
+    padding: 0 !important;               /* İç boşluğu sıfırlar (flex halledecek) */
+    
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    line-height: 1 !important;           /* Satır yüksekliği çakışmasını önler */
+    appearance: none;
+    -webkit-appearance: none;
+}
 
-    .checkout-btn:hover {
-        background-color: #333 !important;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+.checkout-btn:hover {
+    background-color: #333 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
 </style>
 	</head>
 	<body class="is-preload">
@@ -556,6 +561,7 @@ function closeModal() {
 }
 </script>
 	</body>
+
 
 
 
