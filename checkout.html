@@ -85,18 +85,34 @@
             font-weight: 600;
         }
         
+       /* --- PROCEED TO PAYMENT BUTONU (Düzeltilmiş) --- */
         .button.primary { 
+            /* 1. MERKEZLEME SİSTEMİ (Flexbox) */
+            display: flex !important;
+            justify-content: center !important; /* Yatayda ortala */
+            align-items: center !important;     /* Dikeyde ortala */
+            
+            /* 2. BOYUTLANDIRMA */
+            width: 100% !important;
+            height: 60px !important;  /* Sabit yükseklik */
+            padding: 0 !important;    /* İç boşlukları sıfırla ki yazı kaymasın */
+            margin-top: 20px !important;
+            
+            /* 3. GÖRÜNÜM */
             background: #1a1a1a !important; 
             color: #d4cbba !important; 
-            width: 100%; 
-            border: none;
-            padding: 18px;
-            font-weight: 800;
-            letter-spacing: 2px;
+            border: none !important;
+            
+            /* 4. YAZI AYARLARI */
+            font-weight: 800 !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            line-height: 1 !important; /* Satır aralığını sıkılaştır */
+            
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
         }
+
         .button.primary:hover {
             background: #333 !important;
             transform: translateY(-2px);
