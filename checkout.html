@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
         body { 
             background: #d4cbba; 
@@ -14,7 +19,7 @@
             align-items: center; 
             min-height: 100vh;
             margin: 0;
-            font-family: "Source Sans Pro", sans-serif;
+            font-family: 'Inter', sans-serif; /* Font güncellendi */
         }
         .checkout-box { 
             background: #e8e4da; 
@@ -30,6 +35,7 @@
             letter-spacing: 2px;
             font-weight: 800;
             text-transform: uppercase;
+            font-family: 'Playfair Display', serif; /* Başlık fontu */
         }
         
         /* Ürün Özeti Kartı */
@@ -58,13 +64,14 @@
             font-size: 1.1em;
             color: #1a1a1a;
             font-weight: 800;
+            font-family: 'Playfair Display', serif;
         }
         .product-info span {
             display: block;
             font-size: 0.9em;
             opacity: 0.8;
             margin-top: 5px;
-            font-family: monospace; /* Teknik görünüm için */
+            font-family: 'Inter', sans-serif;
         }
         .price-tag {
             margin-top: 5px;
@@ -83,34 +90,28 @@
             margin-bottom: 15px;
             outline: none;
             font-weight: 600;
+            font-family: 'Inter', sans-serif;
         }
         
-       /* --- PROCEED TO PAYMENT BUTONU (Düzeltilmiş) --- */
+       /* --- PROCEED TO PAYMENT BUTONU --- */
         .button.primary { 
-            /* 1. MERKEZLEME SİSTEMİ (Flexbox) */
             display: flex !important;
-            justify-content: center !important; /* Yatayda ortala */
-            align-items: center !important;     /* Dikeyde ortala */
-            
-            /* 2. BOYUTLANDIRMA */
+            justify-content: center !important;
+            align-items: center !important;
             width: 100% !important;
-            height: 60px !important;  /* Sabit yükseklik */
-            padding: 0 !important;    /* İç boşlukları sıfırla ki yazı kaymasın */
+            height: 60px !important;
+            padding: 0 !important;
             margin-top: 20px !important;
-            
-            /* 3. GÖRÜNÜM */
             background: #1a1a1a !important; 
             color: #d4cbba !important; 
             border: none !important;
-            
-            /* 4. YAZI AYARLARI */
             font-weight: 800 !important;
             letter-spacing: 2px !important;
             text-transform: uppercase !important;
-            line-height: 1 !important; /* Satır aralığını sıkılaştır */
-            
+            line-height: 1 !important;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         .button.primary:hover {
@@ -139,7 +140,7 @@
     </div>
 
     <script>
-     // 1. Ürün Kataloğu (Resim ve isimleri buradan çekecek)
+      // 1. Ürün Kataloğu
         const products = {
             'art1': {
                 title: "The Obsidian Monolith",
@@ -148,14 +149,11 @@
             'art2': {
                 title: "Ethereal Structuralism",
                 image: "images/art2.jpg"
-            },  // <-- BURAYA VİRGÜL KOYMAYI UNUTMA!
-            
-            // --- YENİ EKLENECEK KISIM BURASI ---
+            },
             'art3': {
-                title: "The Cliffside Archieve of Time",  // Buraya istediğin ismi yaz
+                title: "The Cliffside Archive of Time",
                 image: "images/art3.jpg"
             }
-            // -----------------------------------
         };
 
         // 2. URL'deki parametreleri oku
@@ -163,17 +161,24 @@
         const productId = params.get('product'); // URL'de 'product=' arar
         const tierType = params.get('tier');     // URL'de 'tier=' arar
 
-        // 3. Fiyat ve Paket İsmini Belirle
+        // 3. Fiyat ve Paket İsmini Belirle (3'lü Sistem)
         let price = "$0";
         let tierName = "Unknown";
 
-        // BURASI DÜZELTİLDİ: Artık 'standard' kelimesini arıyor
         if (tierType === 'standard') {
-            price = "$19";
-            tierName = "Standard Edition";
-        } else if (tierType === 'exclusive') {
-            price = "$149";
-            tierName = "Exclusive Tier";
+            // STANDARD PAKET
+            price = "$49";
+            tierName = "Standard Edition (Personal)";
+        } 
+        else if (tierType === 'extended') {
+            // COMMERCIAL PAKET (YENİ)
+            price = "$199";
+            tierName = "Commercial License (Business)";
+        } 
+        else if (tierType === 'exclusive') {
+            // EXCLUSIVE PAKET
+            price = "$499";
+            tierName = "Exclusive Ownership (Buyout)";
         }
 
         // 4. HTML Kutusunu Doldur
