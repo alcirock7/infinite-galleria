@@ -428,6 +428,33 @@ article.thumb a:hover img {
         font-family: 'Inter', sans-serif !important;
         font-weight: 800 !important; /* Buton yazısı tok dursun */
     }
+		/* --- ADIM 1: MOBİL FOOTER DÜZELTME (VERSİYON 2 - GÜVENLİ) --- */
+    @media screen and (max-width: 980px) {
+        /* Footer içindeki kutuları alt alta dizer */
+        #footer .inner.split {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 30px !important;
+        }
+
+        /* Kutuların genişliğini ayarlar */
+        #footer .inner.split > div {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+        }
+
+        /* KAYAN YAZI SORUNUNU ÇÖZEN KOD BURASI */
+        #footer .copyright {
+            position: static !important; /* Sabitlemeyi kaldırır */
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important; /* Ortalar */
+            margin-top: 40px !important;
+            padding-top: 20px !important;
+            border-top: 1px solid rgba(0,0,0,0.1) !important;
+        }
 </style>
 	</head>
 	<body class="is-preload">
@@ -648,6 +675,7 @@ function goToCheckout(event, productId) {
 }
 </script>
 	</body>
+
 
 
 
