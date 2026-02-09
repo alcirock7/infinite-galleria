@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Licensing Agreement - Infinite Galleria</title>
+    <title>End User License Agreement - Infinite Galleria</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     
@@ -10,37 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. TEMEL AYARLAR */
+        /* 1. KURUMSAL STİL AYARLARI */
         body { 
             background-color: #d4cbba !important; 
             color: #1a1a1a !important; 
             font-family: 'Inter', sans-serif; 
-            line-height: 1.7; 
+            line-height: 1.8; /* Satır aralığı artırıldı, okunaklılık için */
             margin: 0;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
         }
 
-        /* 2. BELGE KUTUSU */
         .legal-document {
             background: #e8e4da;
             max-width: 900px;
             width: 100%;
-            padding: 80px 60px;
+            padding: 80px 70px; /* İç boşluklar artırıldı */
             border: 1px solid #1a1a1a;
             box-shadow: 20px 20px 0px rgba(0,0,0,0.05);
             position: relative;
         }
 
-        /* 3. TİPOGRAFİ */
+        /* Başlık Hiyerarşisi */
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
+            font-size: 2.2em;
             text-transform: uppercase;
             letter-spacing: 2px;
             border-bottom: 2px solid #1a1a1a;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             margin-bottom: 10px;
             text-align: center;
             color: #000;
@@ -49,73 +48,73 @@
         .doc-meta {
             text-align: center;
             font-family: 'Inter', sans-serif;
-            font-size: 0.8em;
+            font-size: 0.75em;
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.6;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
+            font-size: 1.3em;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 50px;
-            border-left: 4px solid #1a1a1a;
-            padding-left: 15px;
+            border-left: 5px solid #1a1a1a; /* Sol tarafı kalın çizgili */
+            padding-left: 20px;
             color: #000;
+            background: rgba(0,0,0,0.03); /* Hafif gri arka plan */
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
-        /* 4. TIER (PAKET) KUTULARI */
-        .license-tiers {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .tier-box {
-            border: 1px solid #1a1a1a;
-            padding: 30px;
-            background: #d4cbba;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tier-box h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2em;
-            margin-top: 0;
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1em;
+            margin-top: 30px;
             text-decoration: underline;
         }
 
-        ul { padding-left: 20px; }
+        p { margin-bottom: 20px; text-align: justify; font-size: 0.95em; }
+
+        ul { padding-left: 20px; margin-bottom: 20px; }
         li { margin-bottom: 10px; font-size: 0.95em; }
 
-        /* Teknik özellikler için vurgu */
-        .tech-specs {
-            margin-top: auto; /* Kutunun en altına iter */
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 15px;
+        /* VURGULU UYARI KUTUSU */
+        .clause-box {
+            background: #fff;
+            border: 1px solid #1a1a1a;
+            padding: 25px;
+            margin: 30px 0;
             font-size: 0.9em;
-            font-weight: 600;
         }
 
-        /* 5. BUTON */
-        .footer-note {
-            margin-top: 60px;
-            font-size: 0.8em;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
-            opacity: 0.7;
+        /* TABLO GÖRÜNÜMÜ İÇİN CSS (Tier Listesi) */
+        .tier-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.9em;
+        }
+        .tier-table th, .tier-table td {
+            border: 1px solid #1a1a1a;
+            padding: 15px;
+            text-align: left;
+        }
+        .tier-table th {
+            background: #1a1a1a;
+            color: #d4cbba;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
 
         .back-btn {
             display: block;
-            width: 200px;
-            margin: 50px auto 0;
-            padding: 15px;
+            width: 250px;
+            margin: 60px auto 0;
+            padding: 18px;
             text-align: center;
             border: 2px solid #1a1a1a;
             color: #1a1a1a;
@@ -125,77 +124,117 @@
             letter-spacing: 2px;
             transition: all 0.3s ease;
         }
+        .back-btn:hover { background: #1a1a1a; color: #d4cbba; }
 
-        .back-btn:hover {
-            background: #1a1a1a;
-            color: #d4cbba;
-        }
-
-        /* MOBİL UYUM */
         @media screen and (max-width: 768px) {
             .legal-document { padding: 40px 20px; }
-            .license-tiers { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8em; }
+            .tier-table, .tier-table tbody, .tier-table tr, .tier-table td { display: block; width: 100%; }
+            .tier-table tr { margin-bottom: 20px; border-bottom: 2px solid #000; }
         }
     </style>
 </head>
 <body>
 
     <div class="legal-document">
-        <h1>End User License Agreement</h1>
+        <h1>Global Licensing Agreement</h1>
         <div class="doc-meta">
-            Document Ref: IG-2026-V2 &bull; Effective Date: February 2026
+            Document Reference: IG-LEGAL-2026-V1 • Last Updated: February 2026<br>
+            Jurisdiction: International Digital Rights Law
         </div>
 
-        <p>This End User License Agreement (the "Agreement") is a binding legal contract between you (the "Licensee") and <strong>Infinite Galleria</strong> (the "Licensor"). By downloading or purchasing any digital assets, you agree to the terms below.</p>
+        <p>This End User License Agreement (hereinafter referred to as the <strong>"Agreement"</strong>) constitutes a binding legal contract between you (the <strong>"Licensee"</strong>) and <strong>Infinite Galleria</strong> (the <strong>"Licensor"</strong>). By purchasing, downloading, or using any digital assets (the "Content") from this platform, you acknowledge that you have read, understood, and agreed to be bound by the terms set forth herein.</p>
 
-        <h2>1. License Tiers & Deliverables</h2>
-        <p>The usage rights and file specifications depend strictly on the license tier purchased.</p>
-
-        <div class="license-tiers">
-            <div class="tier-box">
-                <h4>Option A: Standard License</h4>
-                <p><em>Ideal for personal use and mockups.</em></p>
-                <ul>
-                    <li><strong>Permitted:</strong> Personal portfolio use, student presentations, wallpapers, non-commercial social media.</li>
-                    <li><strong>Prohibited:</strong> Commercial projects, reselling, or client work.</li>
-                </ul>
-                <div class="tech-specs">
-                    &bull; File Format: Single JPG<br>
-                    &bull; Resolution: 3K (High Res)
-                </div>
-            </div>
-
-            <div class="tier-box">
-                <h4>Option B: Exclusive License</h4>
-                <p><em>Required for professional business use.</em></p>
-                <ul>
-                    <li><strong>Permitted:</strong> All Standard rights plus: Commercial client projects, marketing, printing, and architectural visualizations.</li>
-                    <li><strong>Includes:</strong> Commercial Rights Transfer.</li>
-                </ul>
-                <div class="tech-specs">
-                    &bull; File Formats: Multi-Pack (TIFF, PNG, JPG)<br>
-                    &bull; Resolution: 8K (Ultra-High / Print Ready)
-                </div>
-            </div>
-        </div>
-
-        <h2>2. General Restrictions</h2>
-        <p>Regardless of the license tier purchased, the following actions are strictly prohibited:</p>
+        <h2>1. Definitions</h2>
+        <p>For the purposes of this Agreement:</p>
         <ul>
-            <li><strong>Resale:</strong> You may not resell, sublicense, or redistribute the source files as standalone stock assets.</li>
-            <li><strong>AI Training:</strong> You may not use the assets to train Artificial Intelligence (AI) models.</li>
-            <li><strong>False Authorship:</strong> You may not claim to be the original creator of the work.</li>
+            <li><strong>"Content"</strong> refers to any digital image, artwork, or media file available for purchase on Infinite Galleria.</li>
+            <li><strong>"Commercial Use"</strong> means the use of Content for any purpose that is intended to generate revenue, including advertising, marketing, packaging, and client deliverables.</li>
+            <li><strong>"Personal Use"</strong> means non-commercial use for display on personal computers, private collections, or educational purposes.</li>
         </ul>
 
-        <h2>3. Intellectual Property</h2>
-        <p>All digital assets remain the sole property of Infinite Galleria (Eymen Bulut ALCIKAYA). Buying a license grants you the "Right to Use," not the ownership of the copyright.</p>
+        <h2>2. Grant of License Rights</h2>
+        <p>The Licensor grants the Licensee a non-exclusive (unless stated otherwise), non-transferable, worldwide right to use the Content subject to the specific License Tier purchased as detailed below:</p>
 
-        <div class="footer-note">
-            <p>For custom enterprise licensing or buyout inquiries, please contact: <strong>infinitegalleria.art@gmail.com</strong></p>
+        <table class="tier-table">
+            <thead>
+                <tr>
+                    <th>License Tier</th>
+                    <th>Permitted Usage & Rights</th>
+                    <th>File Specifications</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>A. STANDARD ($49)</strong></td>
+                    <td>
+                        • <strong>Personal Use Only.</strong><br>
+                        • Permitted: Portfolio display, wallpapers, personal social media.<br>
+                        • <strong>Prohibited:</strong> Any commercial activity, client work, resale, or printing for sale.
+                    </td>
+                    <td>
+                        • Format: Single JPG<br>
+                        • Resolution: 3K (Standard)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>B. COMMERCIAL ($199)</strong></td>
+                    <td>
+                        • <strong>Business & Professional Use.</strong><br>
+                        • Permitted: Advertising campaigns, architectural presentations, client deliverables, physical printing.<br>
+                        • <strong>Ownership:</strong> Copyright remains with Infinite Galleria.
+                    </td>
+                    <td>
+                        • Format: Multi-Pack (TIFF, PNG, JPG)<br>
+                        • Resolution: 8K (Ultra-High)
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>C. EXCLUSIVE ($499)</strong></td>
+                    <td>
+                        • <strong>Full Buyout & Transfer.</strong><br>
+                        • Permitted: Unlimited reproduction, resale, and trademarking.<br>
+                        • <strong>Ownership:</strong> Full Copyright Transfer to Licensee.
+                    </td>
+                    <td>
+                        • Includes all Commercial Files (8K Master Bundle)<br>
+                        • <strong>Store Action:</strong> Product is permanently removed.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Exclusive Ownership & Retroactive Rights</h2>
+        <div class="clause-box">
+            <h3>3.1 Market Freeze</h3>
+            <p>Upon purchase of the <strong>Exclusive Ownership</strong> tier, Infinite Galleria agrees to immediately cease all sales and distribution of the specific Content. The Content will be removed from the public storefront.</p>
+
+            <h3>3.2 Validity of Prior Licenses</h3>
+            <p><strong>IMPORTANT:</strong> The purchase of Exclusive Ownership does not invalidate or terminate any Standard or Commercial licenses granted to other Licensees <em>prior</em> to the date of the Exclusive purchase. These prior licenses shall remain valid and active in perpetuity (Non-Retroactive Clause). You are purchasing the future exclusivity of the work.</p>
         </div>
 
-        <a href="index.html" class="back-btn">Accept & Return</a>
+        <h2>4. Restrictions</h2>
+        <p>Except as expressly permitted by the purchased License Tier, the following restrictions apply to all Content:</p>
+        <ul>
+            <li><strong>No AI Training:</strong> The Licensee shall not use the Content for the training of artificial intelligence (AI) systems, machine learning models, or generative algorithms.</li>
+            <li><strong>No Unlawful Use:</strong> The Content may not be used in connection with any pornographic, defamatory, or otherwise unlawful material.</li>
+            <li><strong>No Standalone Resale:</strong> Unless the Exclusive Ownership tier is purchased, the Licensee may not resell, redistribute, or sublicense the Content file itself as a standalone stock asset.</li>
+        </ul>
+
+        <h2>5. Intellectual Property & Warranties</h2>
+        <p><strong>5.1 Ownership:</strong> Infinite Galleria retains all rights, title, and interest in and to the Content (including copyright), except where the Exclusive Ownership tier is explicitly purchased.</p>
+        <p><strong>5.2 Warranty:</strong> The Licensor warrants that the Content is original and does not infringe upon the copyright, trademark, or other intellectual property rights of any third party.</p>
+        <p><strong>5.3 Indemnification:</strong> The Licensee agrees to indemnify and hold harmless Infinite Galleria against any claims, damages, or expenses arising from the Licensee's use of the Content in violation of this Agreement.</p>
+
+        <h2>6. Termination</h2>
+        <p>This Agreement is effective until terminated. Infinite Galleria reserves the right to terminate this Agreement immediately if the Licensee fails to comply with any provision herein. Upon termination, the Licensee must cease all use of the Content and destroy all copies.</p>
+
+        <h2>7. Governing Law</h2>
+        <p>This Agreement shall be governed by and construed in accordance with international digital commerce laws and the laws of the jurisdiction in which Infinite Galleria is registered. Any disputes arising from this Agreement shall be resolved through binding arbitration.</p>
+
+        <br>
+        <p style="text-align: center; opacity: 0.6; font-size: 0.8em;">Electronic Signature: By completing the checkout process, you acknowledge that you have read and agreed to these terms.</p>
+
+        <a href="index.html" class="back-btn">I Agree & Return to Gallery</a>
     </div>
 
 </body>
