@@ -428,6 +428,52 @@ article.thumb a:hover img {
         font-family: 'Inter', sans-serif !important;
         font-weight: 800 !important; /* Buton yazısı tok dursun */
     }
+		/* --- MOBİL FOOTER DÜZELTMESİ (JİLET GİBİ YAPAR) --- */
+    @media screen and (max-width: 980px) {
+        
+        /* 1. Footer'ın genel yapısını serbest bırak */
+        #footer {
+            display: block !important;
+            position: relative !important; 
+            width: 100% !important;
+            height: auto !important;
+            padding: 40px 20px !important;
+            background-color: #d4cbba !important;
+        }
+
+        /* 2. İçerikleri (Form ve Yazılar) alt alta diz */
+        #footer .inner.split {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 40px !important;
+        }
+
+        #footer .inner.split > div {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        /* 3. O sağda sıkışan Copyright yazısını düzelt */
+        #footer .copyright {
+            color: #222 !important;
+            text-align: center !important;
+            margin-top: 30px !important;
+            font-size: 0.8em !important;
+            opacity: 0.7;
+            position: relative !important;
+            width: 100% !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+
+        /* 4. Linklerin (License Terms vb.) altını çizili ve belirgin yap */
+        #footer .copyright a {
+            color: #222 !important;
+            text-decoration: underline !important;
+            border-bottom: none !important;
+        }
+    }
 </style>
 	</head>
 	<body class="is-preload">
@@ -648,6 +694,7 @@ function goToCheckout(event, productId) {
 }
 </script>
 	</body>
+
 
 
 
