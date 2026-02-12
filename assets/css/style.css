@@ -7,7 +7,7 @@ body.is-preload:before { display: none !important; }
 
 /* 2. Header ve Footer */
 #header, #footer {
-    background-color: #d4cbba !important;
+    background-color: #c89666 !important; /* YENİ RENK */
     background-image: none !important;
     color: #222222 !important;
 }
@@ -21,7 +21,7 @@ body.is-preload:before { display: none !important; }
 }
 
 #header:before, #header:after, #footer:before, #footer:after {
-    background: #d4cbba !important;
+    background: #c89666 !important; /* YENİ RENK */
     background-image: none !important;
     box-shadow: none !important;
 }
