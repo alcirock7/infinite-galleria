@@ -1,299 +1,209 @@
-/* --- INFINITE GALLERIA STYLES --- */
+/* --- INFINITE GALLERIA - FULL MASTER CODE (FIXED) --- */
 
-/* 1. Temel Ayarlar */
+/* 1. TEMEL AYARLAR & SIFIRLAMA */
 #main:before { display: none !important; }
 #main { padding-top: 0 !important; padding-bottom: 100px !important; }
 body.is-preload:before { display: none !important; }
 
-/* 2. Header ve Footer - ŞAMPANYA CAMI (PREMIUM WARM GLASS) */
-#header, #footer {
-    /* Hafif sıcak/kum tonu, %80 opaklık */
-    background-color: rgba(225, 215, 200, 0.8) !important;
-    
-    /* Arkadaki resmi güçlüce buzla */
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    
-    /* Kenarlara "kesilmiş cam" efekti veren ince beyaz parlama */
-    border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
-    
-    /* Yazılar KOYU GRİ olsun ki okunsun */
-    color: #1a1a1a !important;
-    
-    /* Hafif gölge */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05) !important;
+/* 2. HEADER & FOOTER (MEKANİK DÜZELTME) */
+/* Alt Menü Barı */
+#header {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 50 !important; /* Düşük sayı: Panel bunun üstüne çıkacak */
+    
+    /* GÖRÜNÜM: Şampanya Camı */
+    background-color: rgba(225, 215, 200, 0.9) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05) !important;
 }
 
-#header {
-    width: 100% !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    position: fixed !important;
-    z-index: 1000;
+/* Açılan Panel (About/Contact) */
+#footer {
+    z-index: 99999 !important; /* En yüksek sayı: Her şeyin üstünde */
+    background-color: rgba(225, 215, 200, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    /* Panelin header altında ezilmesini engeller */
 }
 
 /* Eski tema kalıntılarını temizle */
 #header:before, #header:after, #footer:before, #footer:after {
-    display: none !important; 
+    display: none !important; 
 }
 
-/* Tüm yazı, link ve ikonları KOYU renk yap */
-#header *, #footer *, #footer .copyright, #footer a, #header a {
-    color: #1a1a1a !important;
-    border-color: #1a1a1a !important;
-    text-shadow: none !important;
+/* Yazı ve İkon Renkleri (Okunabilirlik) */
+#header *, #footer *, #footer .copyright, #footer a, #header a, h2, h3, p, label, strong {
+    color: #1a1a1a !important;
+    border-color: #1a1a1a !important;
+    text-shadow: none !important;
+}
+#header img, #footer img { filter: none !important; }
+
+/* 3. BUTON DÜZELTME (Siyah Kutu ve Kalın Çerçeve İptali) */
+#header nav ul li a, 
+#header a.button, 
+#footer a.button,
+button, 
+.button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background-color: transparent !important; /* Arkası şeffaf */
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px #1a1a1a !important; /* Sadece incecik bir çerçeve */
+    color: #1a1a1a !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Logo olduğu gibi kalsın */
-#header img, #footer img { 
-    filter: none !important; 
+/* Butonun üzerine gelince */
+#header nav ul li a:hover, 
+#header a.button:hover,
+#footer a.button:hover {
+    background-color: #1a1a1a !important; /* Siyah dolgu */
+    color: #e1d7c8 !important; /* Kum rengi yazı */
+    box-shadow: none !important;
 }
 
-/* Butonların üzerine gelince renk değişimi */
-#footer a.button.alt:hover, #header a.button.alt:hover {
-    background-color: #1a1a1a !important;
-    color: #e1d7c8 !important; /* Yazı rengi kum rengine dönsün */
-    box-shadow: none !important;
-}
-/* 3. Modal Wrapper (Zoom) */
+
+/* 4. MODAL WRAPPER (Zoom Effect) */
 .modal-wrapper {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(18, 18, 18, 0.98);
-    z-index: 10002;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(18, 18, 18, 0.98);
+    z-index: 100000 !important; /* Panelden bile üstte */
 }
 .modal-flex-container { display: flex; width: 100%; height: 100%; }
 .modal-image-view {
-    flex: 7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
 }
 .modal-image-view img {
-    max-width: 95%;
-    max-height: 90vh;
-    object-fit: contain;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
 }
 .modal-details-bar {
-    flex: 3;
-    background: #e8e4da;
-    padding: 60px 40px;
-    color: #222;
-    overflow-y: auto;
-    border-left: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
+    flex: 3;
+    background: #e8e4da;
+    padding: 60px 40px;
+    color: #222;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
 }
 .close-modal {
-    position: absolute;
-    top: 25px; right: 35px;
-    font-size: 32px; color: #fff;
-    cursor: pointer; z-index: 10003;
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 32px; color: #fff;
+    cursor: pointer; z-index: 100003;
 }
 .modal-details-bar h3, .modal-details-bar p, .modal-details-bar strong { color: #000000 !important; }
 
-/* 4. Main Grid */
+/* Modal Geçiş Animasyonu */
+#gallery-modal {
+    display: none; 
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%; height: 100dvh;
+}
+#gallery-modal.open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 5. MAIN GRID (Resimler ve Yeşil Çizgi Temizliği) */
 #main {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 article.thumb {
-    position: relative !important;
-    width: 100% !important;
-    padding-bottom: 100% !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    animation: galleriaFadeIn 0.8s ease-out forwards;
-    opacity: 0;
+    position: relative !important;
+    width: 100% !important;
+    padding-bottom: 100% !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    animation: galleriaFadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    /* Yeşil Çizgi Silici */
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 article.thumb a, article.thumb a img {
-    position: absolute !important;
-    top: 0; left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
+    /* Yeşil Çizgi Silici V2 */
+    border: none !important;
+    outline: none !important;
 }
+article.thumb a:focus { outline: none !important; }
 article.thumb a:hover img { transform: scale(1.05); }
 
-/* 5. Mobil ve Tablet Ayarları */
+/* 6. MOBİL VE TABLET AYARLARI */
 @media screen and (max-width: 980px) {
-    .modal-flex-container { flex-direction: column !important; overflow-y: auto !important; height: 100vh !important; -webkit-overflow-scrolling: touch; }
-    .modal-image-view { flex: none !important; width: 100% !important; height: auto !important; min-height: 50vh; }
-    .modal-details-bar { flex: none !important; width: 100% !important; height: auto !important; padding: 40px 25px !important; overflow-y: visible !important; }
-    #main { grid-template-columns: repeat(1, 1fr) !important; }
+    .modal-flex-container { flex-direction: column !important; overflow-y: auto !important; height: 100vh !important; }
+    .modal-image-view { flex: none !important; width: 100% !important; height: auto !important; min-height: 50vh; }
+    .modal-details-bar { flex: none !important; width: 100% !important; height: auto !important; padding: 40px 25px !important; overflow-y: visible !important; }
+    #main { grid-template-columns: repeat(1, 1fr) !important; }
 }
 
 @media screen and (max-width: 736px) {
-    #footer .inner.split { display: block !important; }
-    #footer .inner.split > div { width: 100% !important; margin-bottom: 40px; }
-    #footer { padding: 40px 20px !important; overflow-y: auto !important; }
-    #footer .inner { padding: 0 !important; }
-    #main { padding-bottom: 150px !important; }
-    #header h1 { font-size: 0.8em !important; }
+    #footer .inner.split { display: block !important; }
+    #footer .inner.split > div { width: 100% !important; margin-bottom: 40px; }
+    #footer { padding: 40px 20px !important; overflow-y: auto !important; }
+    #footer .inner { padding: 0 !important; }
+    #main { padding-bottom: 150px !important; }
+    #header h1 { font-size: 0.8em !important; }
 }
 
-/* 6. Package Selector Styles */
-.package-selector {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 25px;
-    width: 100%;
-}
-.package-option {
-    display: flex !important;
-    align-items: center;
-    padding: 20px;
-    border: 1.5px solid #1a1a1a;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    background: transparent;
-    text-decoration: none !important;
-}
+/* 7. PACKAGE SELECTOR STYLES */
+.package-selector { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; width: 100%; }
+.package-option { display: flex !important; align-items: center; padding: 20px; border: 1.5px solid #1a1a1a; cursor: pointer; transition: all 0.3s ease; position: relative; background: transparent; text-decoration: none !important; }
 .package-option input[type="radio"] { appearance: none; -webkit-appearance: none; display: none; }
-.checkmark {
-    height: 22px; width: 22px;
-    background-color: transparent;
-    border: 1.5px solid #1a1a1a;
-    border-radius: 50%;
-    margin-right: 15px;
-    position: relative;
-    flex-shrink: 0;
-    display: inline-block;
-}
-.package-option input[type="radio"]:checked ~ .checkmark::after {
-    content: "";
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: #1a1a1a;
-}
-.package-option:has(input[type="radio"]:checked) {
-    background: rgba(26, 26, 26, 0.05);
-    border-width: 2px;
-    border-color: #000;
-}
-.package-details {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-.package-title {
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 1em;
-    color: #1a1a1a;
-    display: block;
-}
-.package-desc {
-    font-size: 0.8em;
-    opacity: 0.8;
-    margin-top: 5px;
-    color: #1a1a1a;
-    display: block;
-}
-.package-price {
-    font-weight: 800;
-    font-size: 1.2em;
-    margin-left: auto;
-    padding-left: 15px;
-    color: #1a1a1a;
-}
+.checkmark { height: 22px; width: 22px; background-color: transparent; border: 1.5px solid #1a1a1a; border-radius: 50%; margin-right: 15px; position: relative; flex-shrink: 0; display: inline-block; }
+.package-option input[type="radio"]:checked ~ .checkmark::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: #1a1a1a; }
+.package-option:has(input[type="radio"]:checked) { background: rgba(26, 26, 26, 0.05); border-width: 2px; border-color: #000; }
+.package-details { flex-grow: 1; display: flex; flex-direction: column; text-align: left; }
+.package-title { font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-size: 1em; color: #1a1a1a; display: block; }
+.package-desc { font-size: 0.8em; opacity: 0.8; margin-top: 5px; color: #1a1a1a; display: block; }
+.package-price { font-weight: 800; font-size: 1.2em; margin-left: auto; padding-left: 15px; color: #1a1a1a; }
 
-/* 7. Checkout Button */
-.checkout-btn {
-    padding: 0 !important;
-    width: 100% !important;
-    height: 60px !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background-color: #1a1a1a !important;
-    color: #d4cbba !important;
-    margin-top: 20px !important;
-    border: none !important;
-    outline: none !important;
-    font-weight: 800 !important;
-    font-size: 1.1em !important;
-    letter-spacing: 2px !important;
-    text-transform: uppercase !important;
-    text-decoration: none !important;
-    line-height: 1 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-}
-.checkout-btn:hover {
-    background-color: #333 !important;
-    transform: translateY(-2px);
-}
+/* 8. CHECKOUT BUTTON */
+.checkout-btn { padding: 0 !important; width: 100% !important; height: 60px !important; display: flex !important; justify-content: center !important; align-items: center !important; background-color: #1a1a1a !important; color: #d4cbba !important; margin-top: 20px !important; border: none !important; outline: none !important; font-weight: 800 !important; font-size: 1.1em !important; letter-spacing: 2px !important; text-transform: uppercase !important; text-decoration: none !important; line-height: 1 !important; cursor: pointer !important; transition: all 0.3s ease !important; }
+.checkout-btn:hover { background-color: #333 !important; transform: translateY(-2px); }
 
-/* 8. Typography */
+/* 9. TYPOGRAPHY */
 h1, h2, h3, h4, strong, b, .package-title { font-family: 'Playfair Display', serif !important; letter-spacing: 1px !important; }
 body, p, li, span, a, button, input, .package-desc, .package-price { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
 #header h1, #header h1 a, #header h1 strong { font-family: 'Playfair Display', serif !important; font-weight: 700 !important; text-transform: none !important; }
 .checkout-btn, button { font-family: 'Inter', sans-serif !important; font-weight: 800 !important; }
 
-/* 9. PANSUMAN: Gereksiz Close Yazısını Gizle */
-#footer .closer,
-.poptrox-closer,
-div[class*="closer"] {
-    display: none !important;
-}
-#sidebar-panel:not(.active) .close-btn {
-    display: none !important;
-}
-
-/* --- MODAL GEÇİŞ EFEKTİ (STABLE TRANSITION) --- */
-
-#gallery-modal {
-    /* Başlangıç (Kapalı) Durumu */
-    display: none; /* JS ile block yapılacak */
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    
-    /* Mobil Kaydırma Sorunu İçin Sabitleme */
-    height: 100%; /* vh yerine % kullan */
-    height: 100dvh; /* Varsa dinamik mobil yüksekliği kullan */
-}
-
-/* Modal Açıkken Eklenecek Sınıf */
-#gallery-modal.open {
-    opacity: 1;
-    transform: scale(1);
-}
-
-#main-modal-img {
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-    transition: transform 0.5s;
-}
-/* --- PANSUMAN V2: İnatçı Yeşil Çizgileri (Border/Outline) Kaldır --- */
-#main article.thumb, 
-#main article.thumb a, 
-#main article.thumb img {
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-    background: transparent !important; /* Arka plandan sızan renk varsa onu da keser */
-}
-
-/* Linklere odaklanınca çıkan tarayıcı çizgisini de sil */
-#main article.thumb a:focus,
-#main article.thumb a:active {
-    outline: none !important;
-}
+/* 10. GİZLEME (Pansumanlar) */
+#footer .closer, .poptrox-closer, div[class*="closer"], #sidebar-panel:not(.active) .close-btn { display: none !important; }
