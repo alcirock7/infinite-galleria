@@ -5,16 +5,23 @@
 #main { padding-top: 0 !important; padding-bottom: 100px !important; }
 body.is-preload:before { display: none !important; }
 
-/* 2. Header ve Footer - BUZLU CAM (GLASSMORPHISM) */
+/* 2. Header ve Footer - AÇIK BUZLU CAM (FROSTED WHITE) */
 #header, #footer {
-    /* Yarı saydam siyah zemin */
-    background-color: rgba(20, 20, 20, 0.85) !important;
-    /* Arkadaki resmi buzla */
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    /* Altına incecik lüks bir çizgi çek */
-    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    color: #e8e4da !important; /* Yazıları açık renk yap */
+    /* Beyaz ama arkası hafif görünsün (%85 opaklık) */
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    
+    /* Arkadaki resmi buzla (Blur efekti) */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    
+    /* Altına çok ince, zarif bir çizgi çek */
+    border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+    
+    /* Yazıları SİYAH yap ki beyazın üstünde okunsun */
+    color: #1a1a1a !important;
+    
+    /* Çok hafif bir gölge ver, havada duruyor gibi olsun */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
 }
 
 #header {
@@ -24,33 +31,28 @@ body.is-preload:before { display: none !important; }
     position: fixed !important;
     z-index: 1000;
     /* Üst menü için alt çizgi */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
     border-top: none !important;
 }
 
-/* Kalan kısımları temizle */
+/* Eski tema kalıntılarını temizle */
 #header:before, #header:after, #footer:before, #footer:after {
     display: none !important; 
 }
 
-/* Yazı ve ikon renklerini açık yap */
+/* Tüm yazı, link ve ikonları SİYAH'a zorla */
 #header *, #footer *, #footer .copyright, #footer a, #header a {
-    color: #e8e4da !important;
-    border-color: #e8e4da !important;
+    color: #1a1a1a !important;
+    border-color: #1a1a1a !important;
+    text-shadow: none !important;
 }
 
-#header img, #footer img { filter: brightness(0.2) !important; }
-
-#footer a.button.alt, #header a.button.alt {
-    background-color: transparent !important;
-    box-shadow: inset 0 0 0 2px #222222 !important;
-    color: #222222 !important;
+/* Logonun rengiyle oynama, doğal hali kalsın */
+#header img, #footer img { 
+    filter: none !important; 
 }
 
-#footer a.button.alt:hover, #header a.button.alt:hover {
-    background-color: #222222 !important;
-    color: #d4cbba !important;
-}
+/* Butonların üzerine gelince renk
 
 /* 3. Modal Wrapper (Zoom) */
 .modal-wrapper {
