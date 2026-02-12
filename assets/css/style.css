@@ -1,1 +1,247 @@
+/* --- INFINITE GALLERIA STYLES --- */
 
+/* 1. Temel Ayarlar */
+#main:before { display: none !important; }
+#main { padding-top: 0 !important; padding-bottom: 100px !important; }
+body.is-preload:before { display: none !important; }
+
+/* 2. Header ve Footer */
+#header, #footer {
+    background-color: #d4cbba !important;
+    background-image: none !important;
+    color: #222222 !important;
+}
+
+#header {
+    width: 100% !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    position: fixed !important;
+    z-index: 1000;
+}
+
+#header:before, #header:after, #footer:before, #footer:after {
+    background: #d4cbba !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+#header *, #footer *, #footer .copyright, #footer a, #header a {
+    color: #222222 !important;
+    border-color: #222222 !important;
+}
+
+#header img, #footer img { filter: brightness(0.2) !important; }
+
+#footer a.button.alt, #header a.button.alt {
+    background-color: transparent !important;
+    box-shadow: inset 0 0 0 2px #222222 !important;
+    color: #222222 !important;
+}
+
+#footer a.button.alt:hover, #header a.button.alt:hover {
+    background-color: #222222 !important;
+    color: #d4cbba !important;
+}
+
+/* 3. Modal Wrapper (Zoom) */
+.modal-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(18, 18, 18, 0.98);
+    z-index: 10002;
+}
+.modal-flex-container { display: flex; width: 100%; height: 100%; }
+.modal-image-view {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.modal-image-view img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+.modal-details-bar {
+    flex: 3;
+    background: #e8e4da;
+    padding: 60px 40px;
+    color: #222;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+.close-modal {
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 32px; color: #fff;
+    cursor: pointer; z-index: 10003;
+}
+.modal-details-bar h3, .modal-details-bar p, .modal-details-bar strong { color: #000000 !important; }
+
+/* 4. Main Grid */
+#main {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+article.thumb {
+    position: relative !important;
+    width: 100% !important;
+    padding-bottom: 100% !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    animation: galleriaFadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+article.thumb a, article.thumb a img {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
+}
+article.thumb a:hover img { transform: scale(1.05); }
+
+/* 5. Mobil ve Tablet Ayarları */
+@media screen and (max-width: 980px) {
+    .modal-flex-container { flex-direction: column !important; overflow-y: auto !important; height: 100vh !important; -webkit-overflow-scrolling: touch; }
+    .modal-image-view { flex: none !important; width: 100% !important; height: auto !important; min-height: 50vh; }
+    .modal-details-bar { flex: none !important; width: 100% !important; height: auto !important; padding: 40px 25px !important; overflow-y: visible !important; }
+    #main { grid-template-columns: repeat(1, 1fr) !important; }
+}
+
+@media screen and (max-width: 736px) {
+    #footer .inner.split { display: block !important; }
+    #footer .inner.split > div { width: 100% !important; margin-bottom: 40px; }
+    #footer { padding: 40px 20px !important; overflow-y: auto !important; }
+    #footer .inner { padding: 0 !important; }
+    #main { padding-bottom: 150px !important; }
+    #header h1 { font-size: 0.8em !important; }
+}
+
+/* 6. Package Selector Styles */
+.package-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+.package-option {
+    display: flex !important;
+    align-items: center;
+    padding: 20px;
+    border: 1.5px solid #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+    text-decoration: none !important;
+}
+.package-option input[type="radio"] { appearance: none; -webkit-appearance: none; display: none; }
+.checkmark {
+    height: 22px; width: 22px;
+    background-color: transparent;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 50%;
+    margin-right: 15px;
+    position: relative;
+    flex-shrink: 0;
+    display: inline-block;
+}
+.package-option input[type="radio"]:checked ~ .checkmark::after {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #1a1a1a;
+}
+.package-option:has(input[type="radio"]:checked) {
+    background: rgba(26, 26, 26, 0.05);
+    border-width: 2px;
+    border-color: #000;
+}
+.package-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.package-title {
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #1a1a1a;
+    display: block;
+}
+.package-desc {
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin-top: 5px;
+    color: #1a1a1a;
+    display: block;
+}
+.package-price {
+    font-weight: 800;
+    font-size: 1.2em;
+    margin-left: auto;
+    padding-left: 15px;
+    color: #1a1a1a;
+}
+
+/* 7. Checkout Button */
+.checkout-btn {
+    padding: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #1a1a1a !important;
+    color: #d4cbba !important;
+    margin-top: 20px !important;
+    border: none !important;
+    outline: none !important;
+    font-weight: 800 !important;
+    font-size: 1.1em !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+.checkout-btn:hover {
+    background-color: #333 !important;
+    transform: translateY(-2px);
+}
+
+/* 8. Typography */
+h1, h2, h3, h4, strong, b, .package-title { font-family: 'Playfair Display', serif !important; letter-spacing: 1px !important; }
+body, p, li, span, a, button, input, .package-desc, .package-price { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
+#header h1, #header h1 a, #header h1 strong { font-family: 'Playfair Display', serif !important; font-weight: 700 !important; text-transform: none !important; }
+.checkout-btn, button { font-family: 'Inter', sans-serif !important; font-weight: 800 !important; }
+
+/* 9. PANSUMAN: Gereksiz Close Yazısını Gizle */
+#footer .closer,
+.poptrox-closer,
+div[class*="closer"] {
+    display: none !important;
+}
+#sidebar-panel:not(.active) .close-btn {
+    display: none !important;
+}
