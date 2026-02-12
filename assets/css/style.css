@@ -5,12 +5,16 @@
 #main { padding-top: 0 !important; padding-bottom: 100px !important; }
 body.is-preload:before { display: none !important; }
 
-/* 2. Header ve Footer - METALİK GRADIENT */
+/* 2. Header ve Footer - BUZLU CAM (GLASSMORPHISM) */
 #header, #footer {
-    /* Soldan sağa koyu bakırdan açık altına doğru geçiş */
-    background: linear-gradient(135deg, #c89666 0%, #e1b382 100%) !important;
-    color: #1a1a1a !important; /* Yazılar koyu kalsın ki okunsun */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important; /* Hafif gölge ekle */
+    /* Yarı saydam siyah zemin */
+    background-color: rgba(20, 20, 20, 0.85) !important;
+    /* Arkadaki resmi buzla */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    /* Altına incecik lüks bir çizgi çek */
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e8e4da !important; /* Yazıları açık renk yap */
 }
 
 #header {
@@ -19,17 +23,20 @@ body.is-preload:before { display: none !important; }
     bottom: 0 !important;
     position: fixed !important;
     z-index: 1000;
+    /* Üst menü için alt çizgi */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-top: none !important;
 }
 
+/* Kalan kısımları temizle */
 #header:before, #header:after, #footer:before, #footer:after {
-    /* Gradienti burada da devam ettir */
-    background: linear-gradient(135deg, #c89666 0%, #e1b382 100%) !important;
-    box-shadow: none !important;
+    display: none !important; 
 }
 
+/* Yazı ve ikon renklerini açık yap */
 #header *, #footer *, #footer .copyright, #footer a, #header a {
-    color: #222222 !important;
-    border-color: #222222 !important;
+    color: #e8e4da !important;
+    border-color: #e8e4da !important;
 }
 
 #header img, #footer img { filter: brightness(0.2) !important; }
