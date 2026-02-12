@@ -245,3 +245,28 @@ div[class*="closer"] {
 #sidebar-panel:not(.active) .close-btn {
     display: none !important;
 }
+/* --- MODAL AÇILIŞ EFEKTİ (ZOOM + FADE) --- */
+
+/* Animasyonun Tanımı: %95 boyuttan %100'e büyürken görünür ol */
+@keyframes zoomAcil {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.95); /* Hafif küçük başla */
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); /* Tam boyuta gel */
+    }
+}
+
+/* Animasyonu Modala Bağla */
+#gallery-modal {
+    /* 0.4 saniyede, yumuşak bir yaylanma ile açıl */
+    animation: zoomAcil 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Resim açıldığında resmin kendisi de hafifçe parlasın */
+#main-modal-img {
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Daha derin gölge */
+    transition: transform 0.3s;
+}
