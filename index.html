@@ -250,6 +250,17 @@
 		body, p, li, span, a, button, input, .package-desc, .package-price { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
 		#header h1, #header h1 a, #header h1 strong { font-family: 'Playfair Display', serif !important; font-weight: 700 !important; text-transform: none !important; }
 		.checkout-btn, button { font-family: 'Inter', sans-serif !important; font-weight: 800 !important; }
+		/* --- PANSUMAN: GEREKSİZ CLOSE YAZISINI GİZLE --- */
+        #footer .closer, 
+        .poptrox-closer,
+        div[class*="closer"] { 
+            display: none !important; 
+        }
+
+        /* Sidebar kapalıyken onun butonu da garanti gizlensin */
+        #sidebar-panel:not(.active) .close-btn { 
+            display: none !important; 
+        }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -528,6 +539,7 @@
 		</script>
 	</body>
 </html>
+
 
 
 
