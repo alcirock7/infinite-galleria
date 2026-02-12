@@ -262,7 +262,7 @@ div[class*="closer"] {
 /* Animasyonu Modala Bağla */
 #gallery-modal {
     /* 0.4 saniyede, yumuşak bir yaylanma ile açıl */
-    animation: zoomAcil 2.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation: zoomAcil 2.0s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 /* Resim açıldığında resmin kendisi de hafifçe parlasın */
