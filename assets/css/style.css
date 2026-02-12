@@ -5,11 +5,12 @@
 #main { padding-top: 0 !important; padding-bottom: 100px !important; }
 body.is-preload:before { display: none !important; }
 
-/* 2. Header ve Footer */
+/* 2. Header ve Footer - METALİK GRADIENT */
 #header, #footer {
-    background-color: #c89666 !important; /* YENİ RENK */
-    background-image: none !important;
-    color: #222222 !important;
+    /* Soldan sağa koyu bakırdan açık altına doğru geçiş */
+    background: linear-gradient(135deg, #c89666 0%, #e1b382 100%) !important;
+    color: #1a1a1a !important; /* Yazılar koyu kalsın ki okunsun */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important; /* Hafif gölge ekle */
 }
 
 #header {
@@ -21,8 +22,8 @@ body.is-preload:before { display: none !important; }
 }
 
 #header:before, #header:after, #footer:before, #footer:after {
-    background: #c89666 !important; /* YENİ RENK */
-    background-image: none !important;
+    /* Gradienti burada da devam ettir */
+    background: linear-gradient(135deg, #c89666 0%, #e1b382 100%) !important;
     box-shadow: none !important;
 }
 
