@@ -270,9 +270,18 @@ div[class*="closer"] {
     box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     transition: transform 0.5s;
 }
-/* --- PANSUMAN: Yeşil Çizgileri (Border) Kaldır --- */
-article.thumb {
-    border: none !important;
+/* --- PANSUMAN V2: İnatçı Yeşil Çizgileri (Border/Outline) Kaldır --- */
+#main article.thumb, 
+#main article.thumb a, 
+#main article.thumb img {
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important; /* Arka plandan sızan renk varsa onu da keser */
+}
+
+/* Linklere odaklanınca çıkan tarayıcı çizgisini de sil */
+#main article.thumb a:focus,
+#main article.thumb a:active {
     outline: none !important;
-    box-shadow: none !important; /* Eğer gölge varsa onu da siler */
 }
