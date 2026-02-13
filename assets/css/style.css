@@ -207,3 +207,31 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
 
 /* 10. GİZLEME (Pansumanlar) */
 #footer .closer, .poptrox-closer, div[class*="closer"], #sidebar-panel:not(.active) .close-btn { display: none !important; }
+/* --- 11. HAMBURGER MENÜ (3 ÇİZGİ) STİLİ --- */
+
+/* O 3 Çizgili İkonun Kendisi */
+#header nav ul li a.fa-bars {
+    border: none !important;      /* Çerçeveyi/Kutuyu tamamen kaldır */
+    box-shadow: none !important;  /* İnce çizgiyi de kaldır */
+    font-size: 1.6rem !important; /* İkonu biraz büyüt, ele gelsin */
+    width: 45px !important;       /* Tıklama alanı geniş olsun */
+    height: 45px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    color: #1a1a1a !important;    /* İlk başta siyah olsun */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Yaylanarak dönsün */
+}
+
+/* Üzerine Gelince (Hover) Efekti */
+#header nav ul li a.fa-bars:hover {
+    transform: rotate(90deg);     /* 90 derece döndür */
+    color: #c89666 !important;    /* Senin bakır rengine dönsün */
+    background: transparent !important; /* Arka plan hala şeffaf kalsın */
+}
+
+/* "Menu" yazısını gizle (Sadece ikon görünsün) */
+#header nav ul li a .label {
+    display: none !important;
+}
