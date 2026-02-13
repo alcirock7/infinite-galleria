@@ -235,3 +235,47 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
 #header nav ul li a .label {
     display: none !important;
 }
+/* --- PREMIUM MENÜ DÜZENİ --- */
+#footer .inner {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important; /* Biri tepeye, biri dibe */
+    height: 100% !important;
+    padding: 60px 40px !important;
+}
+
+/* Series Linkleri */
+.collection-link {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 3rem !important; /* Yazılar kocaman olsun */
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+    border: none !important;
+    display: flex; align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Hover olunca bakır rengi */
+.collection-link:hover {
+    color: #c89666 !important;
+    padding-left: 15px; /* Sağa kayma efekti */
+}
+
+.collection-link .arrow {
+    opacity: 0; 
+    margin-left: -20px; 
+    transition: all 0.3s ease;
+    font-size: 2rem;
+}
+.collection-link:hover .arrow { opacity: 1; margin-left: 20px; }
+
+/* Alt Kısım (About/Follow) */
+.menu-bottom {
+    display: flex !important;
+    gap: 60px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 30px;
+}
+.menu-bottom h3 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #1a1a1a; }
+.menu-bottom p, .menu-bottom a { color: #555 !important; font-size: 0.9rem; border:none; }
