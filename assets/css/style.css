@@ -294,3 +294,7 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
 }
 .menu-bottom h3 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #1a1a1a; }
 .menu-bottom p, .menu-bottom a { color: #555 !important; font-size: 0.9rem; border:none; }
+/* Panelin içindeki üst kısıma biraz nefes payı ver */
+.menu-collections {
+    margin-top: 80px !important; /* Üstten boşluk bırak ki ferah dursun */
+}
