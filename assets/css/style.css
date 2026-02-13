@@ -24,13 +24,28 @@ body.is-preload:before { display: none !important; }
 }
 
 /* Açılan Panel (About/Contact) */
+/* Açılan Panel (About/Contact) - TAM EKRAN DÜZELTMESİ */
 #footer {
-    z-index: 99999 !important; /* En yüksek sayı: Her şeyin üstünde */
-    background-color: rgba(225, 215, 200, 0.98) !important;
-    backdrop-filter: blur(20px) !important;
+    z-index: 99999 !important; /* Her şeyin en tepesinde */
+    
+    /* KONUM VE BOYUT: Ekranı tamamen kapla */
     position: fixed !important;
-    bottom: 0 !important;
-    /* Panelin header altında ezilmesini engeller */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;      /* Ekranın boyu kadar ol */
+    min-height: 100% !important;   /* Garantiye al */
+    margin: 0 !important;
+    
+    /* GÖRÜNÜM */
+    background-color: rgba(225, 215, 200, 0.98) !important; /* Bej rengi koru */
+    backdrop-filter: blur(20px) !important;
+    
+    /* İçeriğin taşması durumunda scroll çıksın */
+    overflow-y: auto !important; 
+    
+    /* Yumuşak Geçiş (Slide effect iptal, direkt Fade/Overlay olsun daha stabil) */
+    transition: opacity 0.3s ease !important;
 }
 
 /* Eski tema kalıntılarını temizle */
