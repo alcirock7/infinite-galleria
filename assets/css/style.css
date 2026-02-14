@@ -1,194 +1,230 @@
-/* --- INFINITE GALLERIA - MASTER STYLE (FINAL FIX) --- */
-
-/* 1. TEMEL AYARLAR & SIFIRLAMA */
 #main:before { display: none !important; }
 #main { padding-top: 0 !important; padding-bottom: 100px !important; }
 body.is-preload:before { display: none !important; }
 
-/* 2. BULANIKLIK ENGELLEYİCİ (BLUR KILLER) - KRİTİK */
-/* Menü açılınca sitenin bulanıklaşmasını engeller */
-body.is-menu-visible #wrapper,
-body.is-modal-visible #wrapper,
-#footer:target ~ #wrapper,
-#wrapper.blur {
-    filter: none !important;
-    -webkit-filter: none !important;
-    opacity: 1 !important;
-    transition: none !important;
-    pointer-events: auto !important;
-}
+/* 2. HEADER & FOOTER (MEKANİK DÜZELTME) */
+/* Alt Menü Barı */
 
-/* 3. HEADER (ALT MENÜ BARI) */
 #header {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
     height: auto !important;
-    z-index: 50 !important;
+    z-index: 50 !important; /* Düşük sayı: Panel bunun üstüne çıkacak */
+
+    /* GÖRÜNÜM: Şampanya Camı */
     background-color: rgba(225, 215, 200, 0.9) !important;
-    backdrop-filter: blur(15px) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
+@@ -23,246 +35,88 @@ body.is-preload:before { display: none !important; }
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05) !important;
 }
 
-/* 4. FOOTER (ALTTAN AÇILAN PANEL - BOTTOM SHEET) */
+/* Açılan Panel (About/Contact) */
+/* Açılan Panel (About/Contact) - TAM EKRAN DÜZELTMESİ */
 #footer {
-    /* KONUM: Alttan başla */
+    z-index: 99999 !important; /* Her şeyin en tepesinde */
+    
+    /* KONUM VE BOYUT: Ekranı tamamen kapla */
     position: fixed !important;
-    bottom: 0 !important;
+    top: 0 !important;
     left: 0 !important;
-    top: auto !important; /* Temanın 'top:0' ayarını iptal et */
-    
-    /* BOYUT: Başlangıçta KAPALI (Yükseklik 0) */
+
+
+
     width: 100% !important;
-    height: 0 !important; 
-    
+    height: 100vh !important;      /* Ekranın boyu kadar ol */
+    min-height: 100% !important;   /* Garantiye al */
+    margin: 0 !important;
+
     /* GÖRÜNÜM */
-    background-color: rgba(225, 215, 200, 0.98) !important;
+    background-color: rgba(225, 215, 200, 0.98) !important; /* Bej rengi koru */
     backdrop-filter: blur(20px) !important;
-    z-index: 99999 !important;
-    
-    /* İÇERİK GİZLEME */
-    overflow: hidden !important; 
-    
-    /* ANİMASYON: Alttan yukarı uzama */
-    transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
-    
-    /* Temanın varsayılanlarını ez */
-    opacity: 1 !important;
-    pointer-events: none;
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.2) !important;
+
+
+    /* İçeriğin taşması durumunda scroll çıksın */
+    overflow-y: auto !important; 
+
+    /* Yumuşak Geçiş (Slide effect iptal, direkt Fade/Overlay olsun daha stabil) */
+    transition: opacity 0.3s ease !important;
+
+
 }
 
-/* PANEL AÇILINCA (TARGET veya ACTIVE OLUNCA) */
-#footer:target,
-#footer.active {
-    height: 60vh !important; /* MASAÜSTÜNDE %60 AÇIL */
-    pointer-events: auto !important;
-    border-top: 1px solid #fff;
+/* Eski tema kalıntılarını temizle */
+#header:before, #header:after, #footer:before, #footer:after {
+    display: none !important; 
+
 }
 
-/* 5. ÇIKIŞ BUTONU (CLOSE BUTTON) - EKSİK OLAN BU! */
-.close-menu-btn {
-    position: absolute !important;
-    top: 30px !important;
-    right: 40px !important;
-    z-index: 100000 !important;
-    
-    /* Buton Görünümü */
-    display: inline-block !important;
-    padding: 10px 25px !important;
-    border: 1.5px solid #1a1a1a !important;
-    border-radius: 50px !important;
-    
-    /* Yazı Stili */
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 0.85rem !important;
+/* Yazı ve İkon Renkleri (Okunabilirlik) */
+#header *, #footer *, #footer .copyright, #footer a, #header a, h2, h3, p, label, strong {
+
+
     color: #1a1a1a !important;
-    cursor: pointer !important;
-    background: transparent !important;
-    transition: all 0.3s ease !important;
+    border-color: #1a1a1a !important;
+    text-shadow: none !important;
+
 }
-
-.close-menu-btn:hover {
-    background-color: #1a1a1a !important;
-    color: #e1d7c8 !important;
-    transform: rotate(90deg);
-}
-
-/* 6. MENÜ İÇERİK DÜZENİ */
-#footer .inner {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    height: 100% !important;
-    padding: 80px 40px 40px 40px !important;
-}
-
-.menu-collections { margin-top: 20px !important; }
-
-.menu-headline {
-    font-size: 0.9rem !important;
-    letter-spacing: 3px !important;
-    color: #666 !important;
-    text-transform: uppercase !important;
-    border: none !important;
-}
-
-/* Koleksiyon Linkleri */
-.collection-link {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 3rem !important;
-    font-weight: 700 !important;
-    color: #1a1a1a !important;
-    text-decoration: none !important;
-    border: none !important;
-    display: flex; align-items: center;
-    transition: all 0.3s ease;
-}
-.collection-link:hover { color: #c89666 !important; padding-left: 15px; }
-.collection-link .arrow { opacity: 0; margin-left: -20px; transition: all 0.3s ease; font-size: 2rem; color: #c89666 !important; }
-.collection-link:hover .arrow { opacity: 1; margin-left: 20px; }
-
-/* Alt Kısım */
-.menu-bottom {
-    display: flex !important;
-    gap: 60px;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    padding-top: 30px;
-}
-.menu-bottom h3 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #1a1a1a !important; }
-.menu-bottom p, .menu-bottom a { color: #555 !important; font-size: 0.9rem; border:none !important; }
-
-/* 7. HAMBURGER İKONU */
-#header nav ul li a.fa-bars {
-    border: none !important;
-    box-shadow: none !important;
-    font-size: 1.6rem !important;
-    width: 45px !important;
-    height: 45px !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    background: transparent !important;
-    color: #1a1a1a !important;
-    transition: all 0.4s ease !important;
-}
-#header nav ul li a.fa-bars:hover { transform: rotate(90deg); color: #c89666 !important; }
-#header nav ul li a .label { display: none !important; }
-
-/* 8. TEMİZLİKLER (Butonlar, Grid vs.) */
-#header:before, #header:after, #footer:before, #footer:after { display: none !important; }
-#header *, #footer *, h2, h3, p, label, strong { text-shadow: none !important; }
 #header img, #footer img { filter: none !important; }
 
-button, .button, input[type="submit"] {
-    background-color: transparent !important;
-    box-shadow: inset 0 0 0 1px #1a1a1a !important;
+/* 3. BUTON DÜZELTME (Siyah Kutu ve Kalın Çerçeve İptali) */
+#header nav ul li a, 
+#header a.button, 
+#footer a.button,
+button, 
+.button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    background-color: transparent !important; /* Arkası şeffaf */
+    background-image: none !important;
+    box-shadow: inset 0 0 0 1px #1a1a1a !important; /* Sadece incecik bir çerçeve */
+
+
     color: #1a1a1a !important;
+
     border: none !important;
     border-radius: 4px !important;
     font-weight: 600 !important;
+    transition: all 0.3s ease !important;
 }
-.checkout-btn { background-color: #1a1a1a !important; color: #d4cbba !important; box-shadow: none !important; }
 
-#main { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 0 !important; }
-article.thumb { border: none !important; outline: none !important; width: 100% !important; padding-bottom: 100% !important; height: 0 !important; }
-article.thumb a, article.thumb img { position: absolute !important; width: 100% !important; height: 100% !important; object-fit: cover !important; }
 
-/* MOBİL AYARLARI */
+
+
+/* Butonun üzerine gelince */
+#header nav ul li a:hover, 
+#header a.button:hover,
+#footer a.button:hover {
+    background-color: #1a1a1a !important; /* Siyah dolgu */
+    color: #e1d7c8 !important; /* Kum rengi yazı */
+    box-shadow: none !important;
+}
+
+
+
+
+/* 4. MODAL WRAPPER (Zoom Effect) */
+.modal-wrapper {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(18, 18, 18, 0.98);
+    z-index: 100000 !important; /* Panelden bile üstte */
+}
+.modal-flex-container { display: flex; width: 100%; height: 100%; }
+.modal-image-view {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.modal-image-view img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+.modal-details-bar {
+    flex: 3;
+    background: #e8e4da;
+    padding: 60px 40px;
+    color: #222;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+.close-modal {
+    position: absolute;
+    top: 25px; right: 35px;
+    font-size: 32px; color: #fff;
+    cursor: pointer; z-index: 100003;
+}
+.modal-details-bar h3, .modal-details-bar p, .modal-details-bar strong { color: #000000 !important; }
+
+
+/* Modal Geçiş Animasyonu */
+#gallery-modal {
+    display: none; 
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%; height: 100dvh;
+}
+#gallery-modal.open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 5. MAIN GRID (Resimler ve Yeşil Çizgi Temizliği) */
+#main {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+article.thumb {
+    position: relative !important;
+    width: 100% !important;
+    padding-bottom: 100% !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    animation: galleriaFadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    /* Yeşil Çizgi Silici */
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+article.thumb a, article.thumb a img {
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1) !important;
+    /* Yeşil Çizgi Silici V2 */
+    border: none !important;
+    outline: none !important;
+
+}
+article.thumb a:focus { outline: none !important; }
+article.thumb a:hover img { transform: scale(1.05); }
+
+/* 6. MOBİL VE TABLET AYARLARI */
+
+
+
+
 @media screen and (max-width: 980px) {
+    .modal-flex-container { flex-direction: column !important; overflow-y: auto !important; height: 100vh !important; }
+    .modal-image-view { flex: none !important; width: 100% !important; height: auto !important; min-height: 50vh; }
+    .modal-details-bar { flex: none !important; width: 100% !important; height: auto !important; padding: 40px 25px !important; overflow-y: visible !important; }
     #main { grid-template-columns: repeat(1, 1fr) !important; }
-    .collection-link { font-size: 2rem !important; }
-    .menu-bottom { flex-direction: column; gap: 30px; }
-    .close-menu-btn { top: 20px !important; right: 20px !important; padding: 8px 20px !important; }
-    
-    /* Mobilde Panel %85 açılsın (Daha fazla yer lazım) */
-    #footer:target, #footer.active { height: 85vh !important; }
+
+
+
+
+
+
 }
 
-/* Package Selector */
+@media screen and (max-width: 736px) {
+    #footer .inner.split { display: block !important; }
+    #footer .inner.split > div { width: 100% !important; margin-bottom: 40px; }
+    #footer { padding: 40px 20px !important; overflow-y: auto !important; }
+    #footer .inner { padding: 0 !important; }
+    #main { padding-bottom: 150px !important; }
+    #header h1 { font-size: 0.8em !important; }
+}
+
+/* 7. PACKAGE SELECTOR STYLES */
 .package-selector { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; width: 100%; }
 .package-option { display: flex !important; align-items: center; padding: 20px; border: 1.5px solid #1a1a1a; cursor: pointer; transition: all 0.3s ease; position: relative; background: transparent; text-decoration: none !important; }
 .package-option input[type="radio"] { appearance: none; -webkit-appearance: none; display: none; }
@@ -200,17 +236,92 @@ article.thumb a, article.thumb img { position: absolute !important; width: 100% 
 .package-desc { font-size: 0.8em; opacity: 0.8; margin-top: 5px; color: #1a1a1a; display: block; }
 .package-price { font-weight: 800; font-size: 1.2em; margin-left: auto; padding-left: 15px; color: #1a1a1a; }
 
-/* Font Ayarları */
+/* 8. CHECKOUT BUTTON */
+.checkout-btn { padding: 0 !important; width: 100% !important; height: 60px !important; display: flex !important; justify-content: center !important; align-items: center !important; background-color: #1a1a1a !important; color: #d4cbba !important; margin-top: 20px !important; border: none !important; outline: none !important; font-weight: 800 !important; font-size: 1.1em !important; letter-spacing: 2px !important; text-transform: uppercase !important; text-decoration: none !important; line-height: 1 !important; cursor: pointer !important; transition: all 0.3s ease !important; }
+.checkout-btn:hover { background-color: #333 !important; transform: translateY(-2px); }
+
+/* 9. TYPOGRAPHY */
 h1, h2, h3, h4, strong, b, .package-title { font-family: 'Playfair Display', serif !important; letter-spacing: 1px !important; }
 body, p, li, span, a, button, input, .package-desc, .package-price { font-family: 'Inter', sans-serif !important; font-weight: 400 !important; }
 #header h1, #header h1 a, #header h1 strong { font-family: 'Playfair Display', serif !important; font-weight: 700 !important; text-transform: none !important; }
+.checkout-btn, button { font-family: 'Inter', sans-serif !important; font-weight: 800 !important; }
 
-/* GİZLEME (Pansumanlar) */
+/* 10. GİZLEME (Pansumanlar) */
 #footer .closer, .poptrox-closer, div[class*="closer"], #sidebar-panel:not(.active) .close-btn { display: none !important; }
+/* --- 11. HAMBURGER MENÜ (3 ÇİZGİ) STİLİ --- */
 
+/* O 3 Çizgili İkonun Kendisi */
+#header nav ul li a.fa-bars {
+    border: none !important;      /* Çerçeveyi/Kutuyu tamamen kaldır */
+    box-shadow: none !important;  /* İnce çizgiyi de kaldır */
+    font-size: 1.6rem !important; /* İkonu biraz büyüt, ele gelsin */
+    width: 45px !important;       /* Tıklama alanı geniş olsun */
+    height: 45px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    color: #1a1a1a !important;    /* İlk başta siyah olsun */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Yaylanarak dönsün */
+}
 
+/* Üzerine Gelince (Hover) Efekti */
+#header nav ul li a.fa-bars:hover {
+    transform: rotate(90deg);     /* 90 derece döndür */
+    color: #c89666 !important;    /* Senin bakır rengine dönsün */
+    background: transparent !important; /* Arka plan hala şeffaf kalsın */
+}
 
+/* "Menu" yazısını gizle (Sadece ikon görünsün) */
+#header nav ul li a .label {
+    display: none !important;
+}
+/* --- PREMIUM MENÜ DÜZENİ --- */
+#footer .inner {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important; /* Biri tepeye, biri dibe */
+    height: 100% !important;
+    padding: 60px 40px !important;
+}
 
+/* Series Linkleri */
+.collection-link {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 3rem !important; /* Yazılar kocaman olsun */
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+@@ -271,30 +125,78 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
+    transition: all 0.3s ease;
+}
+
+/* Hover olunca bakır rengi */
+.collection-link:hover {
+    color: #c89666 !important;
+    padding-left: 15px; /* Sağa kayma efekti */
+}
+
+.collection-link .arrow {
+    opacity: 0; 
+    margin-left: -20px; 
+    transition: all 0.3s ease;
+    font-size: 2rem;
+}
+.collection-link:hover .arrow { opacity: 1; margin-left: 20px; }
+
+/* Alt Kısım (About/Follow) */
+.menu-bottom {
+    display: flex !important;
+    gap: 60px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 30px;
+}
+.menu-bottom h3 { font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; color: #1a1a1a; }
+.menu-bottom p, .menu-bottom a { color: #555 !important; font-size: 0.9rem; border:none; }
+/* Panelin içindeki üst kısıma biraz nefes payı ver */
+.menu-collections {
+    margin-top: 80px !important; /* Üstten boşluk bırak ki ferah dursun */
 
 
 
