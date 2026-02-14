@@ -354,7 +354,56 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
     color: #e1d7c8 !important; /* İçi siyah, yazısı bej olsun */
     transform: rotate(0deg) !important; /* Dönmeyi iptal ettim, sabit dursun */
 }
+/* --- ÇIKIŞ BUTONU (ID İLE ZORLAMA - FORCE FIX) --- */
+#force-close-btn {
+    /* KONUM: Sağ Üst */
+    position: absolute !important;
+    top: 40px !important;
+    right: 40px !important;
+    z-index: 1000000 !important;
 
+    /* GÖRÜNÜM: Buton Şekli */
+    display: flex !important;           /* Kutu gibi davran */
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 12px 30px !important;      /* İç boşluk */
+    
+    /* KENARLIK ve RENK */
+    border: 2px solid #1a1a1a !important; /* Kalın çerçeve */
+    border-radius: 50px !important;       /* Oval kenarlar */
+    background-color: transparent !important;
+    
+    /* YAZI TİPİ */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 2px !important;
+    color: #1a1a1a !important;
+    
+    /* ETKİLEŞİM */
+    cursor: pointer !important;          /* El işareti çıksın */
+    pointer-events: auto !important;     /* Tıklamayı garantiye al */
+    transition: all 0.3s ease !important;
+}
+
+/* ÜZERİNE GELİNCE (HOVER) */
+#force-close-btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e1d7c8 !important;           /* Yazı rengi değişsin */
+    transform: translateY(-2px);         /* Hafif zıplasın */
+}
+
+/* MOBİL AYARI */
+@media screen and (max-width: 768px) {
+    #force-close-btn {
+        top: 25px !important;
+        right: 25px !important;
+        padding: 8px 20px !important;
+        font-size: 0.7rem !important;
+    }
+}
 
 
 
