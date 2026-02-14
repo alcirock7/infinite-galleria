@@ -1395,13 +1395,6 @@ input, select, textarea {
 				background: rgba(36, 38, 41, 0.8);
 			}
 
-		body.modal-active #wrapper {
-			-moz-filter: blur(8px);
-			-webkit-filter: blur(8px);
-			-ms-filter: blur(8px);
-			filter: blur(8px);
-		}
-
 			body.modal-active #wrapper:after {
 				pointer-events: auto;
 				opacity: 1;
@@ -1681,13 +1674,6 @@ input, select, textarea {
 			body.ie #main:after {
 				background: rgba(36, 38, 41, 0.55);
 			}
-
-		body.content-active #main {
-			-moz-filter: blur(6px);
-			-webkit-filter: blur(6px);
-			-ms-filter: blur(6px);
-			filter: blur(6px);
-		}
 
 			body.content-active #main:after {
 				pointer-events: auto;
@@ -2065,3 +2051,4 @@ input, select, textarea {
 #footer .icons a {
     color: #222222 !important;
 }
+
