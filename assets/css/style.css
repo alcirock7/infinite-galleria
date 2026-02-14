@@ -21,34 +21,43 @@ body.is-preload:before { display: none !important; }
 
 /* Açılan Panel (About/Contact) */
 /* Açılan Panel (About/Contact) - TAM EKRAN DÜZELTMESİ */
+/* --- YENİ FOOTER (HAYALET BUTON YOK EDİCİ) --- */
 #footer {
-    z-index: 99999 !important; /* Her şeyin en tepesinde */
-    
-    /* KONUM VE BOYUT: Ekranı tamamen kapla */
+    /* KONUM: En altta olsun */
     position: fixed !important;
-    top: 0 !important;
+    bottom: 0 !important;
     left: 0 !important;
-
-
-
+    top: auto !important; /* Yukarı yapışmasını engelle */
+    
+    /* BOYUT: Kapalıyken SIFIR (İşte sır bu) */
     width: 100% !important;
-    height: 100vh !important;      /* Ekranın boyu kadar ol */
-    min-height: 100% !important;   /* Garantiye al */
-    margin: 0 !important;
-
+    height: 0 !important; 
+    
     /* GÖRÜNÜM */
-    background-color: rgba(225, 215, 200, 0.98) !important; /* Bej rengi koru */
-
-
-    /* İçeriğin taşması durumunda scroll çıksın */
-    overflow-y: auto !important; 
-
-    /* Yumuşak Geçiş (Slide effect iptal, direkt Fade/Overlay olsun daha stabil) */
-    transition: opacity 0.3s ease !important;
-
-
+    background-color: rgba(225, 215, 200, 0.98) !important;
+    z-index: 99999 !important;
+    
+    /* GİZLEME: Taşan her şeyi (butonu) sakla */
+    overflow: hidden !important; 
+    
+    /* ANİMASYON */
+    transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.2) !important;
 }
 
+/* MENÜ AÇILINCA (Active olunca) */
+#footer.active, 
+#footer:target {
+    height: 60vh !important; /* Yarıya kadar açıl */
+    overflow-y: auto !important;
+}
+
+/* Mobilde biraz daha uzun olsun */
+@media screen and (max-width: 768px) {
+    #footer.active, #footer:target {
+        height: 85vh !important;
+    }
+}
 /* Eski tema kalıntılarını temizle */
 #header:before, #header:after, #footer:before, #footer:after {
     display: none !important; 
