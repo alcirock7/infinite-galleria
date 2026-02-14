@@ -246,7 +246,7 @@
 		<script src="assets/js/script.js"></script> <div id="sidebar-panel">
 
 
-			<span class="close-btn" onclick="closeSidebar()">✕ CLOSE</span>
+			<span id="force-close-btn" onclick="document.getElementById('footer').classList.remove('active'); window.location.hash='';">✕ CLOSE</span>
 			<div id="sidebar-content"></div>
 		</div>
 
@@ -264,6 +264,7 @@
 
 	</body>
 </html>
+
 
 
 
