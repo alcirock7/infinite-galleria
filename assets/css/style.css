@@ -402,6 +402,19 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
         padding: 8px 20px !important;
         font-size: 0.7rem !important;
     }
+/* --- BULANIKLIK İPTAL (ANTI-BLUR) --- */
+body.is-menu-visible #wrapper,
+body.is-modal-visible #wrapper,
+#wrapper.blur,
+#header,
+#footer,
+.modal-wrapper {
+    -webkit-filter: none !important;
+    filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important; /* Glitch yapan 3D efektini de kapatır */
+    transition: none !important; /* Takılmayı önler */
 }
 
 
