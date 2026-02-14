@@ -264,9 +264,39 @@
 				</div>
 			</div>
 		</div>
+<style>
+    /* 1. Tüm sözde elementleri (after/before perdelerini) yok et */
+    #wrapper:after, 
+    #wrapper:before, 
+    #main:after, 
+    #main:before,
+    body:after,
+    body:before,
+    body.is-menu-visible #wrapper:after,
+    body.is-menu-visible #main:after,
+    body.modal-active #wrapper:after {
+        content: none !important;     /* İçeriği boşalt */
+        display: none !important;     /* Görünümden kaldır */
+        opacity: 0 !important;        /* Görünmez yap */
+        background: transparent !important; /* Rengi sil */
+        width: 0 !important;
+        height: 0 !important;
+        pointer-events: none !important; /* Tıklamayı engelle */
+        z-index: -9999 !important;    /* En alta göm */
+        animation: none !important;   /* Animasyonu durdur */
+        transition: none !important;  /* Geçişi durdur */
+        backdrop-filter: none !important; /* Buzlanmayı sil */
+    }
 
+    /* 2. Wrapper'ın kendisine zorla şeffaflık ver */
+    #wrapper, #main {
+        background-color: transparent !important;
+        filter: none !important;
+    }
+</style>
 	</body>
 </html>
+
 
 
 
