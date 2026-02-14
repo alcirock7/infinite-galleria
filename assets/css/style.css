@@ -323,7 +323,37 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
 .menu-collections {
     margin-top: 80px !important; /* Üstten boşluk bırak ki ferah dursun */
 
+/* --- ÇIKIŞ BUTONU (NOKTA ATIŞI DÜZELTME) --- */
+.close-menu-btn {
+    /* Konumlandırma: Sağ üst köşeye sabitle */
+    position: absolute !important;
+    top: 40px !important;
+    right: 40px !important;
+    
+    /* Görünüm: Buton Havası Ver */
+    display: inline-block !important;
+    padding: 12px 30px !important;
+    border: 2px solid #1a1a1a !important; /* Kalın çerçeve */
+    border-radius: 50px !important;       /* Oval (Pill) Şekil */
+    background: transparent !important;
+    
+    /* Yazı Ayarları */
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+    color: #1a1a1a !important;
+    cursor: pointer !important;
+    z-index: 100005 !important;
+    transition: all 0.3s ease !important;
+}
 
+/* Üzerine gelince (Hover) */
+.close-menu-btn:hover {
+    background-color: #1a1a1a !important;
+    color: #e1d7c8 !important; /* İçi siyah, yazısı bej olsun */
+    transform: rotate(0deg) !important; /* Dönmeyi iptal ettim, sabit dursun */
+}
 
 
 
