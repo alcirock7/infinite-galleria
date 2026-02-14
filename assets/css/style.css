@@ -416,6 +416,25 @@ body.is-modal-visible #wrapper,
     transform: none !important; /* Glitch yapan 3D efektini de kapatır */
     transition: none !important; /* Takılmayı önler */
 }
+/* --- KARARTMA İPTAL (ANTI-DIMMING) --- */
+/* Menü açılınca arkaya atılan siyah perdeyi yok et */
+#wrapper:after, 
+#main:after, 
+body:after,
+body.is-menu-visible #wrapper:after,
+body.is-modal-visible #wrapper:after,
+body.is-menu-visible #main:after {
+    display: none !important;       /* Perdeyi kaldır */
+    background: transparent !important; /* Rengini sil */
+    opacity: 0 !important;          /* Görünmez yap */
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
 
+/* Wrapper'ın kendi rengi varsa onu da şeffaf yap */
+#wrapper {
+    background-color: transparent !important;
+}
 
 
