@@ -38,7 +38,6 @@ body.is-preload:before { display: none !important; }
 
     /* GÖRÜNÜM */
     background-color: rgba(225, 215, 200, 0.98) !important; /* Bej rengi koru */
-    backdrop-filter: blur(20px) !important;
 
 
     /* İçeriğin taşması durumunda scroll çıksın */
