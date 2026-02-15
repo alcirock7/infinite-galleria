@@ -407,8 +407,9 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
         top: 25px !important;
         right: 25px !important;
         padding: 8px 20px !important;
-        font-size: 0.7rem !important;
-    }
+      font-size: 0.7rem !important;
+    }
+} /* <--- BU EKSİK! Media query'yi kapatır. */
 /* --- BULANIKLIK İPTAL (ANTI-BLUR) --- */
 body.is-menu-visible #wrapper,
 body.is-modal-visible #wrapper,
