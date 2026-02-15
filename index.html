@@ -299,8 +299,63 @@
         filter: none !important;
     }
 </style>
+		<style>
+    /* 1. Barı Hizala (Flexbox) */
+    #header {
+        display: flex !important;
+        justify-content: space-between !important; /* Sağa ve sola yasla */
+        align-items: center !important;            /* DİKEYDE ORTALA */
+        flex-direction: row !important;            /* Yan yana diz */
+        
+        height: 70px !important;                   /* Yükseklik */
+        padding: 0 40px !important;                /* Kenar boşlukları */
+        
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 50 !important;
+        background-color: rgba(225, 215, 200, 0.98) !important;
+    }
+
+    /* 2. Logo Ayarı (Boşlukları Sıfırla) */
+    #header h1 {
+        position: static !important; /* Absolute belasını kaldır */
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        line-height: 1 !important;
+        top: auto !important;
+        left: auto !important;
+    }
+
+    /* 3. Menü (Sağ Taraf) Ayarı */
+    #header nav {
+        position: static !important; /* Absolute belasını kaldır */
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        right: auto !important;
+        top: auto !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* 4. Hamburger İkonunun Kendisi */
+    #header nav ul li a.fa-bars {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 50px !important;
+        width: 50px !important;
+        transform: none !important; /* Kaymayı engelle */
+    }
+</style>
 	</body>
 </html>
+
 
 
 
