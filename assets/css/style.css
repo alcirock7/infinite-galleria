@@ -526,3 +526,21 @@ body.is-menu-visible #main:after {
 #header nav ul li a.fa-bars:before {
     font-family: "FontAwesome" !important;
 }
+/* --- ADIM 1: KAYIP İKONU KURTARMA --- */
+#header nav ul li a.fa-bars {
+    text-decoration: none !important;
+    border: none !important;
+}
+
+/* İkonun Kendisini Zorla Tanımla */
+#header nav ul li a.fa-bars:before {
+    content: '\f0c9' !important;       /* 3 Çizgi'nin kodu */
+    font-family: 'FontAwesome' !important; /* Fontu zorla */
+    font-style: normal !important;
+    font-weight: 900 !important;       /* Kalınlık */
+    font-size: 1.5rem !important;      /* Boyut */
+    color: #1a1a1a !important;         /* Siyah Renk */
+    display: inline-block !important;
+    line-height: 1 !important;
+    visibility: visible !important;    /* Görünür yap */
+}
