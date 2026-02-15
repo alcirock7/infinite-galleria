@@ -474,3 +474,35 @@ body.is-menu-visible #main:after {
 #footer:target .close-menu-btn {
     display: inline-block !important; /* Menü açılınca ortaya çık */
 }
+/* --- KAYIP MENÜ VE LOGO KURTARMA TİMİ --- */
+
+/* 1. Footer KAPALIYKEN onu en arkaya gönder */
+#footer:not(.active) {
+    z-index: -1 !important;      /* Header'ın altına gir */
+    pointer-events: none !important; /* Tıklamayı engelle */
+    opacity: 0 !important;       /* Görünmez ol */
+}
+
+/* 2. Footer AÇIKKEN en öne gel */
+#footer.active {
+    z-index: 99999 !important;   /* Her şeyin üstüne çık */
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
+
+/* 3. Header içindeki öğeleri (Logo, Menü) ZORLA GÖSTER */
+#header h1, 
+#header nav, 
+#header .fa-bars,
+#header a {
+    position: relative !important;
+    z-index: 1000 !important;    /* Kendi içinde yüksek olsun */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;    /* Kaybolduysa geri getir */
+}
+
+/* 4. Hamburger İkonunun Fontunu Koru (Kare çıkmasın) */
+#header nav ul li a.fa-bars:before {
+    font-family: "FontAwesome" !important;
+}
