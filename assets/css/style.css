@@ -531,39 +531,41 @@ body.is-menu-visible #main:after {
     text-decoration: none !important;
     border: none !important;
 }
-/* --- HAMBURGER MENÜ İKONU (FONT YOK, RESİM VAR) --- */
+/* --- HAMBURGER MENÜ KURTARMA (FINAL) --- */
 
-/* 1. Önce o boş kareyi veya bozuk karakteri temizle */
+/* 1. Linkin KENDİSİNİ görünür bir kutu yap */
 #header nav ul li a.fa-bars {
-    color: transparent !important; /* Yazıyı görünmez yap */
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 50px !important;
-    height: 50px !important;
-    text-decoration: none !important;
-    border: none !important;
-}
-
-/* 2. Yerine SVG (Vektör) İkonu Koy */
-#header nav ul li a.fa-bars:before {
-    content: '' !important;
     display: block !important;
-    width: 24px !important;
-    height: 24px !important;
+    width: 50px !important;       /* Tıklama alanı genişliği */
+    height: 50px !important;      /* Tıklama alanı yüksekliği */
+    position: relative !important;
+    z-index: 10000 !important;    /* EN ÜSTE ÇIKAR (Senin tespitin) */
+    background-color: transparent !important;
     
-    /* 3 Çizgili Hamburger İkonu (SVG Kodu) */
+    /* SVG İKONU DİREKT BURAYA KOYUYORUZ (Before ile uğraşma) */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z' fill='%231a1a1a'/%3E%3C/svg%3E") !important;
     
     background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-size: contain !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    background-position: center center !important;
+    background-size: 24px auto !important; /* İkon boyutu */
+    
+    /* Eski kenarlıkları sil */
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
 }
 
-/* Üzerine Gelince Rengi Değişsin (İkonu Bakır Rengi Yapıyoruz) */
-#header nav ul li a.fa-bars:hover:before {
+/* 2. Eski Font/Kare Kalıntılarını SİL (Sorun çıkaran buydu) */
+#header nav ul li a.fa-bars:before,
+#header nav ul li a.fa-bars:after {
+    content: none !important;
+    display: none !important;
+}
+
+/* 3. Hover (Üzerine Gelince) Rengi Değişsin ve Dönsün */
+#header nav ul li a.fa-bars:hover {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z' fill='%23c89666'/%3E%3C/svg%3E") !important;
+    transform: rotate(90deg); /* Havalı bir dönüş efekti */
+    transition: transform 0.3s ease !important;
 }
