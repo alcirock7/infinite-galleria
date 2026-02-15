@@ -455,4 +455,18 @@ body.is-menu-visible #main:after {
 #footer.active .close-menu-btn {
     display: inline-block !important;
 }
+/* --- RESİM BAŞLIKLARINI BEYAZ YAPMA YAMASI --- */
+article.thumb h2,   /* Resim Başlığı (Örn: The Obsidian Monolith) */
+article.thumb p     /* Alt Yazı (Örn: Series 1) */
+{
+    color: #ffffff !important;  /* Rengi BEYAZ yap */
+    opacity: 1 !important;      /* Silikliği kaldır, tam parlasın */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7) !important; /* Okunması için arkasına hafif siyah gölge */
+    z-index: 10 !important;     /* Resmin üzerinde kalsın */
+    border: none !important;    /* Etrafında çizgi varsa kaldır */
+}
 
+/* Linklere de beyaz zorlaması (Garanti olsun) */
+article.thumb a {
+    color: #ffffff !important;
+}
