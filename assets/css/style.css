@@ -15,7 +15,6 @@ body.is-preload:before { display: none !important; }
 
     /* GÖRÜNÜM: Şampanya Camı */
     background-color: rgba(225, 215, 200, 0.9) !important;
-@@ -23,246 +35,88 @@ body.is-preload:before { display: none !important; }
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05) !important;
 }
 
