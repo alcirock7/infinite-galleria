@@ -439,3 +439,38 @@ body.is-menu-visible #main:after {
     width: 0 !important;
     height: 0 !important;
 }
+/* =========================================
+   FİNAL DÜZELTME YAMASI (TİTANYUM V3)
+   ========================================= */
+
+/* 1. RESİM BAŞLIKLARINI ZORLA BEYAZ YAP VE GÖSTER */
+#main article.thumb h2,
+#main article.thumb p,
+#main article.thumb span {
+    color: #ffffff !important;        /* BEMBEYAZ */
+    opacity: 1 !important;            /* GÖRÜNÜR */
+    visibility: visible !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important; /* Okunsun diye siyah gölge */
+    z-index: 100 !important;          /* En üstte */
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    border: none !important;
+}
+
+/* 2. CLOSE BUTONUNU "MENÜ KAPALIYKEN" ÖLDÜR */
+/* İster class olsun ister ID, hepsini hedefliyoruz */
+.close-menu-btn,
+#force-close-btn,
+#final-close-btn {
+    display: none !important; /* Başlangıçta KESİN GİZLE */
+}
+
+/* 3. SADECE MENÜ AÇIKKEN BUTONU GÖSTER */
+#footer.active .close-menu-btn,
+#footer.active #force-close-btn,
+#footer.active #final-close-btn,
+#footer:target .close-menu-btn {
+    display: inline-block !important; /* Menü açılınca ortaya çık */
+}
