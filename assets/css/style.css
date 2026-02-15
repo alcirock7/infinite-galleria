@@ -439,39 +439,3 @@ body.is-menu-visible #main:after {
     width: 0 !important;
     height: 0 !important;
 }
-
-/* Wrapper'ın kendi rengi varsa onu da şeffaf yap */
-#wrapper {
-    background-color: transparent !important;
-}
-/* --- CLOSE BUTONU GİZLEME AYARI --- */
-
-/* 1. Menü KAPALIYKEN butonu gizle (Hayalet yazıyı yok et) */
-#footer:not(.active) .close-menu-btn {
-    display: none !important;
-}
-
-/* 2. Menü AÇIKKEN butonu göster */
-#footer.active .close-menu-btn {
-    display: inline-block !important;
-}
-/* --- TİTANYUM BEYAZ YAMA (KESİN ÇÖZÜM) --- */
-
-/* 1. Tüm Başlık ve Yazıları Hedefle */
-#wrapper #main article.thumb h2, 
-#wrapper #main article.thumb h3, 
-#wrapper #main article.thumb p,
-#wrapper #main article.thumb span,
-#wrapper #main article.thumb a {
-    color: #ffffff !important;       /* Rengi zorla BEYAZ yap */
-    opacity: 1 !important;           /* Gizliyse GÖSTER */
-    text-shadow: 0 2px 5px rgba(0,0,0,0.9) !important; /* Okunması için SİYAH GÖLGE at */
-    border: none !important;         /* Kenarlık varsa sil */
-    z-index: 100 !important;         /* En üste taşı */
-}
-
-/* 2. Hover durumunda da beyaz kalsın */
-#wrapper #main article.thumb:hover h2,
-#wrapper #main article.thumb:hover p {
-    color: #ffffff !important;
-}
