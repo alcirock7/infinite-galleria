@@ -531,16 +531,39 @@ body.is-menu-visible #main:after {
     text-decoration: none !important;
     border: none !important;
 }
+/* --- HAMBURGER MENÜ İKONU (FONT YOK, RESİM VAR) --- */
 
-/* İkonun Kendisini Zorla Tanımla */
+/* 1. Önce o boş kareyi veya bozuk karakteri temizle */
+#header nav ul li a.fa-bars {
+    color: transparent !important; /* Yazıyı görünmez yap */
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 50px !important;
+    height: 50px !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+/* 2. Yerine SVG (Vektör) İkonu Koy */
 #header nav ul li a.fa-bars:before {
-    content: '\f0c9' !important;       /* 3 Çizgi'nin kodu */
-    font-family: 'FontAwesome' !important; /* Fontu zorla */
-    font-style: normal !important;
-    font-weight: 900 !important;       /* Kalınlık */
-    font-size: 1.5rem !important;      /* Boyut */
-    color: #1a1a1a !important;         /* Siyah Renk */
-    display: inline-block !important;
-    line-height: 1 !important;
-    visibility: visible !important;    /* Görünür yap */
+    content: '' !important;
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+    
+    /* 3 Çizgili Hamburger İkonu (SVG Kodu) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z' fill='%231a1a1a'/%3E%3C/svg%3E") !important;
+    
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Üzerine Gelince Rengi Değişsin (İkonu Bakır Rengi Yapıyoruz) */
+#header nav ul li a.fa-bars:hover:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z' fill='%23c89666'/%3E%3C/svg%3E") !important;
 }
