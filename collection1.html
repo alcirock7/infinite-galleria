@@ -176,7 +176,87 @@
 				</div>
 			</div>
 		</div>
+<style>
+    /* 1. Barın Kendisi (Kapsayıcı) */
+    #header {
+        display: flex !important;
+        justify-content: space-between !important; /* Sola ve sağa yasla */
+        align-items: center !important;            /* DİKEYDE ORTALA */
+        flex-direction: row !important;
+        
+        height: 80px !important;                   /* Bar Yüksekliği */
+        padding: 0 40px !important;                /* Kenar Boşlukları */
+        
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 50 !important;
+        background-color: rgba(225, 215, 200, 0.98) !important;
+    }
 
+    /* 2. Logo (Marka İsmi) - TEK TEK HİZALAMA */
+    #header h1 {
+        display: flex !important;       /* Kutu olsun */
+        align-items: center !important; /* İçindekini ortalasın */
+        height: 100% !important;        /* Bar boyunca uzasın */
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        top: auto !important; left: auto !important; /* Eski ayarları sil */
+    }
+
+    #header h1 a {
+        display: flex !important;       /* Link de kutu olsun */
+        align-items: center !important; /* Yazıyı ortalasın */
+        height: 100% !important;
+        line-height: 1 !important;      /* Satır boşluğunu sıkılaştır */
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        font-size: 1.2rem !important;   /* Yazı boyutu (İstersen büyüt) */
+    }
+
+    /* 3. Menü (Sağ Taraf) */
+    #header nav {
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        top: auto !important; right: auto !important;
+    }
+
+    #header nav ul {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        height: 100% !important;
+    }
+
+    #header nav ul li {
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 4. Hamburger İkonu */
+    #header nav ul li a.fa-bars {
+        display: flex !important;       /* Flex ile ortala */
+        align-items: center !important; /* Dikey */
+        justify-content: center !important; /* Yatay */
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 50px !important;
+        width: 50px !important;
+        line-height: 1 !important;
+        transform: none !important;     /* Kaymayı engelle */
+    }
+</style>
 	</body>
 </html>
 
