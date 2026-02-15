@@ -299,7 +299,6 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
     font-weight: 700 !important;
     color: #1a1a1a !important;
     text-decoration: none !important;
-@@ -271,30 +125,78 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
     transition: all 0.3s ease;
 }
 
