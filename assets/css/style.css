@@ -5,17 +5,37 @@ body.is-preload:before { display: none !important; }
 /* 2. HEADER & FOOTER (MEKANİK DÜZELTME) */
 /* Alt Menü Barı */
 
+/* --- HEADER HİZALAMA YAMASI (Flexbox Fix) --- */
 #header {
+    /* KONUM */
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    height: auto !important;
-    z-index: 50 !important; /* Düşük sayı: Panel bunun üstüne çıkacak */
+    height: 70px !important; /* Yüksekliği sabitledim, taşma yapmaz */
+    z-index: 50 !important;  /* Footer bunun üstüne çıkacak */
 
-    /* GÖRÜNÜM: Şampanya Camı */
-    background-color: rgba(225, 215, 200, 0.9) !important;
+    /* HİZALAMA SİHİRBAZI (İşte eksik olan buydu) */
+    display: flex !important;
+    justify-content: space-between !important; /* Biri sağa biri sola */
+    align-items: center !important;            /* Dikeyde ortala */
+    padding: 0 40px !important;                /* Kenarlardan boşluk bırak */
+
+    /* GÖRÜNÜM */
+    background-color: rgba(225, 215, 200, 0.95) !important;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05) !important;
+    border-top: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+/* Logoyu ve Menüyü Zorla Görünür Yap */
+#header h1, #header nav {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
 }
 
 /* Açılan Panel (About/Contact) */
