@@ -328,7 +328,7 @@ body, p, li, span, a, button, input, .package-desc, .package-price { font-family
 /* Panelin içindeki üst kısıma biraz nefes payı ver */
 .menu-collections {
     margin-top: 80px !important; /* Üstten boşluk bırak ki ferah dursun */
-
+}
 /* --- ÇIKIŞ BUTONU (NOKTA ATIŞI DÜZELTME) --- */
 .close-menu-btn {
     /* Konumlandırma: Sağ üst köşeye sabitle */
