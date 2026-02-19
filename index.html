@@ -416,7 +416,7 @@
         
         /* İŞTE FONT AYARI BURADA */
         font-family: 'HappyTime', serif !important; /* Yüklediğin font */
-        font-size: 1.4rem !important;               /* Yazı büyüklüğü (İstersen değiştir) */
+        font-size: 1.4rem !important;               /* Yazı büyüklüğü */
         font-weight: normal !important;             /* Zarif durması için normal kalınlık */
         text-transform: none !important;
         letter-spacing: 1px !important;
@@ -434,14 +434,23 @@
         position: relative !important;
     }
 
-    /* İkonun kendi kutusunu da ortala */
+    /* 5. İkonun kendi kutusunu ortala VE ANİMASYONU YAVAŞLAT */
     #header nav ul li a.fa-bars {
         justify-content: center !important;
         width: 50px !important;
+        /* Fareden çekince yumuşakça eski haline dönsün (0.5 saniye) */
+        transition: all 0.5s ease-in-out !important; 
+    }
+
+    /* 6. ÜZERİNE GELİNCE (HOVER) YUMUŞAK ANİMASYON */
+    #header nav ul li a.fa-bars:hover {
+        /* Fareyle üstüne gelince yumuşakça tepki versin (0.5 saniye) */
+        transition: all 0.5s ease-in-out !important;
     }
 </style>
 	</body>
 </html>
+
 
 
 
