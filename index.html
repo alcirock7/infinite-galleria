@@ -378,15 +378,22 @@
         line-height: 1 !important;
         transform: none !important;     /* Kaymayı engelle */
     }
-</style>
-		<style>
-    /* 1. Barın Kendisi (Daha ince ve Flexbox ile ortalı) */
+<style>
+    /* 1. SİTEYE YENİ FONTU TANIT (Senin yüklediğin dosya) */
+    @font-face {
+        font-family: 'HappyTime';
+        src: url('assets/webfonts/HappyTime.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* 2. Barın Kendisi (Daha ince ve Flexbox ile ortalı) */
     #header {
-        height: 60px !important;       /* BAR %15 DAHA İNCE OLDU */
+        height: 60px !important;
         display: flex !important;
-        justify-content: space-between !important; /* Biri sağa, biri sola */
-        align-items: center !important;            /* DİKEYDE TAM ORTALA */
-        padding: 0 40px !important;                /* Kenar boşlukları */
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 40px !important;
         position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
@@ -395,24 +402,31 @@
         background-color: rgba(225, 215, 200, 0.98) !important;
     }
 
-    /* 2. Marka İsmi (Logo) Kilit Hizalaması */
+    /* 3. Marka İsmi (Logo) Kilit Hizalaması ve YENİ FONT */
     #header h1, #header h1 a {
         display: flex !important;
-        align-items: center !important; /* Dikeyde ortala */
-        height: 100% !important;        /* Barın boyuna eşitle */
+        align-items: center !important;
+        height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
         line-height: 1 !important;
         top: auto !important;
         bottom: auto !important;
         position: relative !important;
+        
+        /* İŞTE FONT AYARI BURADA */
+        font-family: 'HappyTime', serif !important; /* Yüklediğin font */
+        font-size: 2.2rem !important;               /* Yazı büyüklüğü (İstersen değiştir) */
+        font-weight: normal !important;             /* Zarif durması için normal kalınlık */
+        text-transform: none !important;
+        letter-spacing: 1px !important;
     }
 
-    /* 3. Hamburger Menü İkonu Kilit Hizalaması */
+    /* 4. Hamburger Menü İkonu Kilit Hizalaması */
     #header nav, #header nav ul, #header nav ul li, #header nav ul li a.fa-bars {
         display: flex !important;
-        align-items: center !important; /* Dikeyde ortala */
-        height: 100% !important;        /* Barın boyuna eşitle */
+        align-items: center !important;
+        height: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
         top: auto !important;
@@ -428,6 +442,7 @@
 </style>
 	</body>
 </html>
+
 
 
 
