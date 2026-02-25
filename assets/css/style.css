@@ -712,3 +712,38 @@ body.is-menu-visible {
     margin-bottom: 1rem !important;
     color: #555 !important; /* Biraz daha silik bir renk */
 }
+/* --- CLOSE BUTONUNU SAĞ ÜSTE SABİTLE --- */
+
+/* CLOSE butonunun kendisi */
+#menu .close {
+    position: absolute !important; /* Menüye göre konumlandır */
+    top: 30px !important;          /* Yukarıdan 30px boşluk */
+    right: 30px !important;        /* Sağdan 30px boşluk */
+    z-index: 10001 !important;     /* Her şeyin en üstünde olsun */
+    
+    /* Butonun görsel ayarları (Zaten güzeldi, bozmayalım) */
+    display: inline-block !important;
+    border: 2px solid rgba(0,0,0,0.1) !important; /* İnce çerçeve */
+    border-radius: 30px !important;               /* Oval köşe */
+    padding: 0.5rem 1.5rem !important;            /* İç boşluk */
+    font-family: sans-serif !important;           /* Okunaklı düz font */
+    font-size: 0.8rem !important;
+    letter-spacing: 2px !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Üzerine gelince (Hover) çerçevesi belirginleşsin */
+#menu .close:hover {
+    border-color: #c89666 !important;
+    color: #c89666 !important;
+}
+
+/* Menü içeriğinin butona binmemesi için üstten boşluk bırak */
+#menu .inner {
+    padding-top: 100px !important; /* Butonun altından başlasın */
+    max-width: none !important;    /* Genişlik sınırlamasını kaldır */
+    width: 80% !important;         /* Ekranın %80'ini kaplasın */
+    margin: 0 auto !important;     /* Ortala */
+}
