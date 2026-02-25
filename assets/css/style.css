@@ -676,3 +676,12 @@ body.is-menu-visible #main:after {
     margin-top: 0 !important;      /* Yukarıdan ekstra itmeyi engelle */
     transform: none !important;    /* Kayma varsa düzelt (Hover hariç) */
 }
+/* --- MENÜ AÇIKKEN SAYFA KAYDIRMAYI ENGELLE --- */
+
+/* Menü görünür olduğunda (is-menu-visible sınıfı eklendiğinde) */
+body.is-menu-visible {
+    overflow: hidden !important; /* Sayfanın taşmasını ve kaydırılmasını engelle */
+    height: 100vh !important;    /* Yüksekliği ekran boyutuyla sınırla */
+    position: fixed !important;  /* Sayfayı olduğu yere sabitle */
+    width: 100% !important;      /* Genişliği koru */
+}
