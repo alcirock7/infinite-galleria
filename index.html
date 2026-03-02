@@ -531,9 +531,35 @@
         margin-bottom: 15px !important;
         font-size: 1rem !important;
     }
+	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
+    ul.legal-menu {
+        list-style: none !important; /* Başındaki noktaları siler */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    ul.legal-menu li {
+        margin: 8px 0 !important; /* Linkler arasındaki boşluk */
+        border: none !important;
+    }
+    
+    ul.legal-menu li a {
+        font-family: sans-serif !important;   /* Daha düz, resmi bir font */
+        font-size: 0.85rem !important;        /* Yazı boyutunu küçült */
+        color: #777 !important;               /* Ana yazılara göre biraz daha silik gri */
+        text-transform: uppercase !important; /* Hepsini BÜYÜK HARF yap */
+        letter-spacing: 1px !important;       /* Harf arası boşluk */
+        text-decoration: none !important;     /* Alt çizgiyi iptal et */
+        transition: color 0.3s ease !important;
+    }
+
+    ul.legal-menu li a:hover {
+        color: #c89666 !important; /* Fareyle üstüne gelince bakır rengi olsun */
+    }
 </style>
 	</body>
 </html>
+
 
 
 
