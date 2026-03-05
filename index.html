@@ -459,54 +459,7 @@
     /* 1. Menü açıldığında arkadaki sitenin kaymasını %100 durdur */
     body.is-menu-visible {
         overflow: hidden !important;
-    }
 
-    /* 2. Menünün kendisini ekrana kilitle ve kaydırmayı kapat */
-    #menu {
-        position: fixed !important;
-        top: 0 !important; left: 0 !important;
-        width: 100vw !important; height: 100vh !important;
-        overflow: hidden !important; /* Kaydırma çubuğunu yok et */
-        z-index: 10000 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    /* 3. Varsa içindeki gizli kapsayıcıyı da kilitle ve ortala */
-    #menu .inner {
-        position: relative !important;
-        width: 100% !important;
-        max-height: 100vh !important;
-        overflow: hidden !important; /* İç kaydırmayı yok et */
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 0 !important; margin: 0 !important;
-    }
-
-    /* 4. CLOSE BUTONU: İçerikten bağımsız direkt ekranın sağına çivile */
-    #menu .close, #menu a.close {
-        position: fixed !important; /* Absolute değil, Fixed! Ekrandan ayrılmaz */
-        top: 30px !important;
-        right: 40px !important;
-        z-index: 100000 !important; /* Her şeyin üstünde */
-        margin: 0 !important;
-        display: inline-block !important;
-    }
-
-    /* 5. Yazıları (Series 1, 2) küçült ve alt çizgilerini sil */
-    #menu ul {
-        list-style: none !important;
-        padding: 0 !important; margin: 0 !important;
-        text-align: center !important;
-    }
-
-    #menu ul li {
-        padding: 0 !important; margin: 10px 0 !important;
-        border: none !important; /* Çizgileri sildik */
     }
 .collection-link {
         font-family: 'HappyTime', serif !important;
@@ -516,14 +469,7 @@
         text-decoration: none !important;
         line-height: 1.2 !important;
     }
-    
-    /* 6. COLLECTIONS, ABOUT gibi başlıkların alt çizgisini sil ve küçült */
-    #menu h2, #menu h3 {
-        text-align: center !important;
-        border-bottom: none !important;
-        margin-bottom: 15px !important;
-        font-size: 0.9rem !important;
-    }
+ 
 	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
     ul.legal-menu {
         list-style: none !important; /* Başındaki noktaları siler */
@@ -552,6 +498,7 @@
 </style>
 	</body>
 </html>
+
 
 
 
