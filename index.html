@@ -495,9 +495,18 @@
     ul.legal-menu li a:hover {
         color: #c89666 !important; /* Fareyle üstüne gelince bakır rengi olsun */
     }
+	/* AÇILAN MENÜNÜN (FOOTER) KAYDIRMA ÇUBUĞUNU GÖZDEN KAYBEDER */
+    #footer::-webkit-scrollbar {
+        display: none !important; /* Chrome, Safari vb. için çubuğu yok et */
+    }
+    #footer {
+        -ms-overflow-style: none !important;  /* IE ve Edge için */
+        scrollbar-width: none !important;     /* Firefox için */
+    }
 </style>
 	</body>
 </html>
+
 
 
 
