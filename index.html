@@ -503,9 +503,16 @@
         -ms-overflow-style: none !important;  /* IE ve Edge için */
         scrollbar-width: none !important;     /* Firefox için */
     }
+	/* AÇILAN MENÜNÜN (FOOTER) KAYMA EYLEMİNİ KÖKTEN KİLİTLE */
+    #footer, #footer .inner {
+        height: 100vh !important;       /* Boyunu ekranın boyuna sabitle */
+        max-height: 100vh !important;   /* Ekranı asla aşamasın */
+        overflow: hidden !important;    /* KAYMAYI TAMAMEN DURDUR */
+    }
 </style>
 	</body>
 </html>
+
 
 
 
