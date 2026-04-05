@@ -188,85 +188,124 @@
 			</div>
 		</div>
 <style>
-    /* 1. Barın Kendisi (Kapsayıcı) */
+    /* ==========================================
+       1. SİYAH PERDE VE BULANIKLIK İPTALİ
+       ========================================== */
+    #wrapper:after, #wrapper:before, #main:after, #main:before,
+    body:after, body:before, body.is-menu-visible #wrapper:after,
+    body.is-menu-visible #main:after, body.modal-active #wrapper:after {
+        content: none !important; display: none !important; opacity: 0 !important;
+        background: transparent !important; width: 0 !important; height: 0 !important;
+        pointer-events: none !important; z-index: -9999 !important;
+        animation: none !important; transition: none !important; backdrop-filter: none !important;
+    }
+    #wrapper, #main { background-color: transparent !important; filter: none !important; }
+
+    /* ==========================================
+       2. ALT BAR (HEADER) VE FONT
+       ========================================== */
+    @font-face {
+        font-family: 'HappyTime';
+        src: url('assets/webfonts/HappyTime.otf') format('opentype');
+        font-weight: normal; font-style: normal;
+    }
+
     #header {
-        display: flex !important;
-        justify-content: space-between !important; /* Sola ve sağa yasla */
-        align-items: center !important;            /* DİKEYDE ORTALA */
-        flex-direction: row !important;
-        
-        height: 80px !important;                   /* Bar Yüksekliği */
-        padding: 0 40px !important;                /* Kenar Boşlukları */
-        
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        z-index: 50 !important;
+        display: flex !important; justify-content: space-between !important; 
+        align-items: center !important; flex-direction: row !important;
+        height: 80px !important; padding: 0 40px !important;                
+        position: fixed !important; bottom: 0 !important; left: 0 !important;
+        width: 100% !important; z-index: 50 !important;
         background-color: rgba(225, 215, 200, 0.98) !important;
     }
-
-    /* 2. Logo (Marka İsmi) - TEK TEK HİZALAMA */
     #header h1 {
-        display: flex !important;       /* Kutu olsun */
-        align-items: center !important; /* İçindekini ortalasın */
-        height: 100% !important;        /* Bar boyunca uzasın */
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-        top: auto !important; left: auto !important; /* Eski ayarları sil */
+        display: flex !important; align-items: center !important; 
+        height: 100% !important; margin: 0 !important; padding: 0 !important;
+        border: none !important; top: auto !important; left: auto !important; 
     }
-
     #header h1 a {
-        display: flex !important;       /* Link de kutu olsun */
-        align-items: center !important; /* Yazıyı ortalasın */
-        height: 100% !important;
-        line-height: 1 !important;      /* Satır boşluğunu sıkılaştır */
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-        font-size: 1.2rem !important;   /* Yazı boyutu (İstersen büyüt) */
+        display: flex !important; align-items: center !important; 
+        height: 100% !important; line-height: 1 !important;      
+        margin: 0 !important; padding: 0 !important; border: none !important;
+        font-size: 1.2rem !important;   
     }
-
-    /* 3. Menü (Sağ Taraf) */
-    #header nav {
-        display: flex !important;
-        align-items: center !important;
-        height: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        top: auto !important; right: auto !important;
+    #header nav, #header nav ul, #header nav ul li {
+        display: flex !important; align-items: center !important;
+        height: 100% !important; margin: 0 !important; padding: 0 !important;
     }
-
-    #header nav ul {
-        display: flex !important;
-        align-items: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        list-style: none !important;
-        height: 100% !important;
-    }
-
-    #header nav ul li {
-        display: flex !important;
-        align-items: center !important;
-        height: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 4. Hamburger İkonu */
+    #header nav ul { list-style: none !important; }
     #header nav ul li a.fa-bars {
-        display: flex !important;       /* Flex ile ortala */
-        align-items: center !important; /* Dikey */
-        justify-content: center !important; /* Yatay */
-        margin: 0 !important;
-        padding: 0 !important;
-        height: 50px !important;
-        width: 50px !important;
-        line-height: 1 !important;
-        transform: none !important;     /* Kaymayı engelle */
+        display: flex !important; align-items: center !important; justify-content: center !important; 
+        height: 50px !important; width: 50px !important; line-height: 1 !important;
+        transform: none !important; transition: all 1s ease-in-out !important;     
     }
+    #header nav ul li a.fa-bars:hover {
+        transition: all 1s ease-in-out !important;
+    }
+
+    /* ==========================================
+       3. YANAL MENÜ (SIDEBAR) KUSURSUZ GÖRÜNÜM
+       ========================================== */
+    .collection-link {
+        font-family: 'HappyTime', serif !important; 
+        font-size: 1.9rem !important; 
+        border-bottom: none !important; 
+        display: inline-block !important;
+        text-decoration: none !important;
+        line-height: 1.2 !important;
+    }
+ 
+    ul.legal-menu {
+        list-style: none !important; padding: 0 !important; margin: 0 !important;
+    }
+    ul.legal-menu li {
+        margin: 8px 0 !important; border: none !important;
+    }
+    ul.legal-menu li a {
+        font-family: sans-serif !important;  
+        font-size: 0.85rem !important;        
+        color: #777 !important;               
+        text-transform: uppercase !important; 
+        letter-spacing: 1px !important;       
+        text-decoration: none !important;     
+        transition: color 0.3s ease !important;
+    }
+    ul.legal-menu li a:hover {
+        color: #c89666 !important; 
+    }
+
+    /* Kaydırma Çubuğunu Kökten Gizle ve Kilitle */
+    #footer::-webkit-scrollbar { display: none !important; }
+    #footer {
+        -ms-overflow-style: none !important;  
+        scrollbar-width: none !important;     
+    }
+    #footer, #footer .inner {
+        height: 100vh !important;       
+        max-height: 100vh !important;   
+        overflow: hidden !important;    
+    }
+
+    /* Menü İçeriğini Sıkıştır ve Ortalama */
+    #footer .inner {
+        display: flex !important; flex-direction: column !important;
+        justify-content: center !important; 
+    }
+    #footer .menu-collections, #footer .menu-bottom {
+        margin: 0 !important; padding: 10px 0 !important;
+    }
+    #footer .menu-bottom h3 { margin-bottom: 5px !important; }
+    #footer .menu-about p, #footer .menu-copyright p {
+        margin: 0 !important; line-height: 1.2 !important;
+    }
+    #footer .icons { margin: 5px 0 15px 0 !important; }
+    
+    /* ==========================================
+       4. SERIES 1 ÖZEL AYARLARI
+       ========================================== */
+    body, #wrapper { background-color: #0b0b0b !important; }
+    #header h1 strong { color: #c89666; }
+
 </style>
 	</body>
 </html>
