@@ -316,32 +316,41 @@
        ========================================== */
     body, #wrapper { background-color: #0b0b0b !important; }
     #header h1 strong { color: #c89666; }
-	/* Collection Sayfası İçin Alt Bar Boyu ve Policies Yaması */
+/* ==========================================
+       YANAL BAR (SIDEBAR) ANA SAYFA İLE BİREBİR EŞİTLEME
+       ========================================== */
+       
+    /* 1. Gizlenen Başlıkları (COLLECTIONS, POLICIES) Geri Getir */
+    #footer h2.menu-headline {
+        display: block !important;
+    }
 
-/* 1. Barın boyunu kısaltmak için footer inner paddingini düşür */
-#footer .inner {
-    padding-top: 20px !important; /* Bar boyunu kısaltmak için üst paddingi düşürür */
-    padding-bottom: 20px !important; /* Bar boyunu kısaltmak için alt paddingi düşürür */
-}
+    /* 2. Series Yazıları (Ana sayfadaki gibi Dik, Kalın ve HappyTime fontunda) */
+    .collection-link {
+        font-family: 'HappyTime', serif !important; 
+        font-size: 1.9rem !important; 
+        font-weight: bold !important; 
+        font-style: normal !important; /* İtalik olmasını zorla engeller */
+        text-decoration: none !important;
+        border-bottom: none !important;
+    }
 
-/* 2. POLICIES başlığını tamamen gizle */
-#footer .menu-collections h2 {
-    display: none !important;
-}
+    /* 3. Yasal Linkler (Ana sayfadaki gibi İtalik, Altı Çizili ve Serif) */
+    ul.legal-menu li a {
+        font-family: 'Playfair Display', serif !important; 
+        font-style: italic !important;
+        font-size: 0.85rem !important;
+        font-weight: normal !important;
+        color: #333 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        text-decoration: underline !important; /* Alt çizgiyi ekler */
+        text-underline-offset: 3px !important;
+    }
 
-/* 3. Policies linklerinin fontunu, kalınlığını ve boyutunu ana sayfadaki gibi sadeleştir */
-#footer .legal-menu li a {
-    text-transform: none !important; /* Tam büyük harf stilini kaldırır */
-    font-weight: normal !important; /* Kalınlığı normal yapar */
-    font-size: 0.9rem !important; /* Yazı boyutunu sadeleştirir */
-    color: #333 !important; /* Yazı rengini yumuşatır */
-    text-decoration: none !important; /* Alt çizgiyi kaldırır */
-}
-
-/* 4. Linklerin üzerine gelince sade bir alt çizgi ekle (isteğe bağlı) */
-#footer .legal-menu li a:hover {
-    text-decoration: underline !important;
-}
+    ul.legal-menu li a:hover {
+        color: #c89666 !important;
+    }
 </style>
 	</body>
 </html>
