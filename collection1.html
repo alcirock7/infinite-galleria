@@ -115,20 +115,31 @@
 						</div>
 					</article>
 					
-			<footer id="footer" class="panel">
-    <div class="inner">
-        <span onclick="document.getElementById('footer').classList.remove('active'); window.location.hash='';"
-      style="position: absolute !important; top: 40px !important; right: 40px !important; display: inline-block !important; padding: 12px 30px !important; border: 2px solid #1a1a1a !important; border-radius: 50px !important; font-family: sans-serif !important; font-weight: bold !important; font-size: 0.8rem !important; letter-spacing: 2px !important; color: #1a1a1a !important; cursor: pointer !important; z-index: 999999 !important; background: transparent !important;">
-    ✕ CLOSE
-</span>
+		<footer id="footer" class="panel" style="position: fixed !important; top: 0 !important; right: 0 !important; width: 400px !important; max-width: 100vw !important; height: 100vh !important; z-index: 10000 !important; overflow: hidden !important; background-color: #e1d7c8 !important;">
+
+    <span class="close-menu-btn" 
+          onclick="document.getElementById('footer').classList.remove('active'); window.location.hash='';"
+          style="position: absolute !important; top: 25px !important; right: 25px !important; padding: 10px 25px !important; border: 2px solid #1a1a1a !important; border-radius: 50px !important; font-family: sans-serif !important; font-weight: bold !important; font-size: 0.8rem !important; letter-spacing: 2px !important; color: #1a1a1a !important; cursor: pointer !important; z-index: 999999 !important; background: transparent !important;">
+        ✕ CLOSE
+    </span>
+
+    <div class="inner" style="width: 100% !important; height: 100vh !important; overflow-y: auto !important; padding: 30px 10px 40px 10px !important; box-sizing: border-box !important;">
+        
         <section class="menu-collections">
             <h2 class="menu-headline">COLLECTIONS</h2>
             <ul class="collection-list">
-                <li><a href="collection1.html" class="collection-link">Series 1 <span class="arrow">→</span></a></li>
-                <li><a href="collection2.html" class="collection-link">Series 2 <span class="arrow">→</span></a></li>
-                <li><a href="collection3.html" class="collection-link">Series 3 <span class="arrow">→</span></a></li>
-            </ul>
-        </section>
+        <li><a href="collection1.html" class="collection-link">Series 1 <span class="arrow">></span></a></li>
+        <li><a href="collection2.html" class="collection-link">Series 2 <span class="arrow">></span></a></li>
+        <li><a href="collection3.html" class="collection-link">Series 3 <span class="arrow">></span></a></li>
+    </ul>
+
+    <h2 class="menu-headline" style="margin-top: 15px !important;">POLICIES</h2>
+    <ul class="legal-menu">
+        <li><a href="license.html">Terms of Service</a></li>
+        <li><a href="license.html">Privacy Policy</a></li>
+        <li><a href="license.html">Refund Policy</a></li>
+    </ul>
+</section>
 
         <section class="menu-bottom">
             <div class="menu-about">
