@@ -253,100 +253,91 @@
        3. YANAL MENÜ (SIDEBAR) KUSURSUZ GÖRÜNÜM
        ========================================== */
     .collection-link {
-        font-family: 'HappyTime', serif !important; 
+        font-family: 'sans-serif' !important;
         font-size: 1.9rem !important; 
-        
-        /* İTALİK HASTALIĞINI KÖKTEN ÇÖZDÜK */
-        font-weight: 600 !important; 
-        font-style: normal !important; 
-        
         border-bottom: none !important; 
         display: inline-block !important;
         text-decoration: none !important;
         line-height: 1.2 !important;
     }
  
+	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
     ul.legal-menu {
-        list-style: none !important; padding: 0 !important; margin: 0 !important;
+        list-style: none !important; /* Başındaki noktaları siler */
+        padding: 0 !important;
+        margin: 0 !important;
     }
+    
     ul.legal-menu li {
-        margin: 8px 0 !important; border: none !important;
+        margin: 8px 0 !important; /* Linkler arasındaki boşluk */
+        border: none !important;
     }
+    
     ul.legal-menu li a {
-        font-family: sans-serif !important;  
-        font-size: 0.85rem !important;        
-        color: #777 !important;               
-        text-transform: uppercase !important; 
-        letter-spacing: 1px !important;       
-        text-decoration: none !important;     
+        font-family: HappyTime !important;   /* Daha düz, resmi bir font */
+        font-size: 0.85rem !important;        /* Yazı boyutunu küçült */
+        color: #777 !important;               /* Ana yazılara göre biraz daha silik gri */
+        text-transform: uppercase !important; /* Hepsini BÜYÜK HARF yap */
+        letter-spacing: 1px !important;       /* Harf arası boşluk */
+        text-decoration: none !important;     /* Alt çizgiyi iptal et */
         transition: color 0.3s ease !important;
     }
+
     ul.legal-menu li a:hover {
-        color: #c89666 !important; 
+        color: #c89666 !important; /* Fareyle üstüne gelince bakır rengi olsun */
     }
-
-    /* Kaydırma Çubuğunu Kökten Gizle ve Kilitle */
-    #footer::-webkit-scrollbar { display: none !important; }
+	/* AÇILAN MENÜNÜN (FOOTER) KAYDIRMA ÇUBUĞUNU GÖZDEN KAYBEDER */
+    #footer::-webkit-scrollbar {
+        display: none !important; /* Chrome, Safari vb. için çubuğu yok et */
+    }
     #footer {
-        -ms-overflow-style: none !important;  
-        scrollbar-width: none !important;     
+        -ms-overflow-style: none !important;  /* IE ve Edge için */
+        scrollbar-width: none !important;     /* Firefox için */
     }
+	/* AÇILAN MENÜNÜN (FOOTER) KAYMA EYLEMİNİ KÖKTEN KİLİTLE */
     #footer, #footer .inner {
-        height: 100vh !important;       
-        max-height: 100vh !important;   
-        overflow: hidden !important;    
+        height: 100vh !important;       /* Boyunu ekranın boyuna sabitle */
+        max-height: 100vh !important;   /* Ekranı asla aşamasın */
+        overflow: hidden !important;    /* KAYMAYI TAMAMEN DURDUR */
     }
-
-    /* Menü İçeriğini Sıkıştır ve Ortalama */
-    #footer .inner {
-        display: flex !important; flex-direction: column !important;
-        justify-content: center !important; 
-    }
-    #footer .menu-collections, #footer .menu-bottom {
-        margin: 0 !important; padding: 10px 0 !important;
-    }
-    #footer .menu-bottom h3 { margin-bottom: 5px !important; }
-    #footer .menu-about p, #footer .menu-copyright p {
-        margin: 0 !important; line-height: 1.2 !important;
-    }
-    #footer .icons { margin: 5px 0 15px 0 !important; }
+	/* ==========================================
+       MENÜ İÇERİĞİNİ VAKUMLAMA VE EKRANA SIĞDIRMA
+       ========================================== */
     
-    /* ==========================================
-       4. SERIES 1 ÖZEL AYARLARI
-       ========================================== */
-    body, #wrapper { background-color: #0b0b0b !important; }
-    #header h1 strong { color: #c89666; }
-/* ==========================================
-       FINAL KESİN YAMA (COLLECTION SAYFASI İÇİN)
-       ========================================== */
+    /* 1. Menünün İç Kutusunu Ekrana Kilitle ve İçeriği Sıkıştır */
+    #footer .inner {
+        height: 100vh !important;       /* Ekran boyu kadar ol */
+        max-height: 100vh !important;
+        overflow: hidden !important;    /* Asla kaydırma */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* İçeriği dikeyde tam ortala */
+        padding: 40px 30px !important;  /* Yukarıdan/Aşağıdan gelen dev boşlukları kıs */
+    }
 
-    /* 1. Series Yazılarını Kesinlikle DİMDİK ve Normal Kalınlıkta Yap */
-    .collection-link {
-        font-family: 'HappyTime', serif !important; /* Fontu HappyTime'a zorla */
-        
-        /* İTALİK HASTALIĞINI KÖKTEN ÇÖZEN BÜYÜLÜ KOMUT */
-        font-style: normal !important; /* Temanın italik zorlamasını KESİN ezer, DİMDİK yapar */
-        
-        font-weight: normal !important; /* 'İndex'teki gibi normal kalınlığa çeker, aşırı kalınlığı engeller */
-        font-size: 1.9rem !important; /* Boyutu koru */
-        display: inline-block !important;
-        text-decoration: none !important;
+    /* 2. Bölümler Arası (Koleksiyon, Yasal, About) Boşlukları Daralt */
+    #footer .menu-collections, 
+    #footer .menu-bottom {
+        margin: 0 !important;
+        padding: 10px 0 !important;
+    }
+
+    /* 3. About, Follow, Copyright Kısmının Boşluklarını Kıs */
+    #footer .menu-bottom h3 {
+        margin-bottom: 5px !important;
+    }
+    
+    #footer .menu-about p, 
+    #footer .menu-copyright p {
+        margin: 0 !important;
         line-height: 1.2 !important;
     }
-
-    /* 2. Policies Linklerini Kesin Eşit ve Normal Kalınlıkta Yap */
-    ul.legal-menu li a {
-        font-family: sans-serif !important; /* İstediğin o sade düz font */
-        
-        /* KALINLIK FARKINI SIFIRLAYAN KOMUT */
-        font-weight: normal !important; /* Tüm linkleri KESİN EŞİT NORMAL kalınlıkta yapar (Bold'u siler) */
-        
-        font-size: 0.85rem !important; /* Boyutu koru */
-        color: #777 !important; /* Rengi koru */
-        text-transform: uppercase !important; /* Büyük harf */
-        letter-spacing: 1px !important; /* Harf aralığı */
-        text-decoration: none !important; /* Alt çizgiyi sil */
+    
+    /* 4. Sosyal İkonların Zıplamasını Engelle */
+    #footer .icons {
+        margin: 5px 0 15px 0 !important;
     }
+</style>
 	</body>
 </html>
 
