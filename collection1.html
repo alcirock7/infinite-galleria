@@ -309,7 +309,24 @@
        ========================================== */
     body, #wrapper { background-color: #0b0b0b !important; }
     #header h1 strong { color: #c89666; }
+/* ==========================================
+       FONT DÜZELTME VE İTALİK İPTAL YAMASI
+       ========================================== */
+    
+    /* 1. Alt Bar Logonun Fontunu Sabitle ve Dikleştir */
+    #header h1, #header h1 a {
+        font-family: 'HappyTime', serif !important;
+        font-style: normal !important; /* Eğik yazmayı yasaklar */
+        font-weight: normal !important;
+        text-decoration: none !important;
+    }
 
+    /* 2. Series Yazılarının Kırılmasını Engelle */
+    .collection-link {
+        font-family: 'HappyTime', serif !important; 
+        font-style: normal !important; /* Temanın gizli italik ayarını ezer */
+        font-weight: normal !important;
+    }
 </style>
 	</body>
 </html>
