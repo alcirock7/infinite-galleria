@@ -317,39 +317,35 @@
     body, #wrapper { background-color: #0b0b0b !important; }
     #header h1 strong { color: #c89666; }
 /* ==========================================
-       YANAL BAR (SIDEBAR) ANA SAYFA İLE BİREBİR EŞİTLEME
+       FINAL KESİN YAMA (COLLECTION SAYFASI İÇİN)
        ========================================== */
-       
-    /* 1. Gizlenen Başlıkları (COLLECTIONS, POLICIES) Geri Getir */
-    #footer h2.menu-headline {
-        display: block !important;
-    }
 
-    /* 2. Series Yazıları (Ana sayfadaki gibi Dik, Kalın ve HappyTime fontunda) */
+    /* 1. Series Yazılarını Kesinlikle DİMDİK ve Normal Kalınlıkta Yap */
     .collection-link {
-        font-family: 'HappyTime', serif !important; 
-        font-size: 1.9rem !important; 
-        font-weight: bold !important; 
-        font-style: normal !important; /* İtalik olmasını zorla engeller */
+        font-family: 'HappyTime', serif !important; /* Fontu HappyTime'a zorla */
+        
+        /* İTALİK HASTALIĞINI KÖKTEN ÇÖZEN BÜYÜLÜ KOMUT */
+        font-style: normal !important; /* Temanın italik zorlamasını KESİN ezer, DİMDİK yapar */
+        
+        font-weight: normal !important; /* 'İndex'teki gibi normal kalınlığa çeker, aşırı kalınlığı engeller */
+        font-size: 1.9rem !important; /* Boyutu koru */
+        display: inline-block !important;
         text-decoration: none !important;
-        border-bottom: none !important;
+        line-height: 1.2 !important;
     }
 
-    /* 3. Yasal Linkler (Ana sayfadaki gibi İtalik, Altı Çizili ve Serif) */
+    /* 2. Policies Linklerini Kesin Eşit ve Normal Kalınlıkta Yap */
     ul.legal-menu li a {
-        font-family: 'Playfair Display', serif !important; 
-        font-style: italic !important;
-        font-size: 0.85rem !important;
-        font-weight: normal !important;
-        color: #333 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 1px !important;
-        text-decoration: underline !important; /* Alt çizgiyi ekler */
-        text-underline-offset: 3px !important;
-    }
-
-    ul.legal-menu li a:hover {
-        color: #c89666 !important;
+        font-family: sans-serif !important; /* İstediğin o sade düz font */
+        
+        /* KALINLIK FARKINI SIFIRLAYAN KOMUT */
+        font-weight: normal !important; /* Tüm linkleri KESİN EŞİT NORMAL kalınlıkta yapar (Bold'u siler) */
+        
+        font-size: 0.85rem !important; /* Boyutu koru */
+        color: #777 !important; /* Rengi koru */
+        text-transform: uppercase !important; /* Büyük harf */
+        letter-spacing: 1px !important; /* Harf aralığı */
+        text-decoration: none !important; /* Alt çizgiyi sil */
     }
 	</body>
 </html>
