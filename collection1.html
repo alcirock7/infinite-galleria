@@ -316,6 +316,32 @@
        ========================================== */
     body, #wrapper { background-color: #0b0b0b !important; }
     #header h1 strong { color: #c89666; }
+	/* Collection Sayfası İçin Alt Bar Boyu ve Policies Yaması */
+
+/* 1. Barın boyunu kısaltmak için footer inner paddingini düşür */
+#footer .inner {
+    padding-top: 20px !important; /* Bar boyunu kısaltmak için üst paddingi düşürür */
+    padding-bottom: 20px !important; /* Bar boyunu kısaltmak için alt paddingi düşürür */
+}
+
+/* 2. POLICIES başlığını tamamen gizle */
+#footer .menu-collections h2 {
+    display: none !important;
+}
+
+/* 3. Policies linklerinin fontunu, kalınlığını ve boyutunu ana sayfadaki gibi sadeleştir */
+#footer .legal-menu li a {
+    text-transform: none !important; /* Tam büyük harf stilini kaldırır */
+    font-weight: normal !important; /* Kalınlığı normal yapar */
+    font-size: 0.9rem !important; /* Yazı boyutunu sadeleştirir */
+    color: #333 !important; /* Yazı rengini yumuşatır */
+    text-decoration: none !important; /* Alt çizgiyi kaldırır */
+}
+
+/* 4. Linklerin üzerine gelince sade bir alt çizgi ekle (isteğe bağlı) */
+#footer .legal-menu li a:hover {
+    text-decoration: underline !important;
+}
 </style>
 	</body>
 </html>
