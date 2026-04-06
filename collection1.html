@@ -384,19 +384,31 @@
         padding-left: 20px !important; 
         margin-top: 0 !important;
     }
-    #footer .menu-bottom h3 {
-        margin-bottom: 5px !important;
+   /* ==========================================
+       HAYAT KURTARAN SİMETRİ (GRID SİSTEMİ)
+       ========================================== */
+       
+    #footer .menu-bottom {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Ekranı iki eşit parçaya böler */
+        row-gap: 0px !important; /* Kaydırma çubuğunu yok eden sıfırlama */
+        margin-top: 30px !important; 
     }
-    
-    #footer .menu-about p, 
-    #footer .menu-copyright p {
+
+    #footer .menu-about {
+        grid-column: 1 / 2 !important; 
         margin: 0 !important;
-        line-height: 1.2 !important;
     }
-    
-    /* 4. Sosyal İkonların Zıplamasını Engelle */
-    #footer .icons {
-        margin: 5px 0 15px 0 !important;
+
+    #footer .menu-social {
+        grid-column: 2 / 3 !important; 
+        margin: 0 !important;
+    }
+
+    #footer .menu-copyright {
+        grid-column: 1 / 3 !important; 
+        text-align: left !important;
+        margin: 0 !important;
     }
 </style>
 	</body>
