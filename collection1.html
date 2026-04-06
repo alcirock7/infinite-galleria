@@ -301,25 +301,31 @@
         visibility: hidden !important;
     }
 	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
+   /* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
     ul.legal-menu {
-        list-style: none !important; /* Başındaki noktaları siler */
-        padding: 0 !important;
+        list-style: none !important; 
+        padding-left: 0 !important; /* Sola sıfırladık */
         margin: 0 !important;
+        text-align: left !important; /* Yazıları sola yasladık */
     }
     
     ul.legal-menu li {
-        margin: 8px 0 !important; /* Linkler arasındaki boşluk */
+        margin: 8px 0 !important; 
         border: none !important;
+        text-align: left !important; /* Link maddelerini sola yasladık */
     }
     
     ul.legal-menu li a {
-        font-family: HappyTime !important;   /* Daha düz, resmi bir font */
-        font-size: 0.85rem !important;        /* Yazı boyutunu küçült */
-        color: #777 !important;               /* Ana yazılara göre biraz daha silik gri */
-        text-transform: uppercase !important; /* Hepsini BÜYÜK HARF yap */
-        letter-spacing: 1px !important;       /* Harf arası boşluk */
-        text-decoration: none !important;     /* Alt çizgiyi iptal et */
+        font-family: 'Playfair Display', serif !important; /* Orijinal italik fonta döndük */
+        font-size: 0.85rem !important;        
+        color: #777 !important;               
+        text-transform: uppercase !important; 
+        letter-spacing: 1px !important;       
+        text-decoration: underline !important; /* Alt çizgiyi geri getirdik */
+        font-style: italic !important; /* İtalik yaptık */
         transition: color 0.3s ease !important;
+        text-align: left !important; /* Link metnini sola yasladık */
+        display: inline-block !important; /* Yaslamanın çalışması için gerekli */
     }
 
     ul.legal-menu li a:hover {
