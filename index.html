@@ -539,36 +539,47 @@
 
     /* 2. Bölümler Arası (Koleksiyon, Yasal, About) Boşlukları Daralt */
     #footer .menu-collections, 
-  /* ==========================================
-       ALT BİLGİ SIKIŞIKLIK GİDERİCİ (ABOUT & COPYRIGHT)
+/* ==========================================
+       ALT BİLGİ (ABOUT & FOLLOW) YAN YANA VE SIFIR BOŞLUK
        ========================================== */
        
     #footer .menu-bottom {
         display: flex !important;
-        flex-wrap: wrap !important; /* İçerik sığmazsa alt satıra taşmasına izin ver */
-        justify-content: flex-start !important;
+        flex-direction: row !important; /* İkisini zorla yan yana dizer */
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
         align-items: flex-start !important;
+        margin-top: 20px !important; /* Üstteki çizgiyle arasına normal bir boşluk */
+        padding: 0 !important;
     }
 
     #footer .menu-about {
-        width: 55% !important; /* Sol tarafın %55'ini About alsın */
+        width: 48% !important; /* Sol yarıyı About alır */
+        margin: 0 !important;
     }
 
     #footer .menu-social {
-        width: 40% !important; /* Sağ tarafın %40'ını Follow alsın */
+        width: 48% !important; /* Sağ yarıyı Follow alır */
+        margin: 0 !important;
+    }
+
+    /* İkonların üstündeki gereksiz boşlukları siler */
+    #footer .menu-social .icons {
+        margin: 5px 0 0 0 !important;
+        padding: 0 !important;
     }
 
     #footer .menu-copyright {
-        width: 100% !important; /* Copyright tüm satırı kaplayıp en alta insin */
-        margin-top: 25px !important; /* Üstteki yazılarla arasına biraz nefes payı bırak */
-        text-align: left !important; /* Yazıyı sola daya */
+        width: 100% !important; 
+        margin-top: 15px !important; /* About ve Follow'un hemen dibine yapışır */
+        text-align: left !important;
     }
     
-    /* Copyright yazısının fontunu da biraz daha narin yapalım */
     #footer .menu-copyright p {
         font-family: sans-serif !important;
         font-size: 0.75rem !important;
-        color: #888 !important; /* Hafif silik gri, göz yormasın */
+        color: #888 !important;
+        margin: 0 !important;
     }
 </style>
 	</body>
