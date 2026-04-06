@@ -539,25 +539,36 @@
 
     /* 2. Bölümler Arası (Koleksiyon, Yasal, About) Boşlukları Daralt */
     #footer .menu-collections, 
+  /* ==========================================
+       ALT BİLGİ SIKIŞIKLIK GİDERİCİ (ABOUT & COPYRIGHT)
+       ========================================== */
+       
     #footer .menu-bottom {
-        margin: 0 !important;
-        padding: 10px 0 !important;
+        display: flex !important;
+        flex-wrap: wrap !important; /* İçerik sığmazsa alt satıra taşmasına izin ver */
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
     }
 
-    /* 3. About, Follow, Copyright Kısmının Boşluklarını Kıs */
-    #footer .menu-bottom h3 {
-        margin-bottom: 5px !important;
+    #footer .menu-about {
+        width: 55% !important; /* Sol tarafın %55'ini About alsın */
+    }
+
+    #footer .menu-social {
+        width: 40% !important; /* Sağ tarafın %40'ını Follow alsın */
+    }
+
+    #footer .menu-copyright {
+        width: 100% !important; /* Copyright tüm satırı kaplayıp en alta insin */
+        margin-top: 25px !important; /* Üstteki yazılarla arasına biraz nefes payı bırak */
+        text-align: left !important; /* Yazıyı sola daya */
     }
     
-    #footer .menu-about p, 
+    /* Copyright yazısının fontunu da biraz daha narin yapalım */
     #footer .menu-copyright p {
-        margin: 0 !important;
-        line-height: 1.2 !important;
-    }
-    
-    /* 4. Sosyal İkonların Zıplamasını Engelle */
-    #footer .icons {
-        margin: 5px 0 15px 0 !important;
+        font-family: sans-serif !important;
+        font-size: 0.75rem !important;
+        color: #888 !important; /* Hafif silik gri, göz yormasın */
     }
 </style>
 	</body>
