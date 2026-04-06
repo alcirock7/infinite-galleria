@@ -410,6 +410,35 @@
         text-align: left !important;
         margin: 0 !important;
     }
+	
+    /* O Lanet Kaydırma Çubuğunu Kesin Olarak Öldüren Kısım */
+    #footer, #footer .inner {
+        overflow: hidden !important; 
+    }
+    #footer::-webkit-scrollbar {
+        display: none !important;
+    }
+	/* ==========================================
+       POLICIES (YASAL LİNKLER) SOLA SIFIRLAMA
+       ========================================== */
+       
+    ul.legal-menu {
+        padding-left: 0 !important; /* O gereksiz boşluğu tamamen sildik */
+        margin-left: 0 !important;
+        text-align: left !important;
+        width: 100% !important;
+    }
+
+    ul.legal-menu li {
+        text-align: left !important;
+        margin-left: 0 !important;
+        display: block !important;
+    }
+
+    ul.legal-menu li a {
+        text-align: left !important;
+        display: inline-block !important;
+    }
 </style>
 	</body>
 </html>
