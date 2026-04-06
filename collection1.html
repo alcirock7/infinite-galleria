@@ -281,15 +281,17 @@
         overflow: hidden !important;
 
     }
-    .collection-link {
-        font-family: 'sans-serif' !important;
-        font-size: 1.9rem !important; 
-        border-bottom: none !important; 
-        display: inline-block !important;
+   .collection-link {
+        font-family: 'HappyTime', serif !important; 
+        font-size: 1.5rem !important; /* 1.9'dan 1.5'e çektik, ekrana tam oturacak */
+        font-weight: bold !important; 
+        font-style: normal !important; 
         text-decoration: none !important;
-        line-height: 1.2 !important;
+        border-bottom: none !important;
+        line-height: 1.3 !important; /* Alt satıra inen yazı iç içe geçmesin diye nefes payı */
+        display: block !important; /* Yazının tam blok olarak sola yaslanmasını sağlar */
+        text-align: left !important;
     }
- 
 	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
     ul.legal-menu {
         list-style: none !important; /* Başındaki noktaları siler */
