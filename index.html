@@ -543,43 +543,39 @@
        ALT BİLGİ (ABOUT & FOLLOW) YAN YANA VE SIFIR BOŞLUK
        ========================================== */
        
+  /* ==========================================
+       HAYAT KURTARAN SİMETRİ (GRID SİSTEMİ)
+       ========================================== */
+       
     #footer .menu-bottom {
-        display: flex !important;
-        flex-direction: row !important; /* İkisini zorla yan yana dizer */
-        flex-wrap: wrap !important;
-        justify-content: space-between !important;
-        align-items: flex-start !important;
-        margin-top: 20px !important; /* Üstteki çizgiyle arasına normal bir boşluk */
-        padding: 0 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Ekranı iki eşit parçaya böler */
+        row-gap: 15px !important; /* Alt alta olanların arasına boşluk koyar */
+        margin-top: 30px !important; /* Üstteki çizgiyle arasına nefes payı */
     }
 
     #footer .menu-about {
-        width: 48% !important; /* Sol yarıyı About alır */
+        grid-column: 1 / 2 !important; /* Sol bloğa yerleşir */
         margin: 0 !important;
     }
 
     #footer .menu-social {
-        width: 48% !important; /* Sağ yarıyı Follow alır */
+        grid-column: 2 / 3 !important; /* Sağ bloğa yerleşir */
         margin: 0 !important;
-    }
-
-    /* İkonların üstündeki gereksiz boşlukları siler */
-    #footer .menu-social .icons {
-        margin: 5px 0 0 0 !important;
-        padding: 0 !important;
     }
 
     #footer .menu-copyright {
-        width: 100% !important; 
-        margin-top: 15px !important; /* About ve Follow'un hemen dibine yapışır */
+        grid-column: 1 / 3 !important; /* İkisinin altına geçip boydan boya uzanır */
         text-align: left !important;
-    }
-    
-    #footer .menu-copyright p {
-        font-family: sans-serif !important;
-        font-size: 0.75rem !important;
-        color: #888 !important;
         margin: 0 !important;
+    }
+
+    /* O Lanet Kaydırma Çubuğunu Kesin Olarak Öldüren Kısım */
+    #footer, #footer .inner {
+        overflow: hidden !important; 
+    }
+    #footer::-webkit-scrollbar {
+        display: none !important;
     }
 </style>
 	</body>
