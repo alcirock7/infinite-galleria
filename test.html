@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Galleria - Cinematic Scroll</title>
+    <title>Infinite Galleria - Studio Lighting</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Elit, kapkaranlık boşluk arka planı */
+        /* İŞTE ELİT ARKA PLAN: Ölü siyah yerine derinlikli lüks bir stüdyo fonu */
         body, html {
             margin: 0; padding: 0; 
-            background-color: #050505; 
+            background: linear-gradient(135deg, #0f0f0f 0%, #050505 100%);
             color: #fff;
             font-family: 'Playfair Display', serif;
-            /* Kaydırma çubuğunu gizle ama kaydırmaya izin ver */
             scrollbar-width: none; 
             -ms-overflow-style: none;
         }
@@ -24,35 +23,35 @@
             flex-direction: column;
         }
 
-        /* HER BİR SERGİ ODASI (Tam Ekran) */
+        /* HER BİR SERGİ ODASI VE SPOT IŞIĞI */
         .art-panel {
             height: 100vh; 
             width: 100%;
             display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
-            /* İŞTE ELİT ARKA PLAN: Sadece resmin arkasına vuran çok hafif bir loş ışık */
-            background: radial-gradient(circle at center, #181818 0%, #050505 70%);
+            
+            /* GÜNCELLENMİŞ SPOT IŞIĞI: Tam resmin arkasından vuran çok zarif bakır parlaması */
+            background: radial-gradient(circle at center, rgba(200, 150, 102, 0.12) 0%, rgba(15, 15, 15, 0) 65%);
             position: relative;
             overflow: hidden;
         }
 
-        /* DEVASAL 1:1 KARE RESİM */
+        /* BOYUT 75vh'A DÜŞÜRÜLDÜ */
         .art-image {
-            height: 80vh;  /* Ekranı dolduracak kadar devasa */
-            width: 80vh;   /* 1:1 oranını korur */
-            max-width: 90vw; /* Telefondaysa taşmayı engeller */
-            max-height: 90vw;
+            height: 75vh;  
+            width: 75vh;   
+            max-width: 85vw; /* Mobilde kenarlardan nefes payı bırakır */
+            max-height: 85vw;
             object-fit: cover;
-            /* Siyah üzerine zifiri siyah gölge (Derinlik) */
-            box-shadow: 0 50px 100px rgba(0,0,0,0.95); 
-            /* Performans ve pürüzsüzlük için ekran kartına devrediyoruz */
+            /* Tablonun ışıktan kopup öne çıkması için daha sert bir gölge */
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9); 
             will-change: transform, opacity;
-            opacity: 0; /* Başlangıçta görünmez, JS ile gelecek */
+            opacity: 0; 
         }
 
         .art-info {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 35px; /* Resmi küçülttüğümüz için yazıyı azıcık aşağı aldık */
             will-change: transform, opacity;
         }
 
@@ -61,14 +60,15 @@
             letter-spacing: 5px;
             text-transform: uppercase;
             color: #c89666; 
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8); /* Yazıya da derinlik eklendi */
         }
         
         .art-collection {
             font-size: 1rem;
-            color: #666;
+            color: #888; /* Yazıyı çok karanlık olmaktan kurtardık */
             font-style: italic;
-            margin-top: 10px;
+            margin-top: 8px;
             letter-spacing: 2px;
         }
     </style>
@@ -112,37 +112,29 @@
 
             panels.forEach(panel => {
                 const rect = panel.getBoundingClientRect();
-                // Eserin ekranın merkezine olan uzaklığını hesaplar (-1 ile +1 arası değer)
                 const progress = (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
                 
                 const img = panel.querySelector('.art-image');
                 const info = panel.querySelector('.art-info');
 
-                // Sadece ekranda görünenleri anime et (Performans için)
                 if (Math.abs(progress) < 1.5) { 
                     
-                    /* İŞTE SİHİR BURASI: Sen aşağı indikçe (progress eksiye düştükçe)
-                       resim 1'den 1.15'e doğru yavaşça büyür, üstüne gelir! */
+                    // Resim %15 oranında sana doğru büyüyerek gelir
                     let scale = 1 - (progress * 0.15); 
                     
-                    /* Kararma/Aydınlanma efekti. Tam ortada 1 (Kusursuz net), 
-                       kenarlara yaklaştıkça karanlıkta erir. */
                     let opacity = 1 - Math.pow(Math.abs(progress), 1.5);
                     if (opacity < 0) opacity = 0;
 
-                    // Değerleri resme ve yazıya tereyağı gibi uygula
                     img.style.transform = `scale(${scale})`;
                     img.style.opacity = opacity;
                     
-                    // Yazı resimden biraz daha hızlı hareket ederek 3D derinlik katsın
-                    info.style.transform = `translateY(${progress * 80}px)`;
+                    info.style.transform = `translateY(${progress * 60}px)`;
                     info.style.opacity = opacity;
                 }
             });
             isTicking = false;
         }
 
-        // Fare tekerleğiyle veya telefonda kaydırıldığında motoru tetikle
         window.addEventListener('scroll', () => {
             if (!isTicking) {
                 window.requestAnimationFrame(updateParallax);
@@ -150,7 +142,6 @@
             }
         });
 
-        // Sayfa ilk açıldığında 1. resmi netleştirmek için bir kere çalıştır
         updateParallax();
     </script>
 
