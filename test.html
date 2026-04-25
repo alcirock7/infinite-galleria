@@ -3,47 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Galleria - Studio Lighting</title>
+    <title>Infinite Galleria - Auto-Snap Cinematic</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* İŞTE ELİT ARKA PLAN: Ölü siyah yerine derinlikli lüks bir stüdyo fonu */
+        /* Elit stüdyo arka planı - Sabit kalır */
         body, html {
             margin: 0; padding: 0; 
             background: linear-gradient(135deg, #0f0f0f 0%, #050505 100%);
             color: #fff;
             font-family: 'Playfair Display', serif;
+            overflow: hidden; /* Sitenin ana kaydırmasını kilitliyoruz */
+        }
+
+        /* İŞTE MIKNATIS MERKEZİ: Kaydırma işlemi bu kutunun içinde olacak */
+        .gallery-container {
+            height: 100vh;
+            width: 100%;
+            overflow-y: scroll;
+            /* Scroll Snapping: 2-3 tık kaydırdığında kontrolü senden alır ve merkeze çeker */
+            scroll-snap-type: y mandatory; 
+            scroll-behavior: smooth;
+            
+            /* İğrenç çubukları gizle */
             scrollbar-width: none; 
             -ms-overflow-style: none;
         }
-        body::-webkit-scrollbar { display: none; }
+        .gallery-container::-webkit-scrollbar { display: none; }
 
-        .gallery-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* HER BİR SERGİ ODASI VE SPOT IŞIĞI */
+        /* HER BİR SERGİ ODASI */
         .art-panel {
             height: 100vh; 
             width: 100%;
             display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
             
-            /* GÜNCELLENMİŞ SPOT IŞIĞI: Tam resmin arkasından vuran çok zarif bakır parlaması */
+            /* Mıknatısın kilitleneceği yer: TAM MERKEZ */
+            scroll-snap-align: center; 
+            
+            /* Zarif bakır spot ışığı */
             background: radial-gradient(circle at center, rgba(200, 150, 102, 0.12) 0%, rgba(15, 15, 15, 0) 65%);
             position: relative;
             overflow: hidden;
         }
 
-        /* BOYUT 75vh'A DÜŞÜRÜLDÜ */
+        /* RESİM BOYUTU 68VH'A DÜŞTÜ (Ekrana yazıyla beraber kusursuz oturur) */
         .art-image {
-            height: 75vh;  
-            width: 75vh;   
-            max-width: 85vw; /* Mobilde kenarlardan nefes payı bırakır */
+            height: 68vh;  
+            width: 68vh;   
+            max-width: 85vw; 
             max-height: 85vw;
             object-fit: cover;
-            /* Tablonun ışıktan kopup öne çıkması için daha sert bir gölge */
             box-shadow: 0 40px 100px rgba(0,0,0,0.9); 
             will-change: transform, opacity;
             opacity: 0; 
@@ -51,22 +61,22 @@
 
         .art-info {
             text-align: center;
-            margin-top: 35px; /* Resmi küçülttüğümüz için yazıyı azıcık aşağı aldık */
+            margin-top: 30px;
             will-change: transform, opacity;
         }
 
         .art-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             letter-spacing: 5px;
             text-transform: uppercase;
             color: #c89666; 
             opacity: 0.95;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.8); /* Yazıya da derinlik eklendi */
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
         
         .art-collection {
-            font-size: 1rem;
-            color: #888; /* Yazıyı çok karanlık olmaktan kurtardık */
+            font-size: 0.95rem;
+            color: #888;
             font-style: italic;
             margin-top: 8px;
             letter-spacing: 2px;
@@ -104,6 +114,7 @@
     </div>
 
     <script>
+        const container = document.querySelector('.gallery-container');
         let isTicking = false;
         
         function updateParallax() {
@@ -119,29 +130,31 @@
 
                 if (Math.abs(progress) < 1.5) { 
                     
-                    // Resim %15 oranında sana doğru büyüyerek gelir
-                    let scale = 1 - (progress * 0.15); 
+                    // Resim %12 oranında sana doğru büyüyerek gelir (daha soft)
+                    let scale = 1 - (progress * 0.12); 
                     
-                    let opacity = 1 - Math.pow(Math.abs(progress), 1.5);
+                    let opacity = 1 - Math.pow(Math.abs(progress), 1.8); // Daha hızlı kararıp aydınlanır
                     if (opacity < 0) opacity = 0;
 
                     img.style.transform = `scale(${scale})`;
                     img.style.opacity = opacity;
                     
-                    info.style.transform = `translateY(${progress * 60}px)`;
+                    info.style.transform = `translateY(${progress * 50}px)`;
                     info.style.opacity = opacity;
                 }
             });
             isTicking = false;
         }
 
-        window.addEventListener('scroll', () => {
+        // DİKKAT: Artık window'u değil, container'ı dinliyoruz
+        container.addEventListener('scroll', () => {
             if (!isTicking) {
                 window.requestAnimationFrame(updateParallax);
                 isTicking = true;
             }
         });
 
+        // Başlangıç tetiklemesi
         updateParallax();
     </script>
 
