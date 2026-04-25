@@ -3,65 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Galleria - Stacking Effect</title>
+    <title>Infinite Galleria - Elite Glide Effect</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Sitenin elit karanlık arka planı */
+        /* Arkadaki iğrenç kaydırma çubuklarını tamamen yok ediyoruz */
         body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #0b0b0b;
-            color: #fff;
+            margin: 0; padding: 0; 
+            background-color: #0b0b0b; color: #fff;
             font-family: 'Playfair Display', serif;
+            overflow: hidden; /* Sitenin kendi kaymasını kilitliyoruz */
         }
 
-        /* Bütün resimleri saran ana taşıyıcı */
+        /* İŞTE SİHİR BURADA: MIKNATIS GİBİ ÇEKEN TAŞIYICI */
         .gallery-container {
+            height: 100vh;
+            overflow-y: scroll;
+            /* Scroll Snapping: Kullanıcı azıcık kaydırsa bile resmi tam ortalar */
+            scroll-snap-type: y mandatory; 
+            scroll-behavior: smooth; /* Tereyağı gibi kayma efekti */
+            
+            /* İçerideki kaydırma çubuğunu gizle */
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+        .gallery-container::-webkit-scrollbar { display: none; }
+
+        /* HER BİR ESERİN EKRANI */
+        .art-panel {
+            height: 100vh; 
+            width: 100%;
+            display: flex; flex-direction: column; 
+            align-items: center; justify-content: center;
+            /* Mıknatısın kilitleneceği nokta (Tam başı) */
+            scroll-snap-align: start; 
             position: relative;
         }
 
-        /* HER BİR ESERİN EKRANI */
-        /* position: sticky sayesinde sen kaydırsan da ekranda kilitli kalır, 
-           ta ki alttaki gelip onun üstünü örtünceye kadar! */
-        .art-panel {
-            height: 100vh; /* Ekranın boyunu tam kaplar */
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            background-color: #0b0b0b; 
-            /* Alttan gelen resmin üsttekini jilet gibi kesmesi için ufak bir gölge */
-            box-shadow: 0 -20px 50px rgba(0,0,0,0.8);
-        }
-
-        /* 1:1 KARE RESİM AYARI (Kırpılmayı önleyen mucize kısım) */
+        /* 1:1 KARE RESİM AYARI */
         .art-image {
             width: 100%;
-            max-width: 65vh; /* Resmin boyu ekran boyunu geçmesin diye fren */
-            aspect-ratio: 1 / 1; /* Resmi zorla 1:1 kare yapar */
+            max-width: 65vh; 
+            aspect-ratio: 1 / 1; 
             object-fit: cover;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9); /* Tablo gibi dursun diye derinlik */
-            transition: transform 0.4s ease;
+            /* Tablo gibi dursun diye derinlik (Siyah üzerine daha da siyah gölge) */
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9); 
+            /* Ufak bir nefes alma animasyonu ekledik */
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Eserin altındaki başlık */
+        /* Fare üstüne gelince resim çok hafif, sinematik bir şekilde büyür */
+        .art-panel:hover .art-image {
+            transform: scale(1.03);
+        }
+
         .art-title {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 1.5rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #c89666; /* O sevdiğin bakır rengi */
+            color: #c89666; 
+            opacity: 0.9;
         }
         
         .art-collection {
             font-size: 0.9rem;
-            color: #777;
+            color: #555;
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 8px;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -69,20 +79,20 @@
 
     <div class="gallery-container">
         
-        <div class="art-panel" style="z-index: 1;">
-            <img src="https://via.placeholder.com/800x800/1a1a1a/c89666?text=ART+1" alt="Art 1" class="art-image">
+        <div class="art-panel">
+            <img src="images/art1.jpg" alt="The Obsidian Monolith" class="art-image">
             <div class="art-title">The Obsidian Monolith</div>
             <div class="art-collection">Coastal Brutalism</div>
         </div>
 
-        <div class="art-panel" style="z-index: 2;">
-            <img src="https://via.placeholder.com/800x800/2a2a2a/c89666?text=ART+2" alt="Art 2" class="art-image">
+        <div class="art-panel">
+            <img src="images/art2.jpg" alt="The Symbiotic Atrium" class="art-image">
             <div class="art-title">The Symbiotic Atrium</div>
             <div class="art-collection">Symbiosis</div>
         </div>
 
-        <div class="art-panel" style="z-index: 3;">
-            <img src="https://via.placeholder.com/800x800/3a3a3a/c89666?text=ART+3" alt="Art 3" class="art-image">
+        <div class="art-panel">
+            <img src="images/art3.jpg" alt="Ethereal Structuralism" class="art-image">
             <div class="art-title">Ethereal Structuralism</div>
             <div class="art-collection">Architectural Interiors</div>
         </div>
