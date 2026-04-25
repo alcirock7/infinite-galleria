@@ -3,33 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Galleria - Auto-Snap Cinematic</title>
+    <title>Infinite Galleria - Smart Scroll</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     
     <style>
-        /* Elit stüdyo arka planı - Sabit kalır */
+        /* Tarayıcının kendi kaydırmasını KÖKTEN siliyoruz. Kontrol %100 bizde. */
         body, html {
             margin: 0; padding: 0; 
             background: linear-gradient(135deg, #0f0f0f 0%, #050505 100%);
             color: #fff;
             font-family: 'Playfair Display', serif;
-            overflow: hidden; /* Sitenin ana kaydırmasını kilitliyoruz */
+            overflow: hidden; 
         }
 
-        /* İŞTE MIKNATIS MERKEZİ: Kaydırma işlemi bu kutunun içinde olacak */
+        /* Tüm galeriyi saran ve yukarı/aşağı kayacak olan asansör kutumuz */
         .gallery-container {
             height: 100vh;
             width: 100%;
-            overflow-y: scroll;
-            /* Scroll Snapping: 2-3 tık kaydırdığında kontrolü senden alır ve merkeze çeker */
-            scroll-snap-type: y mandatory; 
-            scroll-behavior: smooth;
-            
-            /* İğrenç çubukları gizle */
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.2, 1); /* O lüks kayma animasyonu */
         }
-        .gallery-container::-webkit-scrollbar { display: none; }
 
         /* HER BİR SERGİ ODASI */
         .art-panel {
@@ -37,17 +29,11 @@
             width: 100%;
             display: flex; flex-direction: column; 
             align-items: center; justify-content: center;
-            
-            /* Mıknatısın kilitleneceği yer: TAM MERKEZ */
-            scroll-snap-align: center; 
-            
-            /* Zarif bakır spot ışığı */
             background: radial-gradient(circle at center, rgba(200, 150, 102, 0.12) 0%, rgba(15, 15, 15, 0) 65%);
             position: relative;
-            overflow: hidden;
         }
 
-        /* RESİM BOYUTU 68VH'A DÜŞTÜ (Ekrana yazıyla beraber kusursuz oturur) */
+        /* RESİM (68vh) */
         .art-image {
             height: 68vh;  
             width: 68vh;   
@@ -55,14 +41,29 @@
             max-height: 85vw;
             object-fit: cover;
             box-shadow: 0 40px 100px rgba(0,0,0,0.9); 
-            will-change: transform, opacity;
-            opacity: 0; 
+            /* Resimler aktif değilken geride ve silik durur */
+            transform: scale(0.85) translateY(50px);
+            opacity: 0.2;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.2, 1);
         }
 
         .art-info {
             text-align: center;
             margin-top: 30px;
-            will-change: transform, opacity;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 1, 0.2, 1) 0.2s; /* Yazı resimden 0.2sn sonra gelir */
+        }
+
+        /* ==== AKTİF OLAN ESERİN EFEKTLERİ (Ekrana gelince çalışır) ==== */
+        .art-panel.active .art-image {
+            transform: scale(1) translateY(0); /* Üstüne doğru 3D büyür */
+            opacity: 1;
+        }
+
+        .art-panel.active .art-info {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .art-title {
@@ -70,7 +71,6 @@
             letter-spacing: 5px;
             text-transform: uppercase;
             color: #c89666; 
-            opacity: 0.95;
             text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
         
@@ -85,9 +85,9 @@
 </head>
 <body>
 
-    <div class="gallery-container">
+    <div class="gallery-container" id="slider">
         
-        <div class="art-panel">
+        <div class="art-panel active">
             <img src="images/art1.jpg" alt="The Obsidian Monolith" class="art-image">
             <div class="art-info">
                 <div class="art-title">The Obsidian Monolith</div>
@@ -114,48 +114,64 @@
     </div>
 
     <script>
-        const container = document.querySelector('.gallery-container');
-        let isTicking = false;
+        const slider = document.getElementById('slider');
+        const panels = document.querySelectorAll('.art-panel');
+        let currentIndex = 0;
         
-        function updateParallax() {
-            const panels = document.querySelectorAll('.art-panel');
-            const windowHeight = window.innerHeight;
+        let isAnimating = false; // Animasyon bitmeden diğerine geçmeyi engeller
+        let wheelDeltaAccumulator = 0; // Tekerlek dönüşlerini sayar
+        const SCROLL_THRESHOLD = 120; // 120 birim (Yaklaşık 2-3 tık demektir)
 
-            panels.forEach(panel => {
-                const rect = panel.getBoundingClientRect();
-                const progress = (rect.top + rect.height / 2 - windowHeight / 2) / windowHeight;
-                
-                const img = panel.querySelector('.art-image');
-                const info = panel.querySelector('.art-info');
+        // Yanlışlıkla hafif dokunmaları sıfırlamak için zamanlayıcı
+        let resetTimer;
 
-                if (Math.abs(progress) < 1.5) { 
-                    
-                    // Resim %12 oranında sana doğru büyüyerek gelir (daha soft)
-                    let scale = 1 - (progress * 0.12); 
-                    
-                    let opacity = 1 - Math.pow(Math.abs(progress), 1.8); // Daha hızlı kararıp aydınlanır
-                    if (opacity < 0) opacity = 0;
+        window.addEventListener('wheel', (e) => {
+            if (isAnimating) return; // Zaten kayıyorsa fareyi dinleme
 
-                    img.style.transform = `scale(${scale})`;
-                    img.style.opacity = opacity;
-                    
-                    info.style.transform = `translateY(${progress * 50}px)`;
-                    info.style.opacity = opacity;
+            // Farenin ne kadar döndüğünü hafızaya ekle
+            wheelDeltaAccumulator += e.deltaY;
+
+            // Eğer 2-3 tıktan (120'den) fazla aşağı kaydırıldıysa
+            if (wheelDeltaAccumulator > SCROLL_THRESHOLD) {
+                if (currentIndex < panels.length - 1) {
+                    goToSlide(currentIndex + 1);
                 }
-            });
-            isTicking = false;
-        }
-
-        // DİKKAT: Artık window'u değil, container'ı dinliyoruz
-        container.addEventListener('scroll', () => {
-            if (!isTicking) {
-                window.requestAnimationFrame(updateParallax);
-                isTicking = true;
+                wheelDeltaAccumulator = 0;
+            } 
+            // Eğer 2-3 tıktan (120'den) fazla yukarı kaydırıldıysa
+            else if (wheelDeltaAccumulator < -SCROLL_THRESHOLD) {
+                if (currentIndex > 0) {
+                    goToSlide(currentIndex - 1);
+                }
+                wheelDeltaAccumulator = 0;
             }
+
+            // Fareyi çevirmeyi bırakırsan yarım saniye sonra sayacı sıfırla
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+                wheelDeltaAccumulator = 0;
+            }, 300);
         });
 
-        // Başlangıç tetiklemesi
-        updateParallax();
+        function goToSlide(index) {
+            isAnimating = true;
+            
+            // Asansörü (-100vh, -200vh vb) aşağı kaydır
+            slider.style.transform = `translateY(-${index * 100}vh)`;
+            
+            // Eski aktif resmi sönük yap
+            panels[currentIndex].classList.remove('active');
+            
+            currentIndex = index;
+            
+            // Yeni gelen resmi patlat
+            panels[currentIndex].classList.add('active');
+
+            // 1.2 saniye sonra (animasyon bitince) kilidi aç
+            setTimeout(() => {
+                isAnimating = false;
+            }, 1200); 
+        }
     </script>
 
 </body>
