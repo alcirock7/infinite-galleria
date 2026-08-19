@@ -1,20 +1,16 @@
 /* --- INFINITE GALLERIA FUNCTIONS (STABLE MOBILE) --- */
 
 function openSidebar(id) {
-    // 1. Resmi ve Veriyi Al
     const originalImg = document.querySelector(`[onclick="openSidebar('${id}')"] img`).src;
     const dataContent = document.getElementById(id + '-data').innerHTML;
     
-    // 2. Modalı Doldur
     const modal = document.getElementById('gallery-modal');
     document.getElementById('main-modal-img').src = originalImg;
     document.getElementById('modal-info-content').innerHTML = dataContent;
     
-    // 3. Modalı Önce Görünür Yap (Display Block)
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Arka planı kilitle
+    document.body.style.overflow = 'hidden'; 
 
-    // 4. Ufak bir gecikmeyle "open" sınıfını ekle (Animasyonun tetiklenmesi için şart)
     setTimeout(() => {
         modal.classList.add('open');
     }, 10);
@@ -23,25 +19,90 @@ function openSidebar(id) {
 function closeModal() {
     const modal = document.getElementById('gallery-modal');
     
-    // 1. Önce şeffaflaştır (Sınıfı sil)
     modal.classList.remove('open');
-    document.body.style.overflow = 'auto'; // Scrollu aç
+    document.body.style.overflow = 'auto'; 
 
-    // 2. Animasyon bitince (0.4s sonra) tamamen gizle
     setTimeout(() => {
         modal.style.display = 'none';
-    }, 400); // CSS'teki transition süresiyle aynı olmalı
+    }, 400); 
 }
 
-// Sidebar Kapatma (Yedek)
 function closeSidebar() {
     document.getElementById('sidebar-panel').classList.remove('active');
 }
 
-// Checkout Yönlendirme
-function goToCheckout(event, productId) {
+// --- YENİ LEMON SQUEEZY CHECKOUT YÖNLENDİRİCİSİ (12 ESER TAM LİSTE) ---
+function goToCheckout(event, artId) {
     event.preventDefault(); 
-    const form = event.target; 
-    const selectedTier = form.querySelector('input[name="tier"]:checked').value;
-    window.location.href = `checkout.html?product=${productId}&tier=${selectedTier}`;
+    
+    const selectedTier = event.target.querySelector('input[name="tier"]:checked').value;
+
+    const checkoutLinks = {
+        'art1': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link1',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link2',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link3'
+        },
+        'art2': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link4',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link5',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link6'
+        },
+        'art3': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link7',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link8',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link9'
+        },
+        'art4': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link10',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link11',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link12'
+        },
+        'art5': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link13',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link14',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link15'
+        },
+        'art6': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link16',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link17',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link18'
+        },
+        'art7': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link19',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link20',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link21'
+        },
+        'art8': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link22',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link23',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link24'
+        },
+        'art9': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link25',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link26',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link27'
+        },
+        'art10': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link28',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link29',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link30'
+        },
+        'art11': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link31',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link32',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link33'
+        },
+        'art12': {
+            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link34',
+            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link35',
+            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link36'
+        }
+    };
+
+    if (checkoutLinks[artId] && checkoutLinks[artId][selectedTier]) {
+        window.open(checkoutLinks[artId][selectedTier], '_blank'); 
+    } else {
+        alert("Bu eser ve paket için ödeme linki henüz sisteme girilmedi kanka! Kodu kontrol et.");
+    }
 }
