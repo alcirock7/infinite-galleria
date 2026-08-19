@@ -264,47 +264,138 @@
 				</div>
 			</div>
 		</div>
-<style>
-    /* ==========================================
-       1. SİYAH PERDE VE BULANIKLIK İPTALİ
-       ========================================== */
-    #wrapper:after, #wrapper:before, #main:after, #main:before,
-    body:after, body:before, body.is-menu-visible #wrapper:after,
-    body.is-menu-visible #main:after, body.modal-active #wrapper:after {
-        content: none !important; display: none !important; opacity: 0 !important;
-        background: transparent !important; width: 0 !important; height: 0 !important;
-        pointer-events: none !important; z-index: -9999 !important;
-        animation: none !important; transition: none !important; backdrop-filter: none !important;
+  <style>
+    /* 1. Tüm sözde elementleri (after/before perdelerini) yok et */
+    #wrapper:after, 
+    #wrapper:before, 
+    #main:after, 
+    #main:before,
+    body:after,
+    body:before,
+    body.is-menu-visible #wrapper:after,
+    body.is-menu-visible #main:after,
+    body.modal-active #wrapper:after {
+        content: none !important;     /* İçeriği boşalt */
+        display: none !important;     /* Görünümden kaldır */
+        opacity: 0 !important;        /* Görünmez yap */
+        background: transparent !important; /* Rengi sil */
+        width: 0 !important;
+        height: 0 !important;
+        pointer-events: none !important; /* Tıklamayı engelle */
+        z-index: -9999 !important;    /* En alta göm */
+        animation: none !important;   /* Animasyonu durdur */
+        transition: none !important;  /* Geçişi durdur */
+        backdrop-filter: none !important; /* Buzlanmayı sil */
     }
-    #wrapper, #main { background-color: transparent !important; filter: none !important; }
 
-    /* ==========================================
-       2. ALT BAR (HEADER) VE FONT
-       ========================================== */
-    @font-face {
-        font-family: 'HappyTime';
-        src: url('assets/webfonts/HappyTime.otf') format('opentype');
-        font-weight: normal; font-style: normal;
+    /* 2. Wrapper'ın kendisine zorla şeffaflık ver */
+    #wrapper, #main {
+        background-color: transparent !important;
+        filter: none !important;
     }
-#header {
-        display: flex !important; 
-        justify-content: space-between !important; 
-        align-items: center !important; 
+    /* 1. Barın Kendisi (Kapsayıcı) */
+    #header {
+        display: flex !important;
+        justify-content: space-between !important; /* Sola ve sağa yasla */
+        align-items: center !important;            /* DİKEYDE ORTALA */
         flex-direction: row !important;
-        height: 60px !important; /* İŞTE SORUN BURADAYDI, 80'i 60 YAPTIK! */
-        padding: 0 40px !important;                
-        position: fixed !important; 
-        bottom: 0 !important; 
+        
+        height: 80px !important;                   /* Bar Yüksekliği */
+        padding: 0 40px !important;                /* Kenar Boşlukları */
+        
+        position: fixed !important;
+        bottom: 0 !important;
         left: 0 !important;
-        width: 100% !important; 
+        width: 100% !important;
         z-index: 50 !important;
         background-color: rgba(225, 215, 200, 0.98) !important;
     }
+
+    /* 2. Logo (Marka İsmi) - TEK TEK HİZALAMA */
     #header h1 {
-        display: flex !important; align-items: center !important; 
-        height: 100% !important; margin: 0 !important; padding: 0 !important;
-        border: none !important; top: auto !important; left: auto !important; 
+        display: flex !important;       /* Kutu olsun */
+        align-items: center !important; /* İçindekini ortalasın */
+        height: 100% !important;        /* Bar boyunca uzasın */
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        top: auto !important; left: auto !important; /* Eski ayarları sil */
     }
+
+    #header h1 a {
+        display: flex !important;       /* Link de kutu olsun */
+        align-items: center !important; /* Yazıyı ortalasın */
+        height: 100% !important;
+        line-height: 1 !important;      /* Satır boşluğunu sıkılaştır */
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        font-size: 1.2rem !important;   /* Yazı boyutu (İstersen büyüt) */
+    }
+
+    /* 3. Menü (Sağ Taraf) */
+    #header nav {
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        top: auto !important; right: auto !important;
+    }
+
+    #header nav ul {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        height: 100% !important;
+    }
+
+    #header nav ul li {
+        display: flex !important;
+        align-items: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 4. Hamburger İkonu */
+    #header nav ul li a.fa-bars {
+        display: flex !important;       /* Flex ile ortala */
+        align-items: center !important; /* Dikey */
+        justify-content: center !important; /* Yatay */
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 50px !important;
+        width: 50px !important;
+        line-height: 1 !important;
+        transform: none !important;     /* Kaymayı engelle */
+    }
+    /* 1. SİTEYE YENİ FONTU TANIT (Senin yüklediğin dosya) */
+    @font-face {
+        font-family: 'HappyTime';
+        src: url('assets/webfonts/HappyTime.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* 2. Barın Kendisi (Daha ince ve Flexbox ile ortalı) */
+    #header {
+        height: 60px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 40px !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 50 !important;
+        background-color: rgba(225, 215, 200, 0.98) !important;
+    }
+
+    /* 3. Marka İsmi (Logo) Kilit Hizalaması ve YENİ FONT */
     #header h1, #header h1 a {
         display: flex !important;
         align-items: center !important;
@@ -358,15 +449,14 @@
         overflow: hidden !important;
 
     }
-  .collection-link {
-        font-family: 'HappyTime', serif !important; 
-        font-size: 1.35rem !important; 
-        font-weight: bold !important; 
+.collection-link {
+        font-family: 'Playfair Display' !important; 
+        font-size: 1.2rem !important; 
+        font-weight: normal !important; 
         font-style: normal !important; 
         text-decoration: none !important;
         border-bottom: none !important;
-        line-height: 1.4 !important; 
-	   margin-bottom: 8px !important;
+        line-height: 1.3 !important; 
         display: block !important; 
         text-align: left !important;
     } /* <--- BURADAKİ KAPANIŞ PARANTEZİ ÇOK ÖNEMLİ! */
@@ -378,31 +468,30 @@
         opacity: 0 !important;
         visibility: hidden !important;
     }
+ 
 	/* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
-   /* YASAL SAYFALAR (POLICIES) MENÜSÜ GÖRÜNÜMÜ */
     ul.legal-menu {
-        list-style: none !important; 
-        padding-left: 0 !important; /* Sola sıfırladık */
+        list-style: none !important; /* Başındaki noktaları siler */
+        padding: 0 !important;
         margin: 0 !important;
-        text-align: left !important; /* Yazıları sola yasladık */
+		padding-left: 0 !important;
+		text-align: left !important;
     }
     
     ul.legal-menu li {
-        margin: 4px 0 !important; 
+        margin: 4px 0 !important; /* Linkler arasındaki boşluk */
         border: none !important;
-        text-align: left !important; /* Link maddelerini sola yasladık */
     }
     
     ul.legal-menu li a {
-        font-family: 'HappyTime', serif !important; /* Orijinal italik fonta döndük */
-        font-size: 0.85rem !important;        
-        color: #777 !important;               
-        text-transform: uppercase !important; 
-        letter-spacing: 1px !important;       
-        font-style: italic !important; /* İtalik yaptık */
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.75rem !important;        /* Yazı boyutunu küçült */
+        color: #777 !important;               /* Ana yazılara göre biraz daha silik gri */
+        text-transform: uppercase !important; /* Hepsini BÜYÜK HARF yap */
+        letter-spacing: 1px !important;       /* Harf arası boşluk */
+        text-decoration: none !important;     /* Alt çizgiyi iptal et */
         transition: color 0.3s ease !important;
-        text-align: left !important; /* Link metnini sola yasladık */
-        display: inline-block !important; /* Yaslamanın çalışması için gerekli */
+		border-bottom: none !important;
     }
 
     ul.legal-menu li a:hover {
@@ -438,8 +527,7 @@
     }
 
     /* 2. Bölümler Arası (Koleksiyon, Yasal, About) Boşlukları Daralt */
-  /* 2. Bölümler Arası (Koleksiyon, Yasal, About) Boşlukları Daralt */
- #footer .menu-collections {
+    #footer .menu-collections {
         margin: 0 !important;
         padding: 10px 0 !important;
     }
@@ -461,41 +549,57 @@
         text-align: left !important;
         margin-top: 10px !important;
         margin-bottom: 15px !important; 
+		/* --- BAŞLIKLARI BÜYÜTÜP KALINLAŞTIRAN KISIM --- */
+        font-family: 'Cinzel', serif !important;
+		font-size: 1.3rem !important;  /* Puntoyu buradan ayarlayabilirsin (1.5 veya 1.6 da yapabilirsin) */
+        font-weight: 510 !important;   /* Ekstra kalın ve tok durması için 800 yaptık */
+        letter-spacing: 1.5px !important; /* Tok dururken harfler birbirine girmesin diye hafif açtık */
     }
 
-    /* Koleksiyonların noktaları için sol pay */
-    ul.collection-list {
+    /* Puntoyu Düşürme ve Hizalama */
+    ul.collection-list, ul.legal-menu {
         width: 100% !important;
-        padding-left: 20px !important; 
+        padding-left: 0px !important; 
         margin-top: 0 !important;
+		list-style: none !important;
     }
-   /* ==========================================
+
+    .collection-link {
+        font-size: 1.35rem !important; 
+        line-height: 1.4 !important;
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 8px !important;
+        padding-left: 0 !important; /* Fazladan boşluğu siler */
+    }
+
+    /* ==========================================
        HAYAT KURTARAN SİMETRİ (GRID SİSTEMİ)
        ========================================== */
        
     #footer .menu-bottom {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important; /* Ekranı iki eşit parçaya böler */
-        row-gap: 0px !important; /* Kaydırma çubuğunu yok eden sıfırlama */
-        margin-top: 30px !important; 
+        row-gap: 0px !important; /* Alt alta olanların arasına boşluk koyar */
+        margin-top: 30px !important; /* Üstteki çizgiyle arasına nefes payı */
     }
 
     #footer .menu-about {
-        grid-column: 1 / 2 !important; 
+        grid-column: 1 / 2 !important; /* Sol bloğa yerleşir */
         margin: 0 !important;
     }
 
     #footer .menu-social {
-        grid-column: 2 / 3 !important; 
+        grid-column: 2 / 3 !important; /* Sağ bloğa yerleşir */
         margin: 0 !important;
     }
 
     #footer .menu-copyright {
-        grid-column: 1 / 3 !important; 
+        grid-column: 1 / 3 !important; /* İkisinin altına geçip boydan boya uzanır */
         text-align: left !important;
         margin: 0 !important;
     }
-	
+
     /* O Lanet Kaydırma Çubuğunu Kesin Olarak Öldüren Kısım */
     #footer, #footer .inner {
         overflow: hidden !important; 
@@ -523,6 +627,24 @@
     ul.legal-menu li a {
         text-align: left !important;
         display: inline-block !important;
+    }
+	/* --- KOLEKSİYON LİNKLERİ HOVER ANİMASYONU --- */
+    .collection-link {
+        transition: all 0.3s ease !important; 
+    }
+    .collection-link:hover {
+        color: #c89666 !important;       
+        transform: translateX(8px) !important; 
+        opacity: 0.8 !important;         
+    }
+
+    /* --- POLICIES (YASAL) LİNKLERİ HOVER ANİMASYONU --- */
+    ul.legal-menu li a {
+        transition: all 0.3s ease !important;
+    }
+    ul.legal-menu li a:hover {
+        color: #1a1a1a !important;       
+        transform: translateX(5px) !important; 
     }
 </style>
 	</body>
