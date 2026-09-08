@@ -54,9 +54,9 @@ function goToCheckout(event, artId) {
             'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link9'
         },
         'art4': {
-            'standard': 'https://siten.lemonsqueezy.com/checkout/buy/link10',
-            'extended': 'https://siten.lemonsqueezy.com/checkout/buy/link11',
-            'exclusive': 'https://siten.lemonsqueezy.com/checkout/buy/link12'
+            'standard': 'https://infinite-galleria.lemonsqueezy.com/checkout/buy/b4534f67-351b-40c1-b99e-97d430d4ce42?discount=0',
+            'extended': 'https://infinite-galleria.lemonsqueezy.com/checkout/buy/b4534f67-351b-40c1-b99e-97d430d4ce42?discount=0',
+            'exclusive': 'https://infinite-galleria.lemonsqueezy.com/checkout/buy/b4534f67-351b-40c1-b99e-97d430d4ce42?discount=0'
         },
         'art5': {
             'standard': 'https://infinite-galleria.lemonsqueezy.com/checkout/buy/d23a29de-e684-48e8-8993-749089bdc644?discount=0',
